@@ -1,0 +1,72 @@
+.home-product-container{
+    /* background-color: aliceblue; */
+    /* height: 400px; */
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.home-product-container-inner{
+    width: 1200px;
+    height: 500px;
+    /* background-color: white; */
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.date-palm-jaggery-img{
+    width: 500px;
+    height: 500px;
+}
+.product-img-main-container{
+    width: fit-content;
+}
+.product-buying-options{
+    margin-top: 30px;
+    width: 500px;
+    height: 500px;
+    line-height: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    /* background-color: white; */
+}
+.product-title{
+    font-size: 24px;
+    font-weight: bolder;
+    color: black;
+}
+.product-price{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+}
+.prod-desc{
+    color: rgba(18, 18, 18, 0.75);
+    font-size: 1rem;
+}
+#offer-price{
+    font-weight: bold;
+    font-size: 22px;
+    color: rgb(18, 18, 18);
+}
+#regular-price{
+    padding-left: 15px;
+    color: rgba(18, 18, 18, 0.75);
+    font-size: 1rem;
+}
+.product-cashback{
+    color: rgba(18, 18, 18, 0.75);
+    font-size: 1.5rem;
+}
+.review-stars{
+    padding-left: 20px;
+    color: rgb(255, 150, 3);
+}
+.no-of-reviews{
+    color: rgba(18, 18, 18, 0.75); 
+}
+.fa-comments-dollar{
+    color: 
+    #7ab35b;
+}
