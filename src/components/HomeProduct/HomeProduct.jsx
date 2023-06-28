@@ -6,6 +6,9 @@ const HomeProduct = () => {
     <div className="home-product-container">
       <div className="home-product-container-inner">
         <div className="product-img-main-container">
+            <div className="organic-badge">
+                100% <strong>Organic</strong>
+            </div>
           <img
             src="./images/product.png"
             alt="grambahar"

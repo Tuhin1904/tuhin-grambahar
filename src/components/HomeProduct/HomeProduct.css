@@ -1,7 +1,9 @@
 .home-product-container {
     /* background-color: aliceblue; */
     /* height: 400px; */
+    border:1px solid #7ab35b;
     padding-top: 40px;
+    
     padding-bottom: 40px;
 }
 
@@ -23,9 +25,26 @@
 }
 
 .product-img-main-container {
+    margin-top: 30px;
+    position: relative;
     width: fit-content;
+    /* border: 1px solid rgb(255, 150, 3); */
 }
-
+.organic-badge{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: fit-content;
+    background-color: #7ab35b;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-top-left-radius: 15px;
+}
 .product-buying-options {
     margin-top: 30px;
     width: 500px;
