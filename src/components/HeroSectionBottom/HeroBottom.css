@@ -1,0 +1,35 @@
+.hero-bottom {
+    /* background-color: #fece68; */
+    background-color: #7ab35b;
+}
+
+.hero-bottom-container {
+    /* background-color: yellow; */
+    width: 1200px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-bottom-item {
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid #7ab35b; */
+}
+.hero-bottom-svg{
+    border: 3px solid #fff;
+    border-radius: 50%;
+}
+.hero-bottom-description {
+    padding-top: 30px;
+    padding-bottom: auto;
+    width: 200px;
+    margin-left: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}

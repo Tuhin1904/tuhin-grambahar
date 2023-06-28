@@ -11,7 +11,9 @@ const NavBar = () => {
         <div className="nav-menu">
           <div className="nav-item">Products</div>
           <div className="nav-item">About US</div>
-          <div className="nav-item">Vision</div>
+          <div className="nav-item">Rewards</div>
+          <div className="nav-item">Feedback</div>
+          <div className="nav-item">Career</div>
           <div className="nav-item">Meet Our Farmers</div>
         </div>
         {/* nav-menu section ends here  */}

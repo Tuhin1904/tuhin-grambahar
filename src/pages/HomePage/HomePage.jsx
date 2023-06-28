@@ -1,10 +1,12 @@
 import React from "react";
 import './HomePage.css';
 import HomeProduct from '../../components/HomeProduct/HomeProduct'
+import HeroBottom from "../../components/HeroSectionBottom/HeroBottom";
 const HomePage = () => {
   return (
     <>
     <HomeProduct/>
+    <HeroBottom/>
     {/* this section contains the image  */}
       <div className="grambahar-cartoon-container">
         <img src="images/grambahar-cartoon.jpg" alt="a" className="grambahar-cartoon"/>
