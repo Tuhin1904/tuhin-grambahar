@@ -68,7 +68,7 @@ height: 400px;
     color: rgba(18, 18, 18, 0.75);
     margin-bottom: 10px;
 }
-div.line{
+.line{
     height: 5px;
     width:150px;
     background-color: #7ab35b;
@@ -82,3 +82,4 @@ div.line{
     line-height: 1.5rem;
     color: rgba(18, 18, 18, 0.75);
 }
+
