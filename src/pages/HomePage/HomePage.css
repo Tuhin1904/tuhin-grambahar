@@ -1,4 +1,4 @@
-.grambahar-cartoon-container{
+/* .grambahar-cartoon-container{
 padding-top: 50px;
 padding-bottom: 50px;
 
@@ -30,4 +30,55 @@ padding-bottom: 50px;
     margin-top: 15px;
     font-size: 1rem;
     color: rgb(255, 150, 3);
+} */
+
+.home-page-container{
+  
+  width: 1200px;
+  height: 500px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50px;
+}
+.grambahar-product-story-container{
+display: flex;
+width: 1200px;
+/* justify-content: space-evenly; */
+justify-content: space-between;
+
+}
+.grambahar-farmer-image{
+
+width: fit-content;
+}
+.grambahar-farmer-image img{
+border-radius: 30px;
+width: 400px;
+height: 400px;
+}
+.grambahar-product-story{
+    width: 650px;
+}
+.story-title{
+    margin-top: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: rgba(18, 18, 18, 0.75);
+    margin-bottom: 10px;
+}
+div.line{
+    height: 5px;
+    width:150px;
+    background-color: #7ab35b;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.story{
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    color: rgba(18, 18, 18, 0.75);
 }
