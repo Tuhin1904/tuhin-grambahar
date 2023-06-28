@@ -1,0 +1,19 @@
+.faq{
+
+}
+.faq-title-container{
+    background-color: #7ab35b;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.faq-title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #ffff;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.extra{
+    height: 500px;
+}
