@@ -3,6 +3,10 @@ import './HomePage.css';
 import HomeProduct from '../../components/HomeProduct/HomeProduct'
 import HeroBottom from "../../components/HeroSectionBottom/HeroBottom";
 import FAQ from "../../components/FAQ/FAQ";
+import Footer from '../../components/Footer/Footer';
+
+
+
 const HomePage = () => {
   return (
     <>
@@ -30,6 +34,7 @@ This product contains no additives, adulterated sugar, artificial preservatives,
         </div>
       </div>
       <FAQ/>
+      <Footer/>
     </>
   );
 };

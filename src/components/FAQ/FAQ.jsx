@@ -48,7 +48,7 @@ const FAQ = () => {
         </div>
 
       </div>
-      <div className="extra"></div>
+      
     </div>
   );
 };
