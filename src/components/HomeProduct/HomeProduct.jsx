@@ -3,6 +3,7 @@ import "./HomeProduct.css";
 
 const HomeProduct = () => {
   return (
+    <>
     <div className="home-product-container">
       <div className="home-product-container-inner">
         <div className="product-img-main-container">
@@ -66,6 +67,9 @@ const HomeProduct = () => {
         </div>
       </div>
     </div>
+
+    
+    </>
   );
 };
 

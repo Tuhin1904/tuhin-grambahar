@@ -208,3 +208,11 @@
     padding-right: 10px;
     color: rgba(18, 18, 18, 0.75);
 }
+
+/* code for responsiceness */
+@media only screen and (max-width: 600px){
+    .home-product-container {
+        display: none;
+    }
+    
+}

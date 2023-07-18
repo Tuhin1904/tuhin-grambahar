@@ -33,3 +33,9 @@
     font-weight: bold;
     color: #fff;
 }
+
+@media only screen and (max-width: 600px){
+    .hero-bottom{
+        display: none;
+    }
+}
