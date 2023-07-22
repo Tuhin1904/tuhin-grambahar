@@ -5,5 +5,7 @@
 @media only screen and (max-width: 600px){
 .bottom-nav{
     display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 }
