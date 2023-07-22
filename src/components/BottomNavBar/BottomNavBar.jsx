@@ -7,7 +7,17 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Paper from '@mui/material/Paper';
 import './BottomNavBar.css'
-
+import { ThemeProvider, createTheme } from '@mui/material';
+const theme  = createTheme({
+    palette:{
+        primary:{
+            main:"#7ab35b"
+        },
+        secondary:{
+            main:'#7ab35b'
+        }
+    }
+})
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState('recents');
 
@@ -17,6 +27,7 @@ export default function LabelBottomNavigation() {
 
   
   return (
+    <ThemeProvider theme={theme}>
     <Paper sx={{position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={5} className={'bottom-nav'}>
     <BottomNavigation  value={value} onChange={handleChange}>
       <BottomNavigationAction
@@ -37,5 +48,6 @@ export default function LabelBottomNavigation() {
       <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
     </BottomNavigation>
     </Paper>
+    </ThemeProvider>
   );
 }
