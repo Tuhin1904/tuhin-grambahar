@@ -5,6 +5,7 @@ import HeroBottom from "../../components/HeroSectionBottom/HeroBottom";
 import FAQ from "../../components/FAQ/FAQ";
 import Footer from '../../components/Footer/Footer';
 
+import BottomNavBar from '../../components/BottomNavBar/BottomNavBar';
 
 
 const HomePage = () => {
@@ -35,6 +36,7 @@ This product contains no additives, adulterated sugar, artificial preservatives,
       </div>
       <FAQ/>
       <Footer/>
+      <BottomNavBar/>
     </>
   );
 };
