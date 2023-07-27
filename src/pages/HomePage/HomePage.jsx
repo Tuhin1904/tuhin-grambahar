@@ -1,16 +1,19 @@
 import React from "react";
 import './HomePage.css';
+
 import HomeProduct from '../../components/HomeProduct/HomeProduct'
 import HeroBottom from "../../components/HeroSectionBottom/HeroBottom";
 import FAQ from "../../components/FAQ/FAQ";
 import Footer from '../../components/Footer/Footer';
 
 import BottomNavBar from '../../components/BottomNavBar/BottomNavBar';
+import CustomSwiper from "../../components/CustomSwiper/CustomSwiper";
 
 
 const HomePage = () => {
   return (
     <>
+  <CustomSwiper/>
     <HomeProduct/>
     <HeroBottom/>
       <div className="home-page-container">
