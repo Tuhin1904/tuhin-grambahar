@@ -1,5 +1,6 @@
 import React from 'react';
 import './HomeProduct.css';
+import HomeProductSwiper from '../home-product-swiper/HomeProductSwiper';
 
 const HomeProduct = () => {
   return (
@@ -60,10 +61,10 @@ const HomeProduct = () => {
       </div>
       {/* this code is for smaller devices  */}
       <div className="home-product-container-sm">
-        <div className="sm-home-product-image">
+        {/* <div className="sm-home-product-image">
           <img src="./images/product.png" alt="grambahar" className="sm-date-palm-jaggery-img" />
-        </div>
-
+        </div> */}
+        <HomeProductSwiper/>
         <div className="sm-product-buying-options">
           <div className="sm-product-heading">Date Palm Jaggery</div>
           <div className="sm-prod_desc">Authentic Taste of Nature</div>

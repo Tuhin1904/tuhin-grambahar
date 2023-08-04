@@ -20,7 +20,7 @@ const CustomSwiper = () => {
       pagination={{
         clickable: true,
       }}
-      navigation={true}
+      navigation={false}
       modules={[Pagination, Navigation]}
     >
       <SwiperSlide>Slide 1</SwiperSlide>
