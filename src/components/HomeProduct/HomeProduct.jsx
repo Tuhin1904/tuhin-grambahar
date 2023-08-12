@@ -1,8 +1,19 @@
 import React from 'react';
 import './HomeProduct.css';
 import HomeProductSwiper from '../home-product-swiper/HomeProductSwiper';
+import { useState } from 'react';
 
 const HomeProduct = () => {
+  const [cart_prodtct_qty, setCartProductQty] = useState(0)
+  const handelCartAdd = ()=>{
+   const data = cart_prodtct_qty +1 ;
+   setCartProductQty(data);
+  }
+  const handelCartDelete = ()=>{
+    const data = cart_prodtct_qty-1;
+    setCartProductQty(data)
+  }
+
   return (
     <>
       <div className="home-product-container">
@@ -47,9 +58,9 @@ const HomeProduct = () => {
             <div className="product-cart-section">
               <div className="product-quantity">Quantity</div>
               <div className="cart-quantity">
-                <div className="plus">+</div>
-                <div className="qty">1</div>
-                <div className="minus">-</div>
+                <div className="plus" onClick={handelCartAdd}>+</div>
+                <div className="qty">{cart_prodtct_qty}</div>
+                <div className="minus" onClick={handelCartDelete}>-</div>
               </div>
               <div className="cart-options">
                 <div className="buy-now-btn">BUY NOW</div>
@@ -89,16 +100,16 @@ const HomeProduct = () => {
               Get cansback upto <i class="fa-sharp fa-solid fa-comments-dollar"></i> <span>&#8377;</span>150/-
             </div>
             <div className="product-type-container">
-              <div className="choose-size">Choose Size</div>
-              <div className="product-size size-active">250 Grams</div>
-              <div className="product-size">500 Grams</div>
+              <div className="sm-choose-size">Choose Size</div>
+              <div className="sm-product-size sm-size-active">250 Grams</div>
+              <div className="sm-product-size">500 Grams</div>
             </div>
             <div className="product-cart-section">
               <div className="product-quantity">Quantity</div>
               <div className="cart-quantity">
-                <div className="plus">+</div>
-                <div className="qty">1</div>
-                <div className="minus">-</div>
+                <div className="plus" onClick={handelCartAdd}>+</div>
+                <div className="qty">{cart_prodtct_qty}</div>
+                <div className="minus" onClick={handelCartDelete}>-</div>
               </div>
               <div className="cart-options">
                 <div className="buy-now-btn">BUY NOW</div>

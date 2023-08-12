@@ -254,4 +254,34 @@
         font-size: 18px;
         color: rgba(18, 18, 18, 0.75);;
     }
+    .sm-choose-size {
+        font-family: 'Montserrat', sans-serif;
+        color: rgba(18, 18, 18, 0.75);
+        font-weight: bold;
+        display: inline-block;
+        margin-right: 10px;
+    }
+    
+    .sm-product-size {
+        background-color: white;
+        color: rgba(18, 18, 18, 0.75);
+        border: 1px solid #7ab35b;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        width: fit-content;
+        border-radius: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px !important;
+        margin-top: 10px;
+        font-size: medium;
+        display: inline-block;
+        margin-right: 10px;
+    }
+    
+    .sm-size-active {
+        color: #ffff;
+        background-color: #7ab35b !important;
+    }
 }
