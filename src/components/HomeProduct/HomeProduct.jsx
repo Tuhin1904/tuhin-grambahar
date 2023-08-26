@@ -5,14 +5,34 @@ import { useState } from 'react';
 
 const HomeProduct = () => {
   const [cart_prodtct_qty, setCartProductQty] = useState(0)
+  const [weight250_active,set_weight250_active] = useState(false)
+  const [weight500_active,set_weight500_active] = useState(false)
+  const [prod_weight,set_prod_weight] = useState(250)
   const handelCartAdd = ()=>{
    const data = cart_prodtct_qty +1 ;
    setCartProductQty(data);
   }
+
   const handelCartDelete = ()=>{
-    const data = cart_prodtct_qty-1;
-    setCartProductQty(data)
+    if(cart_prodtct_qty>0){
+      const data = cart_prodtct_qty-1;
+      setCartProductQty(data)
+    }
   }
+  const handelWeightButton = (weight)=>{
+    set_prod_weight(weight)
+    if(prod_weight==250){
+      set_weight250_active(true)
+      set_weight500_active(false)
+    }
+    else{
+      set_weight250_active(false)
+      set_weight500_active(true)
+    }
+    
+  }
+  const prod_weight250_active = ["sm-product-size",weight250_active==true?"sm-size-active":" "].join(" ")
+  const prod_weight500_active = ["sm-product-size",weight500_active==true?"sm-size-active":" "].join(" ")
 
   return (
     <>
@@ -101,8 +121,10 @@ const HomeProduct = () => {
             </div>
             <div className="product-type-container">
               <div className="sm-choose-size">Choose Size</div>
-              <div className="sm-product-size sm-size-active">250 Grams</div>
-              <div className="sm-product-size">500 Grams</div>
+              {/* <div className="sm-product-size sm-size-active">250 Grams</div>
+              <div className="sm-product-size">500 Grams</div> */}
+              <div className={prod_weight250_active}  onClick={()=>handelWeightButton(250)}>250 Grams</div>
+              <div className={prod_weight500_active} onClick={()=>handelWeightButton(500)}>500 Grams</div>
             </div>
             <div className="product-cart-section">
               <div className="product-quantity">Quantity</div>
