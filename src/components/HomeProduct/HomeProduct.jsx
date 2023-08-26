@@ -123,6 +123,7 @@ const HomeProduct = () => {
               <div className="sm-choose-size">Choose Size</div>
               {/* <div className="sm-product-size sm-size-active">250 Grams</div>
               <div className="sm-product-size">500 Grams</div> */}
+              
               <div className={prod_weight250_active}  onClick={()=>handelWeightButton(250)}>250 Grams {prod_weight}</div>
               <div className={prod_weight500_active} onClick={()=>handelWeightButton(500)}>500 Grams {prod_weight}</div>
             </div>
