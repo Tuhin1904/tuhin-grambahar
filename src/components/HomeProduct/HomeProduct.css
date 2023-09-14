@@ -227,7 +227,7 @@
     .home-product-container-sm {
         display: block;
         padding: 5px;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
     }
 
     .sm-home-product-image {
@@ -260,16 +260,18 @@
         font-weight: bold;
         display: inline-block;
         margin-right: 10px;
+        font-size: 1rem;
     }
     
     .sm-product-size {
+        font-size: 1rem;
         background-color: white;
         color: rgba(18, 18, 18, 0.75);
         border: 1px solid #7ab35b;
         padding-top: 10px;
         padding-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
         width: fit-content;
         border-radius: 20px;
         font-family: 'Montserrat', sans-serif;
