@@ -49,7 +49,7 @@ export default function LabelBottomNavigation() {
        <BottomNavigationAction
         label="Home"
         value="Home"
-        icon={<HomeOutlinedIcon color="primary" fontSize="large"/>}
+        icon={<HomeOutlinedIcon color="primary" />}
       />
       <BottomNavigationAction
         label="Add"
