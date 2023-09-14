@@ -1,6 +1,7 @@
 import React from "react";
 import "./FAQ.css";
 const FAQ = () => {
+  
   return (
     <div className="faq">
       <div className="faq-title-container">
@@ -50,6 +51,12 @@ const FAQ = () => {
       </div>
       
     </div>
+    // <>
+    // a
+    // a
+    // a 
+
+    // </>
   );
 };
 
