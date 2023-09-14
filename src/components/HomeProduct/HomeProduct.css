@@ -243,7 +243,7 @@
         margin-bottom: 50px;
         font-family: 'Montserrat', sans-serif;
     }
-
+   
     .sm-product-heading {
         
         font-size: 24px;
@@ -283,5 +283,30 @@
     .sm-size-active {
         color: #ffff;
         background-color: #7ab35b !important;
+    }
+    .cart-quantity{
+        width: 100%;
+        border-radius: 10px;
+    }
+    .cart-options{
+        /* background-color: #7ab35b; */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .buy-now-btn{
+        border-radius: 10px;
+        font-size: 1.4rem;
+        padding-right: 30px;
+        padding-left: 30px;
+        margin-right: 0px;
+    }
+    .add-to-cart-btn{
+        padding-right: 30px;
+        padding-left: 30px;
+        border-radius: 10px;
+        font-size: 1.4rem;
+        border: 2px solid #7ab35b;
+        font-weight: bold;
     }
 }

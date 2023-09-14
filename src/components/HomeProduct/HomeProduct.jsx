@@ -127,7 +127,7 @@ const HomeProduct = () => {
               <div className={prod_weight250_active}  onClick={()=>handelWeightButton(250)}>250 Grams</div>
               <div className={prod_weight500_active} onClick={()=>handelWeightButton(500)}>500 Grams</div>
             </div>
-            <div className="product-cart-section">
+            <div className="product-cart-section sm-product-cart-section">
               <div className="product-quantity">Quantity</div>
               <div className="cart-quantity">
                 <div className="plus" onClick={handelCartAdd}>+</div>
@@ -135,8 +135,8 @@ const HomeProduct = () => {
                 <div className="minus" onClick={handelCartDelete}>-</div>
               </div>
               <div className="cart-options">
-                <div className="buy-now-btn">BUY NOW</div>
                 <div className="add-to-cart-btn">Add to cart</div>
+                <div className="buy-now-btn">BUY NOW</div>
               </div>
             </div>
         </div>
