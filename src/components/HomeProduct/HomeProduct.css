@@ -292,7 +292,7 @@
         /* background-color: #7ab35b; */
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        /* justify-content: space-between; */
     }
     .buy-now-btn{
         border-radius: 10px;
@@ -308,5 +308,6 @@
         font-size: 1.4rem;
         border: 2px solid #7ab35b;
         font-weight: bold;
+        margin-right: 15px;
     }
 }
