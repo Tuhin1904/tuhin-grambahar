@@ -23,6 +23,9 @@ const MobileNavBar = () => {
           </button>
         </div>
         <div>
+          <img src="grambahar_logo.ico" alt="" height="30px"  width="100px"/>
+        </div>
+        <div>
           <button className="bg-white p-2 mr-2 text-primary  hover:bg-primary hover:text-white ease-in-out duration-500">
             <Search />
           </button>
