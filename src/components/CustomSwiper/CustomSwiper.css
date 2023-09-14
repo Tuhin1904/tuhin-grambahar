@@ -32,10 +32,13 @@
     color: #fff;
   }
   
-  .swiper-slide:nth-child(1n) {
+  /* .swiper-slide:nth-child(1n) {
     background-color: rgb(206, 17, 17);
   }
-  
+   */
+   .swiper-slide:nth-child(1n) {
+    background-color: rgb(35, 99, 19);
+  }
   .swiper-slide:nth-child(2n) {
     background-color: rgb(0, 140, 255);
   }
@@ -55,10 +58,13 @@
   .swiper-slide:nth-child(6n) {
     background-color: rgb(180, 10, 47);
   }
-  
-  .swiper-slide:nth-child(7n) {
-    background-color: rgb(35, 99, 19);
+   .swiper-slide:nth-child(7n) {
+    background-color: rgb(206, 17, 17);
   }
+  
+  /* .swiper-slide:nth-child(7n) {
+    background-color: rgb(35, 99, 19);
+  } */
   
   .swiper-slide:nth-child(8n) {
     background-color: rgb(0, 68, 255);
