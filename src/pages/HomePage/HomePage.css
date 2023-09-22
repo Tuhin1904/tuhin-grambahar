@@ -112,7 +112,7 @@ height: 400px;
         background-image: url("https://www.grambahar.com/images/grambahar-cartoon.jpg");
 
         /* Set a specific height */
-        width: 400px;
+        width: 100%;
         height: 400px;
       
         /* Create the parallax scrolling effect */
