@@ -18,7 +18,7 @@ const HomePage = () => {
       <div className="home-page-container">
         <div className="grambahar-product-story-container">
           <div className="grambahar-farmer-image">
-            <img src="images/grambahar-cartoon.jpg" alt="a" className="grambahar-cartoon" />
+            {/* <img src="images/grambahar-cartoon.jpg" alt="a" className="grambahar-cartoon" /> */}
           </div>
           <div className="grambahar-product-story">
             <div className="story-title">Why Choose GramBahar?</div>

@@ -99,7 +99,7 @@ height: 400px;
       flex-direction: column;
       
       }
-      .grambahar-farmer-image{
+      /* .grambahar-farmer-image{
       
       width: fit-content;
       }
@@ -107,6 +107,19 @@ height: 400px;
       border-radius: 30px;
       width: 400px;
       height: 400px;
+      } */
+      .grambahar-farmer-image{
+        background-image: url("https://www.grambahar.com/images/grambahar-cartoon.jpg");
+
+        /* Set a specific height */
+        width: 400px;
+        height: 400px;
+      
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
       }
       .grambahar-product-story{
           width: 100%;
