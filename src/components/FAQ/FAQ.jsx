@@ -18,7 +18,7 @@ const FAQ = () => {
       answer:"This is the process"
     },
 ]
-  const position_initial = [false, true, false, true];
+  const position_initial = [true, false, false, false];
   const [faqShow, setFaqShow] = useState(position_initial);
   const handel_plus_button =(id)=>{
     let new_list = [false,false,false,false];

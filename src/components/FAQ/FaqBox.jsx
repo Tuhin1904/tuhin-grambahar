@@ -14,7 +14,7 @@ const FaqBox = ({id,question,answer,plus_button,display}) => {
           {display ? (
             answer
           ) : (
-            <p>Nothing</p>
+           <></>
           )}
         </div>
         </>
