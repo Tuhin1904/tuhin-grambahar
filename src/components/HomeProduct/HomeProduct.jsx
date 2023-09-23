@@ -78,7 +78,7 @@ const HomeProduct = () => {
                 <div className="product-quantity">Quantity</div>
                 <div className="cart-quantity">
                   <div className="plus" onClick={handelCartAdd}>
-                    +
+                 +
                   </div>
                   <div className="qty">{cart_prodtct_qty}</div>
                   <div className="minus" onClick={handelCartDelete}>

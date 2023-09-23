@@ -8,12 +8,14 @@ import Footer from '../../components/Footer/Footer';
 
 import BottomNavBar from '../../components/BottomNavBar/BottomNavBar';
 import CustomSwiper from '../../components/CustomSwiper/CustomSwiper';
+import HomeProductDescription from '../../components/HomeProdDescription/HomeProductDescription';
 
 const HomePage = () => {
   return (
     <>
       <CustomSwiper />
       <HomeProduct />
+      <HomeProductDescription/>
       <HeroBottom />
       <div className="home-page-container">
         <div className="grambahar-product-story-container">
