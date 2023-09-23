@@ -31,7 +31,7 @@ export default function LabelBottomNavigation() {
   console.log(value)
   return (
     <ThemeProvider theme={theme}>
-    <Paper sx={{position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={0} className={'bottom-nav'} >
+    <Paper sx={{position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3} className={'bottom-nav'} >
     <BottomNavigation  value={value} onChange={handleChange}>
       {/* <BottomNavigationAction
         label="Rewards"
