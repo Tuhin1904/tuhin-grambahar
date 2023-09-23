@@ -24,4 +24,11 @@
         color: rgba(42, 41, 41, 0.605);
         text-align: justify;
     }
+    .line{
+        margin-top: -8px;
+        margin-bottom: 5px;
+        height: 5px;
+        background-color: #ffbb51;
+        width: 60px;
+    }
 }
