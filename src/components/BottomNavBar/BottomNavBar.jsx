@@ -39,6 +39,13 @@ export default function LabelBottomNavigation() {
         value="Rewards"
         icon={<EmojiEventsOutlinedIcon color="primary"/>}
       /> */}
+      <BottomNavigationAction
+        label="Home"
+        value="Home"
+        // icon={<HomeOutlinedIcon color="primary" sx={{fontSize:"36px"}}/>}
+        icon={<Icon icon="heroicons:home-solid" style={{ fontSize: '36px' ,color:'#7ab35b'}}/>}
+        showLabel={true}
+      />
        <BottomNavigationAction
         label="Rewards"
         value="Rewards"
@@ -46,13 +53,7 @@ export default function LabelBottomNavigation() {
         icon={<Icon icon="streamline:shopping-gift-reward-box-social-present-gift-media-rating-bow" style={{ fontSize: '36px' ,color:'#7ab35b'}}/>}
         showLabel={true}
       />
-       <BottomNavigationAction
-        label="Home"
-        value="Home"
-        // icon={<HomeOutlinedIcon color="primary" sx={{fontSize:"36px"}}/>}
-        icon={<Icon icon="heroicons:home-solid" style={{ fontSize: '36px' ,color:'#7ab35b'}}/>}
-        showLabel={true}
-      />
+       
       {/* <BottomNavigationAction
         label="Add"
         value="Add"
