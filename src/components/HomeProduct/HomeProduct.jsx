@@ -4,35 +4,33 @@ import HomeProductSwiper from '../home-product-swiper/HomeProductSwiper';
 import { useState } from 'react';
 
 const HomeProduct = () => {
-  const [cart_prodtct_qty, setCartProductQty] = useState(0)
-  const [weight250_active,set_weight250_active] = useState(false)
-  const [weight500_active,set_weight500_active] = useState(false)
-  const [prod_weight,set_prod_weight] = useState(250)
-  const handelCartAdd = ()=>{
-   const data = cart_prodtct_qty +1 ;
-   setCartProductQty(data);
-  }
+  const [cart_prodtct_qty, setCartProductQty] = useState(0);
+  const [weight250_active, set_weight250_active] = useState(false);
+  const [weight500_active, set_weight500_active] = useState(true);
+  const [prod_weight, set_prod_weight] = useState(250);
+  const handelCartAdd = () => {
+    const data = cart_prodtct_qty + 1;
+    setCartProductQty(data);
+  };
 
-  const handelCartDelete = ()=>{
-    if(cart_prodtct_qty>0){
-      const data = cart_prodtct_qty-1;
-      setCartProductQty(data)
+  const handelCartDelete = () => {
+    if (cart_prodtct_qty > 0) {
+      const data = cart_prodtct_qty - 1;
+      setCartProductQty(data);
     }
-  }
-  const handelWeightButton = (weight)=>{
-    set_prod_weight(weight)
-    if(weight==250){
-      set_weight250_active(true)
-      set_weight500_active(false)
+  };
+  const handelWeightButton = (weight) => {
+    set_prod_weight(weight);
+    if (weight == 250) {
+      set_weight250_active(true);
+      set_weight500_active(false);
+    } else {
+      set_weight250_active(false);
+      set_weight500_active(true);
     }
-    else{
-      set_weight250_active(false)
-      set_weight500_active(true)
-    }
-    
-  }
-  const prod_weight250_active = ["sm-product-size",weight250_active==true?"sm-size-active":" "].join(" ")
-  const prod_weight500_active = ["sm-product-size",weight500_active==true?"sm-size-active":" "].join(" ")
+  };
+  const prod_weight250_active = ['sm-product-size', weight250_active == true ? 'sm-size-active' : ' '].join(' ');
+  const prod_weight500_active = ['sm-product-size', weight500_active == true ? 'sm-size-active' : ' '].join(' ');
 
   return (
     <>
@@ -76,12 +74,19 @@ const HomeProduct = () => {
               <div className="product-size">500 Grams</div>
             </div>
             <div className="product-cart-section">
-              <div className="product-quantity">Quantity</div>
-              <div className="cart-quantity">
-                <div className="plus" onClick={handelCartAdd}>+</div>
-                <div className="qty">{cart_prodtct_qty}</div>
-                <div className="minus" onClick={handelCartDelete}>-</div>
-              </div>
+            
+                <div className="product-quantity">Quantity</div>
+                <div className="cart-quantity">
+                  <div className="plus" onClick={handelCartAdd}>
+                    +
+                  </div>
+                  <div className="qty">{cart_prodtct_qty}</div>
+                  <div className="minus" onClick={handelCartDelete}>
+                    -
+                  </div>
+                </div>
+             
+
               <div className="cart-options">
                 <div className="buy-now-btn">BUY NOW</div>
                 <div className="add-to-cart-btn">Add to cart</div>
@@ -95,50 +100,58 @@ const HomeProduct = () => {
         {/* <div className="sm-home-product-image">
           <img src="./images/product.png" alt="grambahar" className="sm-date-palm-jaggery-img" />
         </div> */}
-        <HomeProductSwiper/>
+        <HomeProductSwiper />
         <div className="sm-product-buying-options">
           <div className="sm-product-heading">Date Palm Jaggery</div>
           <div className="sm-prod_desc">Authentic Taste of Nature</div>
           <p className="product-price">
-              <span id="offer-price">
-                <span>&#8377;</span>299/-
-              </span>
-              <span id="regular-price">
-                <span>&#8377;</span>
-                <strike>500/-</strike>
-              </span>
-              <div className="review-stars">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star-half-stroke"></i>
-              </div>
-              <div className="no-of-reviews">(857)</div>
-            </p>
-            <div className="product-cashback">
-              Get cansback upto <i class="fa-sharp fa-solid fa-comments-dollar"></i> <span>&#8377;</span>150/-
+            <span id="offer-price">
+              <span>&#8377;</span>299/-
+            </span>
+            <span id="regular-price">
+              <span>&#8377;</span>
+              <strike>500/-</strike>
+            </span>
+            <div className="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
             </div>
-            <div className="product-type-container">
-              <div className="sm-choose-size">Choose Size</div>
-              {/* <div className="sm-product-size sm-size-active">250 Grams</div>
+            <div className="no-of-reviews">(857)</div>
+          </p>
+          <div className="product-cashback">
+            Get cansback upto <i class="fa-sharp fa-solid fa-comments-dollar"></i> <span>&#8377;</span>150/-
+          </div>
+          <div className="product-type-container">
+            <div className="sm-choose-size">Choose Size</div>
+            {/* <div className="sm-product-size sm-size-active">250 Grams</div>
               <div className="sm-product-size">500 Grams</div> */}
-
-              <div className={prod_weight250_active}  onClick={()=>handelWeightButton(250)}>250 Grams</div>
-              <div className={prod_weight500_active} onClick={()=>handelWeightButton(500)}>500 Grams</div>
+            <br />
+            <div className={prod_weight250_active} onClick={() => handelWeightButton(250)}>
+              250 Grams
             </div>
-            <div className="product-cart-section sm-product-cart-section">
-              <div className="product-quantity">Quantity</div>
-              <div className="cart-quantity">
-                <div className="plus" onClick={handelCartAdd}>+</div>
-                <div className="qty">{cart_prodtct_qty}</div>
-                <div className="minus" onClick={handelCartDelete}>-</div>
+            <div className={prod_weight500_active} onClick={() => handelWeightButton(500)}>
+              500 Grams
+            </div>
+          </div>
+          <div className="product-cart-section sm-product-cart-section">
+            <div className="product-quantity">Quantity</div>
+            <div className="cart-quantity">
+              <div className="plus" onClick={handelCartAdd}>
+                +
               </div>
-              <div className="cart-options">
-                <div className="add-to-cart-btn">Add to cart</div>
-                <div className="buy-now-btn">BUY NOW</div>
+              <div className="qty">{cart_prodtct_qty}</div>
+              <div className="minus" onClick={handelCartDelete}>
+                -
               </div>
             </div>
+            <div className="cart-options">
+              <div className="add-to-cart-btn">Add to cart</div>
+              <div className="buy-now-btn">BUY NOW</div>
+            </div>
+          </div>
         </div>
       </div>
     </>

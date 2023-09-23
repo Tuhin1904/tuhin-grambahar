@@ -147,7 +147,7 @@
 }
 
 .product-quantity {
-    margin-top: 50px;
+    margin-top: 20px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 1.2rem;
@@ -245,13 +245,13 @@
     }
    
     .sm-product-heading {
-        
-        font-size: 24px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.3rem;
         font-weight: bolder;
         color: black;
     }
     .sm-prod_desc{
-        font-size: 18px;
+        font-size: 1.1rem;
         color: rgba(18, 18, 18, 0.75);;
     }
     .sm-choose-size {
@@ -260,12 +260,12 @@
         font-weight: bold;
         display: inline-block;
         margin-right: 10px;
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
     
     .sm-product-size {
         font-size: 1rem;
-        background-color: white;
+        background-color: rgba(235, 235, 235, 0.858);
         color: rgba(18, 18, 18, 0.75);
         border: 1px solid #7ab35b;
         padding-top: 10px;
