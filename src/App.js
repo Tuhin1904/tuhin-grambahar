@@ -4,7 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import BottomNavBar from './components/BottomNavBar/BottomNavBar';
 import Rewards from './pages/Rewards/Rewards';
-
+import Cart from './pages/Cart/Cart';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const AppWrapper = ({ children }) => {
@@ -34,6 +34,14 @@ const App = () => {
       element: (
         <AppWrapper>
           <Rewards />
+        </AppWrapper>
+      ),
+    },
+    {
+      path: '/cart',
+      element: (
+        <AppWrapper>
+          <Cart />
         </AppWrapper>
       ),
     },
