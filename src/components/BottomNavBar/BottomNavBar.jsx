@@ -8,6 +8,7 @@ import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import StarsOutlinedIcon from '@mui/icons-material/StarsOutlined';
 import Paper from '@mui/material/Paper';
+import { Icon } from '@iconify/react';
 import './BottomNavBar.css'
 import { Rating, ThemeProvider, createTheme } from '@mui/material';
 const theme  = createTheme({
@@ -39,15 +40,17 @@ export default function LabelBottomNavigation() {
         icon={<EmojiEventsOutlinedIcon color="primary"/>}
       /> */}
        <BottomNavigationAction
-        label="Review"
-        value="Review"
-        icon={<StarsOutlinedIcon color="primary"/>}
+        label="Rewards"
+        value="Rewards"
+        // icon={<StarsOutlinedIcon color="primary" sx={{fontSize:"36px"}}/>}
+        icon={<Icon icon="streamline:shopping-gift-reward-box-social-present-gift-media-rating-bow" style={{ fontSize: '36px' ,color:'#7ab35b'}}/>}
         showLabel={true}
       />
        <BottomNavigationAction
         label="Home"
         value="Home"
-        icon={<HomeOutlinedIcon color="primary"/>}
+        // icon={<HomeOutlinedIcon color="primary" sx={{fontSize:"36px"}}/>}
+        icon={<Icon icon="heroicons:home-solid" style={{ fontSize: '36px' ,color:'#7ab35b'}}/>}
         showLabel={true}
       />
       {/* <BottomNavigationAction
@@ -58,7 +61,8 @@ export default function LabelBottomNavigation() {
       <BottomNavigationAction
         label="Cart"
         value="Cart"
-        icon={<AddShoppingCartOutlinedIcon color="primary"/>}
+        // icon={<AddShoppingCartOutlinedIcon color="primary" sx={{fontSize:"36px"}}/>}
+        icon={<Icon icon="raphael:cart" style={{fontSize:"36px",color:'#7ab35b'}}/>}
         showLabel={true}
       />
       
