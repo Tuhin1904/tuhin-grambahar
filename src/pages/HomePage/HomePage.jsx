@@ -40,8 +40,8 @@ const HomePage = () => {
         </div>
       </div>
       <FAQ />
-      <Footer />
-      <BottomNavBar />
+      {/* <Footer />
+      <BottomNavBar /> */}
     </>
   );
 };
