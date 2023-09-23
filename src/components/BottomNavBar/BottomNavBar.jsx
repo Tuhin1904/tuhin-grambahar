@@ -11,8 +11,7 @@ import Paper from '@mui/material/Paper';
 import { Icon } from '@iconify/react';
 import './BottomNavBar.css';
 import { Rating, ThemeProvider, createTheme } from '@mui/material';
-import * as ReactDOM from 'react-dom/client';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const theme = createTheme({
   palette: {
     primary: {
@@ -25,9 +24,25 @@ const theme = createTheme({
 });
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState('recents');
+  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+
+    switch (newValue) {
+      case 'Home':
+        navigate('/');
+        break;
+      case 'Rewards':
+        navigate('/rewards');
+        break;
+      case 'Cart':
+        navigate('/cart');
+        break;
+      default:
+        navigate('/');
+        break;
+    }
   };
 
   console.log(value);
