@@ -43,14 +43,14 @@ export default function LabelBottomNavigation() {
         label="Home"
         value="Home"
         // icon={<HomeOutlinedIcon color="primary" sx={{fontSize:"36px"}}/>}
-        icon={<Icon icon="heroicons:home-solid" style={{ fontSize: '36px' ,color:'#7ab35b'}}/>}
+        icon={<Icon icon="heroicons:home-solid" style={{ fontSize: '30px' ,color:'#7ab35b'}}/>}
         showLabel={true}
       />
        <BottomNavigationAction
         label="Rewards"
         value="Rewards"
         // icon={<StarsOutlinedIcon color="primary" sx={{fontSize:"36px"}}/>}
-        icon={<Icon icon="streamline:shopping-gift-reward-box-social-present-gift-media-rating-bow" style={{ fontSize: '36px' ,color:'#7ab35b'}}/>}
+        icon={<Icon icon="streamline:shopping-gift-reward-box-social-present-gift-media-rating-bow" style={{ fontSize: '30px' ,color:'#7ab35b'}}/>}
         showLabel={true}
       />
        
@@ -63,7 +63,7 @@ export default function LabelBottomNavigation() {
         label="Cart"
         value="Cart"
         // icon={<AddShoppingCartOutlinedIcon color="primary" sx={{fontSize:"36px"}}/>}
-        icon={<Icon icon="raphael:cart" style={{fontSize:"36px",color:'#7ab35b'}}/>}
+        icon={<Icon icon="raphael:cart" style={{fontSize:"30px",color:'#7ab35b'}}/>}
         showLabel={true}
       />
       
