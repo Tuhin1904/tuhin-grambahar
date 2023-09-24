@@ -39,7 +39,9 @@
         border-radius: 10px;
         padding: 10px 30px;
         text-align: center;
-        font-size: 1rem;
+        font-size: 1.2rem;
+        color: white;
+        font-weight: bold;
     }
     .free_delivery{
         display: flex;
@@ -47,6 +49,6 @@
         font-family: 'Montserrat', sans-serif;
         font-weight: bold;
         color: #256704;
-        margin-bottom: 15px;
+        margin-bottom: 25px;
     }
 }
