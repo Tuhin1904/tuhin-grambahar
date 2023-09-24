@@ -1,0 +1,52 @@
+@media only screen and (max-width: 600px) {
+    .container {
+        display: block;
+        width: 100%;
+        padding-top: 25px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .message{
+       width: 100%; 
+       padding:10px 30px;
+       border: 1px solid green;
+       text-align: center;
+       border-left: 8px solid #7ab35b;
+       border-right: 8px solid #7ab35b;
+       font-family: 'Montserrat', sans-serif;
+       font-weight: bold;
+       background-color: #517041;
+       color: white;
+       border-radius: 5px;
+    }
+    .subtotal{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.4rem;
+        color: #517041;
+        font-weight: bold;
+        /* margin-left: 15px; */
+    }
+    .subtotal_value{
+      font-weight: bolder;  
+      font-size: 1.6rem;
+      color: #edb911;
+    }
+    .proceed_btn{
+        width: 100%;
+        background-color: #edb911;
+        border-radius: 10px;
+        padding: 10px 30px;
+        text-align: center;
+        font-size: 1rem;
+    }
+    .free_delivery{
+        display: flex;
+        flex-direction: row;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        color: #256704;
+        margin-bottom: 15px;
+    }
+}
