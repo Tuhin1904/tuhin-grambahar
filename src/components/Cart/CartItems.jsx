@@ -10,7 +10,7 @@ const CartItems = () => {
             <img src={'./images/product-transparent.png'} alt="" />
           </div>
           <div className={classes.btn}>
-            
+
           </div>
         </div>
         {/* this is the partision between two sections  */}
@@ -28,11 +28,9 @@ const CartItems = () => {
               </span>
               299
               <span style={{ fontSize: '15px', marginTop: '1px', color: 'brown' }}>00</span>
-              <span className={classes.mrp}>M.R.P. :</span>
+              <span className={classes.mrp}>M.R.P.: </span>
               <strike style={{ color: 'brown' }}>
-                {/* <Icon icon="fa:rupee" style={{fontSize:"1rem",marginTop:"1px",color:"rgb(30, 31, 31)",fontWeight:"100"}}/> */}
-
-                <span className={classes.mrp_price}> 500.00</span>
+                              <span className={classes.mrp_price}> 500.00</span>
               </strike>
               <span className={classes.mrp_price}>INR</span>
             </div>
