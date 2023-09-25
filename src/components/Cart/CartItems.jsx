@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Cartitems.module.css';
 import { Icon } from '@iconify/react';
 const CartItems = () => {
+  const count = 1;
   return (
     <>
       <div className={classes.cart_item_container}>
@@ -10,7 +11,13 @@ const CartItems = () => {
             <img src={'./images/product-transparent.png'} alt="" />
           </div>
           <div className={classes.btn}>
-
+            <div className={classes.controler}>
+              <Icon icon="mingcute:delete-line" />
+            </div>
+            <div className={classes.count}>{count}</div>
+            <div className={classes.controler}>
+              <Icon icon="mingcute:add-fill" />
+            </div>
           </div>
         </div>
         {/* this is the partision between two sections  */}
@@ -30,7 +37,7 @@ const CartItems = () => {
               <span style={{ fontSize: '15px', marginTop: '1px', color: 'brown' }}>00</span>
               <span className={classes.mrp}>M.R.P.: </span>
               <strike style={{ color: 'brown' }}>
-                              <span className={classes.mrp_price}> 500.00</span>
+                <span className={classes.mrp_price}> 500.00</span>
               </strike>
               <span className={classes.mrp_price}>INR</span>
             </div>
@@ -40,18 +47,6 @@ const CartItems = () => {
         </div>
       </div>
       <hr />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </>
   );
 };
