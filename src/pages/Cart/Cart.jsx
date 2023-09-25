@@ -15,7 +15,7 @@ const Cart = () => {
       <div className={classes.free_delivery}> <Icon icon="mdi:tick-decagram" style={{fontSize:"1.6rem",marginRight:"10px",color:"#edb911"}}/> Congratulations Your Order is elegible for free delivery</div>
 
       <div className={classes.proceed_btn}>Proceed to checkout</div>
-    {/* <CartItems/> */}
+    <CartItems/>
 
     </div>
   )
