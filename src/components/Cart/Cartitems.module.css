@@ -46,12 +46,30 @@
     .price_box{
         display: flex;
         flex-direction: row;
+        margin-top: 10px;
 
     }
     .price{
         font-family: 'Montserrat', sans-serif;
         font-weight: bolder;
         font-size: 1.4rem;
+        display: flex;
     }
-
+    .mrp{
+        font-family: 'Montserrat', sans-serif;
+        color: rgb(30, 31, 31);
+        font-size: 1rem;
+        font-weight: 300;
+        margin-top: 5px;
+        margin-left: 15px;
+    }
+    .mrp_price{
+       display: flex; 
+       font-family: 'Montserrat', sans-serif;
+       color: rgb(30, 31, 31);
+       font-size: 1rem;
+       font-weight: 300;
+       margin-top: 5px;
+       margin-left: 5px;
+    }
 }
