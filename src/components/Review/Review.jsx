@@ -22,7 +22,11 @@ const Review = (props) => {
           <div className={classes.name}>{userName}</div>
         </div>
       </div>
-      <div className={classes.bottom_container}></div>
+      <div className={classes.bottom_container}>
+        <div className={classes.title}>{title}</div>
+        <div className={classes.prod_review}>{prodReview}</div>
+      </div>
+      <hr />
     </div>
   );
 };
