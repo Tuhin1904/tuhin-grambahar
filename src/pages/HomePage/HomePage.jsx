@@ -9,6 +9,7 @@ import Footer from '../../components/Footer/Footer';
 import BottomNavBar from '../../components/BottomNavBar/BottomNavBar';
 import CustomSwiper from '../../components/CustomSwiper/CustomSwiper';
 import HomeProductDescription from '../../components/HomeProdDescription/HomeProductDescription';
+import AllReviews from '../../components/Review/AllReviews';
 
 const HomePage = () => {
   return (
@@ -42,6 +43,7 @@ const HomePage = () => {
         </div>
       </div>
       <FAQ />
+      <AllReviews/>
       {/* <Footer />
       <BottomNavBar /> */}
     </>

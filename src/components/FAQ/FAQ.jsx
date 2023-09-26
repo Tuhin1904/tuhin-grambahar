@@ -37,7 +37,7 @@ const FAQ = () => {
       </div>
       <div className="quistion-container">
         {faqs.map(faq =><FaqBox id={faq.id} question={faq.question} answer={faq.answer} plus_button={handel_plus_button} display={faqShow[faq.id]}/>)}
-        <br /><br /><br /><br />
+        
        
        
         {/* <div className="question-div">

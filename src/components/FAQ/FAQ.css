@@ -75,6 +75,7 @@ justify-content: space-between;
         display: block;
         width: 100%;
         padding: 15px;
+        /* padding-bottom: 0px !important; */
     }
     .faq-title-container{
         /* background-color: #7ab35b; */

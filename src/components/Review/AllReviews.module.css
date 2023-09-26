@@ -1,0 +1,11 @@
+@media only screen and (max-width: 600px) {
+    .all_review_container {
+        border: 1px solid gray;
+        padding: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: 0px;
+    }
+
+    
+}
