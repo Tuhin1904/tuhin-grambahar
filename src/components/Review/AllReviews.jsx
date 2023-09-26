@@ -11,6 +11,8 @@ const AllReviews = () => {
     ]
   return (
     <div className={classes.all_review_container}>
+        <div className={classes.customer_review}>Customer Reviews</div>
+        <div className={classes.write_a_review}>Write a review</div>
         {reviews.map((review)=><Review review={review}/>)}
     </div>
   )
