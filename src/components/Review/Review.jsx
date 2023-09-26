@@ -19,6 +19,7 @@ const Review = (props) => {
           <div className={classes.verified}>
             Verified
           </div>
+          <div className={classes.name}>{userName}</div>
         </div>
       </div>
       <div className={classes.bottom_container}></div>

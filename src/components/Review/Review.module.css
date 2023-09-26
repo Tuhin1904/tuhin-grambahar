@@ -43,11 +43,16 @@
     .verified{
         background-color: brown;
         font-family: 'Montserrat', sans-serif;
-        font-weight: bold;
+        /* font-weight: bold; */
         font-size: 0.8rem;
         padding: 5px 10px;
         border-radius: 5px;
         width: fit-content;
         color: white;
+    }
+    .name{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        color: black;
     }
 }
