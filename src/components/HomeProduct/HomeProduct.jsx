@@ -125,7 +125,7 @@ const HomeProduct = () => {
             Get cansback upto <i class="fa-sharp fa-solid fa-comments-dollar"></i> <span>&#8377;</span>150/-
           </div>
           <div className="product-type-container">
-            <div className="sm-choose-size">Choose Size</div>
+            <div className="sm-choose-size">CHOOSE SIZE</div>
             {/* <div className="sm-product-size sm-size-active">250 Grams</div>
               <div className="sm-product-size">500 Grams</div> */}
             <br />
