@@ -36,6 +36,7 @@
         font-family: 'Montserrat', sans-serif;
     }
     .right_side_container {
+        margin-left: 15px;
         display: flex;
         flex-direction: column;
         padding-top: 20px;
