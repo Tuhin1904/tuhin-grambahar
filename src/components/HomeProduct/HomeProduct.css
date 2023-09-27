@@ -64,7 +64,7 @@
 
 .product-price {
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     display: flex;
     flex-direction: row;
 }
@@ -89,6 +89,7 @@
 .product-cashback {
     color: rgba(18, 18, 18, 0.75);
     font-size: 1.1rem;
+    font-family: 'Rubik', sans-serif;
 }
 
 .review-stars {
