@@ -3,6 +3,8 @@
         text-align: center;
         font-family: 'Rubik', sans-serif;
         font-size: 1.1rem;
-        /* background-image: url(""); */
+        height: 100vh;
+        background-image: url("https://www.grambahar.com/images/rewards.jpg");
+        background-repeat: no-repeat;
     }
 }
