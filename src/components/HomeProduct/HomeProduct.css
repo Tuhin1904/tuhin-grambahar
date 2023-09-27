@@ -90,6 +90,7 @@
     color: rgba(18, 18, 18, 0.75);
     font-size: 1.1rem;
     font-family: 'Rubik', sans-serif;
+    margin-bottom: 10px;
 }
 
 .review-stars {
@@ -284,7 +285,12 @@
         display: inline-block;
         margin-right: 10px;
     }
-    
+    .product-cashback {
+        color: rgba(18, 18, 18, 0.75);
+        font-size: 1.4rem;
+        font-family: 'Rubik', sans-serif;
+        margin-bottom: 10px;
+    }
     .sm-size-active {
         color: #ffff;
         background-color: #7ab35b !important;
