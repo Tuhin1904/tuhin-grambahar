@@ -245,13 +245,15 @@
     }
    
     .sm-product-heading {
-        font-family: 'Montserrat', sans-serif;
+        /* font-family: 'Montserrat', sans-serif; */
+        font-family: 'Rubik', sans-serif;
         font-size: 1.3rem;
-        font-weight: bolder;
+        /* font-weight: bold; */
         color: black;
     }
     .sm-prod_desc{
-        font-size: 1.1rem;
+        font-family: 'Rubik', sans-serif;
+        font-size: 0.9rem;
         color: rgba(18, 18, 18, 0.75);;
     }
     .sm-choose-size {
