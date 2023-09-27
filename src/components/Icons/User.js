@@ -1,20 +1,20 @@
-const User = ({ ...props }) => {
+function User({ ...props }) {
   return (
     <svg width="24" height="24" viewBox="0 0 30 30" fill="none" {...props}>
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M15 6C12.24 6 10 8.24 10 11C10 13.76 12.24 16 15 16C17.76 16 20 13.76 20 11C20 8.24 17.76 6 15 6ZM15 8C16.656 8 18 9.344 18 11C18 12.656 16.656 14 15 14C13.344 14 12 12.656 12 11C12 9.344 13.344 8 15 8Z"
         fill="#7ab35b"
-      ></path>
+      />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M15 0C6.721 0 0 6.721 0 15C0 23.279 6.721 30 15 30C23.279 30 30 23.279 30 15C30 6.721 23.279 0 15 0ZM23.132 25.14C21.685 22.102 18.586 20 15 20C11.414 20 8.315 22.102 6.868 25.14C9.096 26.929 11.924 28 15 28C18.076 28 20.904 26.929 23.132 25.14ZM24.646 23.712C26.73 21.406 28 18.35 28 15C28 7.825 22.175 2 15 2C7.825 2 2 7.825 2 15C2 18.35 3.27 21.406 5.354 23.712C7.226 20.308 10.845 18 15 18C19.155 18 22.774 20.308 24.646 23.712Z"
         fill="#7ab35b"
-      ></path>
+      />
     </svg>
   );
-};
+}
 
 export default User;

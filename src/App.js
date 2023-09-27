@@ -1,3 +1,4 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import TopHeader from './components/TopHeaderOffer/TopHeader';
 import NavBar from './components/NavBar/NavBar';
@@ -5,9 +6,8 @@ import Footer from './components/Footer/Footer';
 import BottomNavBar from './components/BottomNavBar/BottomNavBar';
 import Rewards from './pages/Rewards/Rewards';
 import Cart from './pages/Cart/Cart';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-const AppWrapper = ({ children }) => {
+function AppWrapper({ children }) {
   return (
     <>
       <TopHeader />
@@ -17,9 +17,9 @@ const AppWrapper = ({ children }) => {
       <BottomNavBar />
     </>
   );
-};
+}
 
-const App = () => {
+function App() {
   const router = createBrowserRouter([
     {
       path: '/',
@@ -60,6 +60,6 @@ const App = () => {
       </div> */}
     </>
   );
-};
+}
 
 export default App;

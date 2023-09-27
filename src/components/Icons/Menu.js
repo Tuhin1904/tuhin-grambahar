@@ -1,4 +1,4 @@
-const Menu = ({ ...props }) => {
+function Menu({ ...props }) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
@@ -15,6 +15,6 @@ const Menu = ({ ...props }) => {
       />
     </svg>
   );
-};
+}
 
 export default Menu;
