@@ -1,0 +1,8 @@
+@media only screen and (max-width: 600px){
+    .rewards_container{
+        text-align: center;
+        font-family: 'Rubik', sans-serif;
+        font-size: 1.1rem;
+        /* background-image: url(""); */
+    }
+}
