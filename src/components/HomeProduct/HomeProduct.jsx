@@ -2,7 +2,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import './HomeProduct.css';
+import { useQuery } from '@apollo/client';
 import HomeProductSwiper from '../home-product-swiper/HomeProductSwiper';
+import { ALL_PRODUCTS_QUERY } from '../../services/graphQl/productQueries';
 
 function HomeProduct() {
   const [cart_prodtct_qty, setCartProductQty] = useState(0);
@@ -10,15 +12,20 @@ function HomeProduct() {
   const [weight500_active, set_weight500_active] = useState(true);
   // eslint-disable-next-line camelcase, no-unused-vars
   const [prod_weight, set_prod_weight] = useState(250);
+
+  // eslint-disable-next-line no-unused-vars
+  const { error, loading, data } = useQuery(ALL_PRODUCTS_QUERY);
+  console.log('📢[CartItems.jsx:9]: data: ', data);
+
   const handelCartAdd = () => {
-    const data = cart_prodtct_qty + 1;
-    setCartProductQty(data);
+    const local = cart_prodtct_qty + 1;
+    setCartProductQty(local);
   };
 
   const handelCartDelete = () => {
     if (cart_prodtct_qty > 0) {
-      const data = cart_prodtct_qty - 1;
-      setCartProductQty(data);
+      const local = cart_prodtct_qty - 1;
+      setCartProductQty(local);
     }
   };
   const handelWeightButton = (weight) => {
@@ -47,7 +54,7 @@ function HomeProduct() {
           </div>
           {/* second part for product buying options */}
           <div className="product-buying-options">
-            <h2 className="product-title">Date Palm Jaggery</h2>
+            <h2 className="product-title">Date Palm Jaggery 1</h2>
             <p className="prod-desc">Authentic Taste of Nature</p>
 
             <p className="product-price">
@@ -102,7 +109,7 @@ function HomeProduct() {
         </div> */}
         <HomeProductSwiper />
         <div className="sm-product-buying-options">
-          <div className="sm-product-heading">Date Palm Jaggery</div>
+          <div className="sm-product-heading">Date Palm Jaggery 2</div>
           <div className="sm-prod_desc">Authentic Taste of Nature</div>
           <p className="product-price">
             <span id="offer-price">

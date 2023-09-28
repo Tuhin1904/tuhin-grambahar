@@ -3,6 +3,8 @@ import { Icon } from '@iconify/react';
 import classes from './Cartitems.module.css';
 
 function CartItems() {
+  // eslint-disable-next-line no-unused-vars
+
   const count = 1;
   return (
     <>
