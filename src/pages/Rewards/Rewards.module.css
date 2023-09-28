@@ -1,14 +1,14 @@
-@media only screen and (max-width: 600px){
-    .rewards_container{
-        text-align: center;
-        padding-top: 60px;
-        font-family: 'Rubik', sans-serif;
-        font-size: 1.2rem;
-        color: #7ab35b;
-        font-weight: bold;
-        height: 100dvh;
-        background-image: url("https://www.grambahar.com/images/rewards.jpg");
-        background-repeat: no-repeat;
-        background-position: center;
-    }
+@media only screen and (max-width: 600px) {
+  .rewards_container {
+    text-align: center;
+    padding-top: 60px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2rem;
+    color: #7ab35b;
+    font-weight: bold;
+    height: 100dvh;
+    background-image: url('https://www.grambahar.com/images/rewards.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }

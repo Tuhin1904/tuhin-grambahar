@@ -4,23 +4,21 @@ import './HomePage.css';
 import HomeProduct from '../../components/HomeProduct/HomeProduct';
 import HeroBottom from '../../components/HeroSectionBottom/HeroBottom';
 import FAQ from '../../components/FAQ/FAQ';
-import Footer from '../../components/Footer/Footer';
 
-import BottomNavBar from '../../components/BottomNavBar/BottomNavBar';
 import CustomSwiper from '../../components/CustomSwiper/CustomSwiper';
 import HomeProductDescription from '../../components/HomeProdDescription/HomeProductDescription';
 import AllReviews from '../../components/Review/AllReviews';
 
-const HomePage = () => {
+function HomePage() {
   return (
     <>
       <CustomSwiper />
       <HomeProduct />
-      <HomeProductDescription/>
+      <HomeProductDescription />
       <HeroBottom />
       <div className="home-page-container">
         <div className="grambahar-product-story-container">
-        <div className="grambahar-farmer-image-xl">
+          <div className="grambahar-farmer-image-xl">
             <img src="images/grambahar-cartoon.jpg" alt="a" className="grambahar-cartoon" />
           </div>
           <div className="grambahar-farmer-image">
@@ -28,7 +26,7 @@ const HomePage = () => {
           </div>
           <div className="grambahar-product-story">
             <div className="story-title">Why Choose GramBahar?</div>
-            <div className="line"></div>
+            <div className="line" />
             <div className="story">
               Grambahar.com brings you ORGANIC date palm jaggery, loaded with essential nutrients. It is high in iron
               which helps in treating anemia by increasing the hemoglobin level. It also contains magnesium, calcium,
@@ -43,11 +41,11 @@ const HomePage = () => {
         </div>
       </div>
       <FAQ />
-      <AllReviews/>
+      <AllReviews />
       {/* <Footer />
       <BottomNavBar /> */}
     </>
   );
-};
+}
 
 export default HomePage;

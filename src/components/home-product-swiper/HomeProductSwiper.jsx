@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const HomeProductSwiper = () => {
-  return (
-    <>
-    
-    </>
-  )
+function HomeProductSwiper() {
+  return <></>;
 }
 
-export default HomeProductSwiper
+export default HomeProductSwiper;

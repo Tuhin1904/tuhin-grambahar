@@ -1,11 +1,10 @@
-
-.bottom-nav{
-    display: none;
+.bottom-nav {
+  display: none;
 }
-@media only screen and (max-width: 600px){
-.bottom-nav{
+@media only screen and (max-width: 600px) {
+  .bottom-nav {
     display: block;
     padding-top: 10px;
     padding-bottom: 10px;
-}
+  }
 }

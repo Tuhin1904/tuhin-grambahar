@@ -1,14 +1,15 @@
 import React from 'react';
-import classes from './Cartitems.module.css';
 import { Icon } from '@iconify/react';
-const CartItems = () => {
+import classes from './Cartitems.module.css';
+
+function CartItems() {
   const count = 1;
   return (
     <>
       <div className={classes.cart_item_container}>
         <div className={classes.cart_item_left}>
           <div className={classes.prod_image}>
-            <img src={'./images/product-transparent.png'} alt="" />
+            <img src="./images/product-transparent.png" alt="" />
           </div>
           <div className={classes.btn}>
             <div className={classes.controler}>
@@ -49,6 +50,6 @@ const CartItems = () => {
       <hr />
     </>
   );
-};
+}
 
 export default CartItems;

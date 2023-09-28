@@ -1,10 +1,11 @@
+/* eslint-disable react/button-has-type */
 import { useState } from 'react';
 import Menu from '../Icons/Menu';
 import Search from '../Icons/Search';
 import User from '../Icons/User';
 import Cart from '../Icons/Cart';
 
-const MobileNavBar = () => {
+function MobileNavBar() {
   const [open, setOpen] = useState(false);
 
   const onClickToggle = () => {
@@ -13,33 +14,33 @@ const MobileNavBar = () => {
 
   return (
     <>
-      <nav className="w-full sm:hidden py-2 px-4 border-b border-primary flex">
+      <nav className="flex w-full px-4 py-2 border-b sm:hidden border-primary">
         <div className="flex-grow">
           <button
             onClick={onClickToggle}
-            className="bg-white p-2 text-primary hover:bg-primary hover:text-white ease-in-out duration-500"
+            className="p-2 duration-500 ease-in-out bg-white text-primary hover:bg-primary hover:text-white"
           >
             <Menu />
           </button>
         </div>
         <div>
-          <img src="grambahar_logo.ico" alt="" height="30px"  width="100px"/>
+          <img src="grambahar_logo.ico" alt="" height="30px" width="100px" />
         </div>
         <div>
-          <button className="bg-white p-2 mr-2 text-primary  hover:bg-primary hover:text-white ease-in-out duration-500">
+          <button className="p-2 mr-2 duration-500 ease-in-out bg-white text-primary hover:bg-primary hover:text-white">
             <Search />
           </button>
 
-          <button className="bg-white p-2 text-primary mr-2 hover:bg-primary hover:text-white ease-in-out duration-500">
+          <button className="p-2 mr-2 duration-500 ease-in-out bg-white text-primary hover:bg-primary hover:text-white">
             <User />
           </button>
-          <button className="bg-white p-2 text-primary hover:bg-primary hover:text-white ease-in-out duration-500">
+          <button className="p-2 duration-500 ease-in-out bg-white text-primary hover:bg-primary hover:text-white">
             <Cart />
           </button>
         </div>
       </nav>
       {open && (
-        <div className="w-64 h-screen bg-white fixed top-22 right-0 pb-28 z-50 shadow-2xl px-6 pt-8">
+        <div className="fixed right-0 z-50 w-64 h-screen px-6 pt-8 bg-white shadow-2xl top-22 pb-28">
           <ul className="text-base">
             <li className="mb-4">Products</li>
             <li className="mb-4">About US</li>
@@ -52,6 +53,6 @@ const MobileNavBar = () => {
       )}
     </>
   );
-};
+}
 
 export default MobileNavBar;

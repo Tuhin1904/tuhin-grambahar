@@ -1,12 +1,14 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useState } from 'react';
 import './HomeProduct.css';
 import HomeProductSwiper from '../home-product-swiper/HomeProductSwiper';
-import { useState } from 'react';
 
-const HomeProduct = () => {
+function HomeProduct() {
   const [cart_prodtct_qty, setCartProductQty] = useState(0);
   const [weight250_active, set_weight250_active] = useState(false);
   const [weight500_active, set_weight500_active] = useState(true);
+  // eslint-disable-next-line camelcase, no-unused-vars
   const [prod_weight, set_prod_weight] = useState(250);
   const handelCartAdd = () => {
     const data = cart_prodtct_qty + 1;
@@ -21,7 +23,7 @@ const HomeProduct = () => {
   };
   const handelWeightButton = (weight) => {
     set_prod_weight(weight);
-    if (weight == 250) {
+    if (weight === 250) {
       set_weight250_active(true);
       set_weight500_active(false);
     } else {
@@ -29,8 +31,8 @@ const HomeProduct = () => {
       set_weight500_active(true);
     }
   };
-  const prod_weight250_active = ['sm-product-size', weight250_active == true ? 'sm-size-active' : ' '].join(' ');
-  const prod_weight500_active = ['sm-product-size', weight500_active == true ? 'sm-size-active' : ' '].join(' ');
+  const prod_weight250_active = ['sm-product-size', weight250_active === true ? 'sm-size-active' : ' '].join(' ');
+  const prod_weight500_active = ['sm-product-size', weight500_active === true ? 'sm-size-active' : ' '].join(' ');
 
   return (
     <>
@@ -57,16 +59,16 @@ const HomeProduct = () => {
                 <strike>500/-</strike>
               </span>
               <div className="review-stars">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star-half-stroke"></i>
+                <i className="fa-solid fa-star" />
+                <i className="fa-solid fa-star" />
+                <i className="fa-solid fa-star" />
+                <i className="fa-solid fa-star" />
+                <i className="fa-solid fa-star-half-stroke" />
               </div>
               <div className="no-of-reviews">(857)</div>
             </p>
             <div className="product-cashback">
-              Get cansback upto <i class="fa-sharp fa-solid fa-comments-dollar"></i> <span>&#8377;</span>150/-
+              Get cansback upto <i className="fa-sharp fa-solid fa-comments-dollar" /> <span>&#8377;</span>150/-
             </div>
             <div className="product-type-container">
               <div className="choose-size">Choose Size</div>
@@ -74,18 +76,16 @@ const HomeProduct = () => {
               <div className="product-size">500 Grams</div>
             </div>
             <div className="product-cart-section">
-            
-                <div className="product-quantity">Quantity</div>
-                <div className="cart-quantity">
-                  <div className="plus" onClick={handelCartAdd}>
-                 +
-                  </div>
-                  <div className="qty">{cart_prodtct_qty}</div>
-                  <div className="minus" onClick={handelCartDelete}>
-                    -
-                  </div>
+              <div className="product-quantity">Quantity</div>
+              <div className="cart-quantity">
+                <div className="plus" onClick={handelCartAdd}>
+                  +
                 </div>
-             
+                <div className="qty">{cart_prodtct_qty}</div>
+                <div className="minus" onClick={handelCartDelete}>
+                  -
+                </div>
+              </div>
 
               <div className="cart-options">
                 <div className="buy-now-btn">BUY NOW</div>
@@ -113,16 +113,16 @@ const HomeProduct = () => {
               <strike>500/-</strike>
             </span>
             <div className="review-stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star-half-stroke"></i>
+              <i className="fa-solid fa-star" />
+              <i className="fa-solid fa-star" />
+              <i className="fa-solid fa-star" />
+              <i className="fa-solid fa-star" />
+              <i className="fa-solid fa-star-half-stroke" />
             </div>
             <div className="no-of-reviews">(857)</div>
           </p>
           <div className="product-cashback">
-            Get cansback upto <i class="fa-sharp fa-solid fa-comments-dollar"></i> <span>&#8377;</span>150/-
+            Get cansback upto <i className="fa-sharp fa-solid fa-comments-dollar" /> <span>&#8377;</span>150/-
           </div>
           <div className="product-type-container">
             <div className="sm-choose-size">CHOOSE SIZE</div>
@@ -156,6 +156,6 @@ const HomeProduct = () => {
       </div>
     </>
   );
-};
+}
 
 export default HomeProduct;

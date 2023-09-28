@@ -21,6 +21,9 @@
     "react/prop-types": "off",
     "prettier/prettier": "error",
     "import/no-named-as-default": 0,
+    "react/jsx-no-useless-fragment": 0,
+    "camelcase": "warn",
+    "import/no-extraneous-dependencies": "warn",
     "react/jsx-filename-extension": [
       1,
       {
