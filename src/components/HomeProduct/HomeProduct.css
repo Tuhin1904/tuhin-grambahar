@@ -244,7 +244,7 @@
   .sm-product-heading {
     /* font-family: 'Montserrat', sans-serif; */
     font-family: 'Rubik', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     /* font-weight: bold; */
     color: black;
   }
@@ -281,8 +281,9 @@
     margin-right: 10px;
   }
   .product-cashback {
-    color: rgba(18, 18, 18, 0.75);
-    font-size: 1.4rem;
+    /* color: rgba(18, 18, 18, 0.75); */
+    color:rgb(255, 150, 3);
+    font-size: 1.2rem;
     font-family: 'Rubik', sans-serif;
     margin-bottom: 10px;
   }
