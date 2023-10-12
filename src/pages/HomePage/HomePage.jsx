@@ -8,6 +8,7 @@ import FAQ from '../../components/FAQ/FAQ';
 import CustomSwiper from '../../components/CustomSwiper/CustomSwiper';
 import HomeProductDescription from '../../components/HomeProdDescription/HomeProductDescription';
 import AllReviews from '../../components/Review/AllReviews';
+import SecondaryBottomNavbar from '../../components/SecondaryBottomNavBar/SecondaryBottomNavbar';
 
 function HomePage() {
   return (
@@ -42,6 +43,7 @@ function HomePage() {
       </div>
       <FAQ />
       <AllReviews />
+      <SecondaryBottomNavbar/>
       {/* <Footer />
       <BottomNavBar /> */}
     </>
