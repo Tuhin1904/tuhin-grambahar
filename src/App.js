@@ -6,7 +6,7 @@ import Footer from './components/Footer/Footer';
 import BottomNavBar from './components/BottomNavBar/BottomNavBar';
 import Rewards from './pages/Rewards/Rewards';
 import Cart from './pages/Cart/Cart';
-
+import SecondaryBottomNavbar from './components/SecondaryBottomNavBar/SecondaryBottomNavbar'
 function AppWrapper({ children }) {
   return (
     <>
@@ -14,7 +14,8 @@ function AppWrapper({ children }) {
       <NavBar />
       {children}
       <Footer />
-      <BottomNavBar />
+      <SecondaryBottomNavbar/>
+      {/* <BottomNavBar /> */}
     </>
   );
 }
