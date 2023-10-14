@@ -2,9 +2,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import './HomeProduct.css';
-import { useQuery } from '@apollo/client';
 import HomeProductSwiper from '../home-product-swiper/HomeProductSwiper';
-import { ALL_PRODUCTS_QUERY } from '../../services/graphQl/productQueries';
+import { useQuery } from 'react-query';
+import { getBestSellerProduct } from '../../services/product.service';
 
 function HomeProduct() {
   const [cart_prodtct_qty, setCartProductQty] = useState(0);
@@ -12,11 +12,8 @@ function HomeProduct() {
   const [weight500_active, set_weight500_active] = useState(true);
   // eslint-disable-next-line camelcase, no-unused-vars
   const [prod_weight, set_prod_weight] = useState(250);
-
-  // eslint-disable-next-line no-unused-vars
-  const { error, loading, data } = useQuery(ALL_PRODUCTS_QUERY);
-  console.log('📢[CartItems.jsx:9]: data: ', data);
-
+  const { isLoading, error, data } = useQuery('repoData', getBestSellerProduct);
+  console.log('📢[HomeProduct.jsx:15]: data: ', data);
   const handelCartAdd = () => {
     const local = cart_prodtct_qty + 1;
     setCartProductQty(local);
