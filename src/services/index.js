@@ -1,3 +1,3 @@
-export const SERVER_BASE_URL = 'https://gur.grambahar.com/';
+export const SERVER_DOMAIN = 'https://api.grambahar.com/';
 
-export const GRAPH_QL_URL = `${SERVER_BASE_URL}graphql`;
+export const SERVER_BASE_URL = `${SERVER_DOMAIN}v1/`;
