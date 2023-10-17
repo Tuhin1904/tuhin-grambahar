@@ -43,7 +43,7 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
             <div className="organic-badge">
               100% <strong>Organic</strong>
             </div>
-            <img src={getAbsImageUrl(product.images[0])} alt="grambahar" className="date-palm-jaggery-img" />
+            <img src={getAbsImageUrl(product?.images?.[0])} alt="grambahar" className="date-palm-jaggery-img" />
           </div>
           {/* second part for product buying options */}
           <div className="product-buying-options">
@@ -103,7 +103,7 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
       {/* this code is for smaller devices  */}
       <div className="home-product-container-sm">
         <div className="sm-home-product-image">
-          <img src={getAbsImageUrl(product.images[0])} alt="grambahar" className="date-palm-jaggery-img" />
+          <img src={getAbsImageUrl(product?.images?.[0])} alt="grambahar" className="date-palm-jaggery-img" />
         </div>
         <HomeProductSwiper />
         <div className="sm-product-buying-options">
