@@ -1,8 +1,10 @@
 .footer {
   margin-top: 50px;
-  height: 300px;
+  
   width: 100%;
-  background-color: #7ab35b;
+  /* background-color: #7ab35b; */
+  background-color: #f2f2f2;
+  font-size: 0.8rem;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -21,10 +23,18 @@
 }
 
 .subscribe {
-  margin-top: 30px;
+  margin-top: 0px;
   font-weight: bold;
   font-size: 1rem;
-  color: #ffff;
+  color: black;
+}
+.subscribe_btn{
+ margin-top: 10px;
+ background-color: #ff9603;
+ width: fit-content;
+ padding: 10px 30px;
+ color: white;
+ border-radius: 5px;
 }
 
 .news-letter-container {
@@ -36,14 +46,14 @@
 .news-letter {
   border-radius: 10px;
   height: 30px;
-  background-color: #ffff;
+  background-color: black;
   width: 210px;
 }
 
 .news-letter-submit {
   border-radius: 10px;
   width: 30px;
-  background-color: #ffff;
+  background-color: black;
   height: fit-content;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -67,17 +77,17 @@
 .footer-col h2 {
   font-size: 1rem;
   font-weight: bold;
-  color: #fff;
+  color: black;
 }
 .footer-col {
 }
 .footer-list {
   margin-top: 20px;
-  line-height: 2rem;
+  line-height: 1.6rem;
 }
 .footer-list {
   list-style: none;
-  color: #fff;
+  color: black;
 }
 .support {
   margin-top: 30px;
@@ -88,7 +98,16 @@
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 10px;
-  color: #ffff;
+  color: black;
+}
+.copyright{
+  text-align: center;
+  margin-top: 120px;
+  background-color: #7ab35b;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100%;  
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* code for small screen devices */
