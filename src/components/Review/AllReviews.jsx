@@ -38,6 +38,7 @@ function AllReviews() {
     },
   ];
   return (
+    <>
     <div className={classes.all_review_container}>
       <div className={classes.customer_review}>Customer Reviews</div>
       <div className={classes.write_a_review}>Write a review</div>
@@ -45,6 +46,14 @@ function AllReviews() {
         <Review review={review} />
       ))}
     </div>
+    <div className={classes.all_review_container_big}>
+      <div className={classes.customer_review_big}>Customer Reviews</div>
+      <div className={classes.write_a_review_big}>Write a review</div>
+      {reviews.map((review) => (
+        <Review review={review} />
+      ))}
+    </div>
+    </>
   );
 }
 

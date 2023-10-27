@@ -1,5 +1,10 @@
+
 @media only screen and (max-width: 600px) {
+  .all_review_container_big{
+    display: none;
+  }
   .all_review_container {
+    display: block;
     border: 1px solid rgb(212, 212, 212);
     padding: 15px;
     margin-left: 15px;
@@ -26,25 +31,30 @@
   }
 }
 
+@media only screen and (width > 600px){
 /* code for bigger screen devices  */
-
-/* .all_review_container {
-  margin-top: 30px;
-  border-radius: 5px;
-  width: 1200px;
+.all_review_container{
+  display: none;
+}
+.all_review_container_big{
+  display: block;
+}
+.all_review_container_big {
+  display: block;
   border: 1px solid rgb(212, 212, 212);
+  width: 1200px;
   padding: 15px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 50px;
   margin-bottom: 50px;
 }
-.customer_review {
+.customer_review_big {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
-  text-align: center;
 }
-.write_a_review {
+.write_a_review_big {
   margin-top: 15px;
   font-family: 'Montserrat', sans-serif;
   padding-top: 10px;
@@ -55,4 +65,5 @@
   border-radius: 5px;
   text-align: center;
   width: 100%;
-} */
+}
+}
