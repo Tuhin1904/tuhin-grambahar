@@ -8,6 +8,7 @@ import Rewards from './pages/Rewards/Rewards';
 import Cart from './pages/Cart/Cart';
 import SecondaryBottomNavbar from './components/SecondaryBottomNavBar/SecondaryBottomNavbar'
 import Profile from './pages/Profile/Profile';
+import Login from './pages/LoginSignup/Login';
 function AppWrapper({ children }) {
   return (
     <>
@@ -53,6 +54,12 @@ function App() {
         <AppWrapper>
           <Profile/>
         </AppWrapper>
+      )
+    },
+    {
+      path:'/login',
+      element:(
+          <Login/>
       )
     }
   ]);

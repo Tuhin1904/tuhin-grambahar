@@ -25,3 +25,34 @@
     width: 100%;
   }
 }
+
+/* code for bigger screen devices  */
+
+.all_review_container {
+  margin-top: 30px;
+  border-radius: 5px;
+  width: 1200px;
+  border: 1px solid rgb(212, 212, 212);
+  padding: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+.customer_review {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+.write_a_review {
+  margin-top: 15px;
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: rgb(164, 164, 164);
+  font-size: 1rem;
+  border: 1px solid rgb(114, 114, 114);
+  border-radius: 5px;
+  text-align: center;
+  width: 100%;
+}
