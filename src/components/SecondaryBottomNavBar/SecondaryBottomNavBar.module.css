@@ -53,7 +53,7 @@
         margin-bottom: 10px;
         font-family: 'Montserrat', sans-serif;
         text-align: center;
-        border-top-right-radius: 15px;
-        border-top-left-radius: 15px;
+        /* border-top-right-radius: 15px;
+        border-top-left-radius: 15px; */
     }
 }
