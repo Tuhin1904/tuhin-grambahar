@@ -50,10 +50,11 @@
 import React, { useState } from 'react';
 import './SignUp.css'; // Import your CSS file
 import { sendLoginOtp, verifyLoginOtp } from './../../services/auth.service';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
   const [otpSent, setOtpSent] = useState(false);
-  const [pnumber, setPnumber] = useState('');
+  const [pNumber, setPNumber] = useState('');
   const [otp, setOtp] = useState('');
   const [error, setError] = useState(null);
 
@@ -61,7 +62,7 @@ function Login() {
     //send otp here API req
 
     try {
-      const response = await sendLoginOtp(pnumber);
+      const response = await sendLoginOtp(pNumber);
       console.log('📢[Login.jsx:61]: response: ', response);
       if (response?.message) {
         setOtpSent(true);
@@ -75,16 +76,17 @@ function Login() {
 
   const verifyOTP = async () => {
     try {
-      const response = await verifyLoginOtp(pnumber, otp);
+      const response = await verifyLoginOtp(pNumber, otp);
+      console.log(response.data);
       localStorage.setItem('user', response);
+
+      console.log('before');
+      history.push('/profile');
+      console.log('after');
     } catch (error) {
       console.log('📢[Login.jsx:80]: error: ', error?.response?.data?.error);
+      setError(error.message);
     }
-    // if (otp === expectedOTP) {
-    //   console.log('Login Successful');
-    // } else {
-    //   setError('Invalid OTP. Try again');
-    // }
   };
 
   return (
@@ -97,8 +99,8 @@ function Login() {
           type="phone"
           id="phonenum"
           placeholder="Phone Number"
-          value={pnumber}
-          onChange={(e) => setPnumber(e.target.value)}
+          value={pNumber}
+          onChange={(e) => setPNumber(e.target.value)}
           disabled={otpSent}
           autoFocus
         />
