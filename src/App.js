@@ -59,7 +59,9 @@ function App() {
     {
       path:'/login',
       element:(
+        <AppWrapper>
           <Login/>
+        </AppWrapper>
       )
     }
   ]);

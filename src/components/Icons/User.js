@@ -1,5 +1,6 @@
 function User({ ...props }) {
   return (
+    
     <svg width="24" height="24" viewBox="0 0 30 30" fill="none" {...props}>
       <path
         fillRule="evenodd"

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import MobileNavBar from './MobileNavBar';
+import {Link} from "react-router-dom"
 
 function NavBar() {
   return (
@@ -8,7 +9,7 @@ function NavBar() {
       <MobileNavBar />
       <div className="nav-bar">
         <div className="nav-logo">
-          <img className="logo" src="grambahar_logo.ico" alt="grambahar-logo" />
+          <Link to="/"><img className="logo" src="grambahar_logo.ico" alt="grambahar-logo" /></Link>
         </div>
         {/* this section contains all the navigation links */}
         <div className="nav-menu">
@@ -43,7 +44,7 @@ function NavBar() {
             </svg>
           </div>
           <div className="nav-icon-container">
-            <svg className="icons icon-user" width="24" height="24" viewBox="0 0 30 30" fill="none">
+            <Link to="/login"><svg className="icons icon-user" width="24" height="24" viewBox="0 0 30 30" fill="none">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -56,7 +57,7 @@ function NavBar() {
                 d="M15 0C6.721 0 0 6.721 0 15C0 23.279 6.721 30 15 30C23.279 30 30 23.279 30 15C30 6.721 23.279 0 15 0ZM23.132 25.14C21.685 22.102 18.586 20 15 20C11.414 20 8.315 22.102 6.868 25.14C9.096 26.929 11.924 28 15 28C18.076 28 20.904 26.929 23.132 25.14ZM24.646 23.712C26.73 21.406 28 18.35 28 15C28 7.825 22.175 2 15 2C7.825 2 2 7.825 2 15C2 18.35 3.27 21.406 5.354 23.712C7.226 20.308 10.845 18 15 18C19.155 18 22.774 20.308 24.646 23.712Z"
                 fill="#7ab35b"
               />
-            </svg>
+            </svg></Link>
           </div>
 
           <div className="nav-icon-container">
