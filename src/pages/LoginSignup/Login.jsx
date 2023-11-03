@@ -50,13 +50,14 @@
 import React, { useState } from 'react';
 import './SignUp.css'; // Import your CSS file
 import { sendLoginOtp, verifyLoginOtp } from './../../services/auth.service';
-import { useHistory } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 function Login() {
   const [otpSent, setOtpSent] = useState(false);
   const [pNumber, setPNumber] = useState('');
   const [otp, setOtp] = useState('');
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSendOtp = async () => {
     //send otp here API req
@@ -66,7 +67,7 @@ function Login() {
       console.log('📢[Login.jsx:61]: response: ', response);
       if (response?.message) {
         setOtpSent(true);
-        console.log('send otp button');
+        console.log('send otp button response');
       }
     } catch (error) {
       console.error('Error! OTP not send:', error);
@@ -77,13 +78,14 @@ function Login() {
   const verifyOTP = async () => {
     try {
       const response = await verifyLoginOtp(pNumber, otp);
-      console.log(response.data);
-      localStorage.setItem('user', response);
+      console.log("verify otp response",response.data);
+      localStorage.setItem('user', JSON.stringify(response.data));
 
       console.log('before');
-      history.push('/profile');
+      navigate('/profile');
       console.log('after');
     } catch (error) {
+      console.log('inside catch')
       console.log('📢[Login.jsx:80]: error: ', error?.response?.data?.error);
       setError(error.message);
     }

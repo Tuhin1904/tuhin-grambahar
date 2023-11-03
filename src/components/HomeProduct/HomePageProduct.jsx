@@ -29,7 +29,7 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
   };
 
   const removeCartItem = () => {
-    if (cartItem > 1) {
+    if (cartItem > 0) {
       setCartItem(cartItem - 1);
     }
   };
