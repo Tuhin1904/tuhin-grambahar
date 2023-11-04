@@ -1,9 +1,21 @@
 import React from 'react';
 import './Navbar.css';
 import MobileNavBar from './MobileNavBar';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 function NavBar() {
+  const userRes= localStorage.getItem('user');
+  console.log(userRes)
+
+  const handleLoginComponent = (e) =>{
+    if(userRes){
+      e.preventDefault();
+      console.log('inside if')
+      window.location.href='/profile';
+      console.log('after')
+    }
+  };
+
   return (
     <>
       <MobileNavBar />
@@ -46,7 +58,7 @@ function NavBar() {
             </svg>
           </div>
           <div className="nav-icon-container">
-            <Link to="/login">
+            <Link to="/login" onClick={handleLoginComponent}>
               <svg className="icons icon-user" width="24" height="24" viewBox="0 0 30 30" fill="none">
                 <path
                   fillRule="evenodd"

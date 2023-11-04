@@ -13,6 +13,18 @@ function MobileNavBar() {
     setOpen(!open);
   };
 
+  const userRes = localStorage.getItem('user');
+  console.log(userRes);
+
+  const handleLoginComponent = (e) => {
+    if (userRes) {
+      e.preventDefault();
+      console.log('inside if');
+      window.location.href = '/profile';
+      console.log('after');
+    }
+  };
+
   return (
     <>
       <nav className="flex w-full px-4 py-2 border-b sm:hidden border-primary">
@@ -35,7 +47,7 @@ function MobileNavBar() {
           </button>
 
           <button className="p-2 mr-2 duration-500 ease-in-out bg-white text-primary hover:bg-primary hover:text-white">
-            <Link to="/login">
+            <Link to="/login" onClick={handleLoginComponent}>
               <User />
             </Link>
           </button>

@@ -78,8 +78,8 @@ function Login() {
   const verifyOTP = async () => {
     try {
       const response = await verifyLoginOtp(pNumber, otp);
-      console.log("verify otp response",response.data);
-      localStorage.setItem('user', JSON.stringify(response.data));
+      console.log("verify otp response",response);
+      localStorage.setItem('user', JSON.stringify(response));
 
       console.log('before');
       navigate('/profile');

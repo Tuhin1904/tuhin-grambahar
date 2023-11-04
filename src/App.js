@@ -23,6 +23,8 @@ function AppWrapper({ children }) {
 }
 
 function App() {
+
+
   const router = createBrowserRouter([
     {
       path: '/',

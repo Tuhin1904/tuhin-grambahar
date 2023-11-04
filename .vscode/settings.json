@@ -2,5 +2,6 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "cSpell.words": [
     "grambahar"
-  ]
+  ],
+  "editor.fontFamily": "Consolas, 'Courier New', monospace"
 }
