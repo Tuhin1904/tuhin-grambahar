@@ -14,7 +14,7 @@ function MobileNavBar() {
   };
 
   const userRes = localStorage.getItem('user');
-  console.log(userRes);
+  // console.log(userRes);
 
   const handleLoginComponent = (e) => {
     if (userRes) {

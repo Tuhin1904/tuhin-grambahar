@@ -1,18 +1,18 @@
 import React from 'react';
 import './Navbar.css';
 import MobileNavBar from './MobileNavBar';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
-  const userRes= localStorage.getItem('user');
-  console.log(userRes)
+  const userRes = localStorage.getItem('user');
+  // console.log(userRes)
 
-  const handleLoginComponent = (e) =>{
-    if(userRes){
+  const handleLoginComponent = (e) => {
+    if (userRes) {
       e.preventDefault();
-      console.log('inside if')
-      window.location.href='/profile';
-      console.log('after')
+      console.log('inside if');
+      window.location.href = '/profile';
+      console.log('after');
     }
   };
 
