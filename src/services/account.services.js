@@ -54,6 +54,7 @@ export const addMyAddress = async ({
 };
 
 export const updateMyAddress = async ({
+  id,
   name,
   addressLine1,
   addressLine2,
@@ -65,7 +66,7 @@ export const updateMyAddress = async ({
   landmark,
 }) => {
   const res = await axios.patch(
-    `${SERVER_BASE_URL}user/account/me/address`,
+    `${SERVER_BASE_URL}user/account/me/address/${id}`,
     {
       name,
       address_line_1: addressLine1,
