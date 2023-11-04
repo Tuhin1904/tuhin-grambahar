@@ -49,28 +49,19 @@ const Profile = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e);
+    console.log('form event', e);
     try {
       const formData = new FormData(e.target);
-      const name = formData.get('name');
-      const addressLine1 = formData.get('addressLine1');
-      const addressLine2 = formData.get('addressLine2');
-      const phoneNumber = formData.get('phoneNumber');
-      const country = formData.get('country');
-      const state = formData.get('state');
-      const district = formData.get('district');
-      const pin = formData.get('pin');
-      const landmark = formData.get('landmark');
       const response = await addMyAddress({
-        name,
-        addressLine1,
-        addressLine2,
-        phoneNumber,
-        country,
-        state,
-        district,
-        pin,
-        landmark,
+        name: formData.get('name'),
+        addressLine1: formData.get('addressLine1'),
+        addressLine2: formData.get('addressLine2'),
+        phoneNumber: formData.get('phoneNumber'),
+        country: formData.get('country'),
+        state: formData.get('state'),
+        district: formData.get('district'),
+        pin: formData.get('pin'),
+        landmark: formData.get('landmark'),
       });
       // console.log(response);
     } catch (error) {
@@ -193,7 +184,10 @@ const Profile = () => {
                 <TextField className={classes.textField} label="Pin-code" name="pin" variant="outlined" />
 
                 <TextField className={classes.textField} label="Landmark" name="landmark" variant="outlined" />
-                <button className={classes.button} type="submit">
+                <button
+                  className={classes.button}
+                  style={{ minHeight: '40px', backgroundColor: 'rgb(45, 110, 255)', color: 'white' }}
+                >
                   Submit
                 </button>
               </form>
