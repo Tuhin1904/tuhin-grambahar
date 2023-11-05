@@ -47,8 +47,10 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
       try {
         const updatedCartVal = [...addedCartItems, product];
         console.log('Items in the cart', updatedCartVal);
-        const response = await updateMyCart((product : updatedCartVal));
-        console.log('response is', response);
+
+        const response = await updateMyCart(updatedCartVal);
+
+        console.log('patch response is', response);
         setAddedCartItems(response.data);
       } catch (err) {
         console.log('error is==', err.message);
