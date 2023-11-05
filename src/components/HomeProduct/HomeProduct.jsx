@@ -190,11 +190,6 @@ function HomeProduct() {
         onChangeProductHandler={onChangeProductHandler}
       />
     </>
-    <HomePageProduct
-      products={data || []}
-      product={data?.[selectedProduct]}
-      onChangeProductHandler={onChangeProductHandler}
-    />
   );
 }
 
