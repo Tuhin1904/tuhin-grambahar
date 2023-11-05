@@ -1,6 +1,6 @@
 .footer {
   margin-top: 50px;
-  
+
   width: 100%;
   /* background-color: #7ab35b; */
   background-color: #f2f2f2;
@@ -14,7 +14,7 @@
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .footer-col {
@@ -28,13 +28,13 @@
   font-size: 1rem;
   color: black;
 }
-.subscribe_btn{
- margin-top: 10px;
- background-color: #ff9603;
- width: fit-content;
- padding: 10px 30px;
- color: white;
- border-radius: 5px;
+.subscribe_btn {
+  margin-top: 10px;
+  background-color: #ff9603;
+  width: fit-content;
+  padding: 10px 30px;
+  color: white;
+  border-radius: 5px;
 }
 
 .news-letter-container {
@@ -100,13 +100,13 @@
   border-radius: 10px;
   color: black;
 }
-.copyright{
+.copyright {
   text-align: center;
   margin-top: 120px;
   background-color: #7ab35b;
   padding-top: 15px;
   padding-bottom: 15px;
-  width: 100%;  
+  width: 100%;
   font-family: 'Montserrat', sans-serif;
 }
 
