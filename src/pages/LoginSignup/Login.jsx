@@ -50,7 +50,7 @@
 import React, { useState } from 'react';
 import './SignUp.css'; // Import your CSS file
 import { sendLoginOtp, verifyLoginOtp } from './../../services/auth.service';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [otpSent, setOtpSent] = useState(false);
@@ -78,14 +78,15 @@ function Login() {
   const verifyOTP = async () => {
     try {
       const response = await verifyLoginOtp(pNumber, otp);
-      console.log("verify otp response",response);
+      console.log('verify otp response', response);
       localStorage.setItem('user', JSON.stringify(response));
+      localStorage.setItem('isLoggedIn', 'true');
 
-      console.log('before');
+      // console.log('before');
       navigate('/profile');
-      console.log('after');
+      // console.log('after');
     } catch (error) {
-      console.log('inside catch')
+      console.log('inside catch');
       console.log('📢[Login.jsx:80]: error: ', error?.response?.data?.error);
       setError(error.message);
     }

@@ -42,6 +42,7 @@ const Profile = () => {
   const deleteKey = (e) => {
     e.preventDefault();
     localStorage.removeItem('user');
+    localStorage.removeItem('isLoggedIn');
     window.location.href = '/';
   };
   const toggleForm = () => {

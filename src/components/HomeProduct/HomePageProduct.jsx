@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import HomeProductSwiper from '../home-product-swiper/HomeProductSwiper';
 import { getAbsImageUrl } from '../../services';
+import { useNavigate } from 'react-router-dom';
 
 function Rating({ rating, totalRating }) {
   return (
@@ -22,15 +23,26 @@ function Rating({ rating, totalRating }) {
 }
 
 function HomePageProduct({ products, product, onChangeProductHandler }) {
-  const [cartItem, setCartItem] = useState(0);
+  const [cartItem, setCartItem] = useState(1);
+  const navigate = useNavigate();
 
   const addCartItem = () => {
     setCartItem(cartItem + 1);
   };
 
   const removeCartItem = () => {
-    if (cartItem > 0) {
+    if (cartItem > 1) {
       setCartItem(cartItem - 1);
+    }
+  };
+
+  const handleCartBuy = (e) => {
+    // console.log(e);
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn === 'true') {
+      navigate('/cart');
+    } else {
+      navigate('/login');
     }
   };
 
@@ -93,8 +105,12 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
               </div>
 
               <div className="cart-options">
-                <div className="buy-now-btn">BUY NOW</div>
-                <div className="add-to-cart-btn">Add to cart</div>
+                <button className="buy-now-btn classes" onClick={handleCartBuy}>
+                  BUY NOW
+                </button>
+                <button className="add-to-cart-btn" onClick={handleCartBuy}>
+                  Add to cart
+                </button>
               </div>
             </div>
           </div>
@@ -152,8 +168,12 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
               </button>
             </div>
             <div className="cart-options">
-              <div className="add-to-cart-btn">Add to cart</div>
-              <div className="buy-now-btn">BUY NOW</div>
+              <button className="add-to-cart-btn" onClick={handleCartBuy}>
+                Add to cart
+              </button>
+              <button className="buy-now-btn" onClick={handleCartBuy}>
+                BUY NOW
+              </button>
             </div>
           </div>
         </div>
