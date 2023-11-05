@@ -32,6 +32,7 @@ const Profile = () => {
   const [disabledbutton, setDisabledButton] = useState(true);
   const [disabledbutton2, setDisabledButton2] = useState(true);
   const [displayUserData, setUserData] = useState({});
+  const [addressResponse, setAddressResponse] = useState([]);
 
   const toggleButtons = () => {
     setDisabledButton(!disabledbutton);
@@ -51,15 +52,23 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
         const response = await getMyProfile();
+        const response2 = await getMyAddresses();
+        // console.log('My storeed address are:', response2);
         // console.log('getmyprofile response', response);
         // console.log(response.name, response.phone_number, response.email);
         setUserData(response);
+        setAddressResponse(response2);
       } catch (error) {
         console.log('catch prt:', error.response.data);
       }
     };
     fetchUserData();
   }, []);
+
+  const handleDelete = async (id) => {
+    const response = await deleteMyAddress(id);
+    console.log('delete response', response);
+  };
 
   return (
     <>
@@ -105,48 +114,109 @@ const Profile = () => {
         <div>
           <label htmlFor="" id={classes.info}>
             To Add New Address click the button 'Add New Address+'
-          </label>
-          <form action="">
-            <TextField
-              className={classes.textField2}
-              label="Enter your Name"
-              variant="outlined"
-              disabled={disabledbutton2}
-            />
-            <TextField
-              className={classes.textField2}
-              label="Address Line 1"
-              variant="outlined"
-              disabled={disabledbutton2}
-            />
-            <TextField
-              className={classes.textField2}
-              label="Address Line 2"
-              variant="outlined"
-              disabled={disabledbutton2}
-            />
-            <br />
+          </label>{' '}
+          <br />
+          {addressResponse.length > 0 ? (
+            <>
+              <label style={{ fontWeight: 'bold', fontSize: 'larger', marginBottom: '10px' }}>
+                Your Current Addresses are:
+              </label>
 
-            <TextField className={classes.textField} label="District" variant="outlined" disabled={disabledbutton2} />
+              {addressResponse.map((each, i) => (
+                <form action="" key={i} style={{ marginTop: '1rem' }}>
+                  <TextField
+                    className={classes.textField2}
+                    label="Enter your Name"
+                    variant="outlined"
+                    value={each.name}
+                    disabled={disabledbutton2}
+                    InputProps={{
+                      style: {
+                        color: '#000000',
+                      },
+                    }}
+                  />
+                  <TextField
+                    className={classes.textField2}
+                    label="Address Line 1"
+                    variant="outlined"
+                    value={each.address_line_1}
+                    disabled={disabledbutton2}
+                  />
+                  <TextField
+                    className={classes.textField2}
+                    label="Address Line 2"
+                    variant="outlined"
+                    value={each.address_line_2}
+                    disabled={disabledbutton2}
+                  />
+                  <br />
 
-            <TextField className={classes.textField} label="State" variant="outlined" disabled={disabledbutton2} />
+                  <TextField
+                    className={classes.textField}
+                    label="District"
+                    variant="outlined"
+                    value={each.district}
+                    disabled={disabledbutton2}
+                  />
 
-            <TextField className={classes.textField} label="Country" variant="outlined" disabled={disabledbutton2} />
+                  <TextField
+                    className={classes.textField}
+                    label="State"
+                    variant="outlined"
+                    value={each.state}
+                    disabled={disabledbutton2}
+                  />
 
-            <TextField className={classes.textField} label="Pin-code" variant="outlined" disabled={disabledbutton2} />
+                  <TextField
+                    className={classes.textField}
+                    label="Country"
+                    variant="outlined"
+                    value={each.country}
+                    disabled={true}
+                  />
 
-            <TextField className={classes.textField} label="Landmark" variant="outlined" disabled={disabledbutton2} />
+                  <TextField
+                    className={classes.textField}
+                    label="Pin-code"
+                    variant="outlined"
+                    value={each.pin}
+                    disabled={disabledbutton2}
+                  />
 
-            {!disabledbutton2 ? (
-              <div className={classes.button} onClick={toggleButtons2}>
-                Save Details
-              </div>
-            ) : (
-              <div className={classes.button2} onClick={toggleButtons2}>
-                Edit Details
-              </div>
-            )}
-          </form>
+                  <TextField
+                    className={classes.textField}
+                    label="Landmark"
+                    variant="outlined"
+                    value={each.landmark}
+                    disabled={disabledbutton2}
+                  />
+                  <div style={{ display: 'flex', marginTop: '1rem' }}>
+                    {!disabledbutton2 ? (
+                      <div className={classes.button} onClick={toggleButtons2}>
+                        Save Details
+                      </div>
+                    ) : (
+                      <div className={classes.button2} onClick={toggleButtons2}>
+                        Edit Details
+                      </div>
+                    )}
+                    <div className={classes.button3} onClick={() => handleDelete(each.id)}>
+                      Delete Address
+                    </div>
+                  </div>
+                  <br />
+                  <br />
+                  <br />
+                </form>
+              ))}
+            </>
+          ) : (
+            <>
+              <br />
+              <div>You don't have any Addressess saved</div>
+            </>
+          )}
         </div>
         <AddNewAddress />
         <button className={classes.button} id={classes.logOut} onClick={deleteKey}>
