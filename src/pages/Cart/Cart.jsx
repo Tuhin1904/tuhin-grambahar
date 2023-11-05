@@ -8,7 +8,7 @@ function Cart() {
   return (
     <div className={classes.container}>
       <div className={classes.message}>MESSAGES ABOUT ITEMS IN YOUR CART</div>
-      <div className={classes.subtotal}>
+      {/* <div className={classes.subtotal}>
         Subtotal is ={' '}
         <span className={classes.subtotal_value}>
           {' '}
@@ -20,9 +20,9 @@ function Cart() {
         {' '}
         <Icon icon="mdi:tick-decagram" style={{ fontSize: '1.6rem', marginRight: '10px', color: '#edb911' }} />{' '}
         Congratulations Your Order is elegible for free delivery
-      </div>
+      </div> */}
 
-      <div className={classes.proceed_btn}>Proceed to checkout</div>
+      {/* <div className={classes.proceed_btn}>Proceed to checkout</div> */}
       <CartItems />
     </div>
   );

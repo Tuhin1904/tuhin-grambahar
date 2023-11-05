@@ -2,6 +2,7 @@ import { useState } from 'react';
 import HomeProductSwiper from '../home-product-swiper/HomeProductSwiper';
 import { getAbsImageUrl } from '../../services';
 import { useNavigate } from 'react-router-dom';
+import { updateMyCart } from '../../services/cart.servies';
 
 function Rating({ rating, totalRating }) {
   return (
@@ -26,6 +27,9 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
   const [cartItem, setCartItem] = useState(1);
   const navigate = useNavigate();
 
+  // for updating handleCartItem
+  const [cartItems, setCartItems] = useState([]);
+
   const addCartItem = () => {
     setCartItem(cartItem + 1);
   };
@@ -36,11 +40,19 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
     }
   };
 
-  const handleCartBuy = (e) => {
-    // console.log(e);
+  const handleAddToCart = async (e) => {
+    // console.log('product is ', products);
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (isLoggedIn === 'true') {
-      navigate('/cart');
+      console.log('before try');
+      try {
+        const response = await updateMyCart([...cartItems, product.id]);
+        console.log('response is', response);
+        setCartItems(response);
+      } catch (err) {
+        console.log('error is', err);
+      }
+      console.log('cartitems', cartItems);
     } else {
       navigate('/login');
     }
@@ -105,10 +117,10 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
               </div>
 
               <div className="cart-options">
-                <button className="buy-now-btn classes" onClick={handleCartBuy}>
+                <button className="buy-now-btn classes" onClick={handleAddToCart}>
                   BUY NOW
                 </button>
-                <button className="add-to-cart-btn" onClick={handleCartBuy}>
+                <button className="add-to-cart-btn" onClick={handleAddToCart}>
                   Add to cart
                 </button>
               </div>
@@ -168,10 +180,10 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
               </button>
             </div>
             <div className="cart-options">
-              <button className="add-to-cart-btn" onClick={handleCartBuy}>
+              <button className="add-to-cart-btn" onClick={handleAddToCart}>
                 Add to cart
               </button>
-              <button className="buy-now-btn" onClick={handleCartBuy}>
+              <button className="buy-now-btn" onClick={handleAddToCart}>
                 BUY NOW
               </button>
             </div>

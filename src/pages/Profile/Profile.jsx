@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './Profile.module.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -11,6 +11,7 @@ import {
   updateMyPersonalInfo,
   getMyProfile,
 } from '../../services/account.services';
+import AddNewAddress from '../../components/AddNewAddress/AddNewAddress';
 
 const Profile = () => {
   const currencies = [
@@ -30,7 +31,6 @@ const Profile = () => {
 
   const [disabledbutton, setDisabledButton] = useState(true);
   const [disabledbutton2, setDisabledButton2] = useState(true);
-  const [isFormVisibile, setFormVisible] = useState(false);
 
   const toggleButtons = () => {
     setDisabledButton(!disabledbutton);
@@ -45,9 +45,7 @@ const Profile = () => {
     localStorage.removeItem('isLoggedIn');
     window.location.href = '/';
   };
-  const toggleForm = () => {
-    setFormVisible(!isFormVisibile);
-  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('form event', e);
@@ -69,6 +67,18 @@ const Profile = () => {
       console.log('Unable to Add new Address', error);
     }
   };
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await getMyProfile();
+        console.log('getmyprofile response', response);
+      } catch (error) {
+        console.log('catch prt:', error.response.data);
+      }
+    };
+    fetchUserData();
+  }, []);
 
   return (
     <>
@@ -148,53 +158,9 @@ const Profile = () => {
               </div>
             )}
           </form>
-
-          <div className={classes.button2} onClick={toggleForm}>
-            {isFormVisibile ? 'Hide' : 'Add New Address +'}
-          </div>
-          <br />
-
-          {isFormVisibile && (
-            <>
-              <form onSubmit={handleSubmit}>
-                <TextField className={classes.textField2} label="Enter your Name" name="name" variant="outlined" />
-
-                <TextField
-                  className={classes.textField2}
-                  label="Address Line 1"
-                  name="addressLine1"
-                  variant="outlined"
-                />
-
-                <TextField
-                  className={classes.textField2}
-                  label="Address Line 2"
-                  name="addressLine2"
-                  variant="outlined"
-                />
-                <br />
-
-                <TextField className={classes.textField} label="Phone Number" name="phoneNumber" variant="outlined" />
-
-                <TextField className={classes.textField} label="Country" name="country" variant="outlined" />
-
-                <TextField className={classes.textField} label="State" name="state" variant="outlined" />
-
-                <TextField className={classes.textField} label="District" name="district" variant="outlined" />
-
-                <TextField className={classes.textField} label="Pin-code" name="pin" variant="outlined" />
-
-                <TextField className={classes.textField} label="Landmark" name="landmark" variant="outlined" />
-                <button
-                  className={classes.button}
-                  style={{ minHeight: '40px', backgroundColor: 'rgb(45, 110, 255)', color: 'white' }}
-                >
-                  Submit
-                </button>
-              </form>
-            </>
-          )}
         </div>
+
+        <AddNewAddress />
         <button className={classes.button} id={classes.logOut} onClick={deleteKey}>
           Log out
         </button>
