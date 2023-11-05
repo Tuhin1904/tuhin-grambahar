@@ -28,7 +28,7 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
   const navigate = useNavigate();
 
   // for updating handleCartItem
-  const [cartItems, setCartItems] = useState([]);
+  const [addedCartItems, setAddedCartItems] = useState([]);
 
   const addCartItem = () => {
     setCartItem(cartItem + 1);
@@ -41,18 +41,18 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
   };
 
   const handleAddToCart = async (e) => {
-    // console.log('product is ', products);
+    console.log('product is ', product);
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (isLoggedIn === 'true') {
-      console.log('before try');
       try {
-        const response = await updateMyCart([...cartItems, product.id]);
+        const updatedCartVal = [...addedCartItems, product];
+        console.log('Items in the cart', updatedCartVal);
+        const response = await updateMyCart((product : updatedCartVal));
         console.log('response is', response);
-        setCartItems(response);
+        setAddedCartItems(response.data);
       } catch (err) {
-        console.log('error is', err);
+        console.log('error is==', err.message);
       }
-      console.log('cartitems', cartItems);
     } else {
       navigate('/login');
     }

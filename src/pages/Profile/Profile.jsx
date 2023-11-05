@@ -51,8 +51,8 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
         const response = await getMyProfile();
-        console.log('getmyprofile response', response);
-        console.log(response.name, response.phone_number, response.email);
+        // console.log('getmyprofile response', response);
+        // console.log(response.name, response.phone_number, response.email);
         setUserData(response);
       } catch (error) {
         console.log('catch prt:', error.response.data);
