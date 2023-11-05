@@ -31,6 +31,7 @@ const Profile = () => {
 
   const [disabledbutton, setDisabledButton] = useState(true);
   const [disabledbutton2, setDisabledButton2] = useState(true);
+  const [displayUserData, setUserData] = useState({});
 
   const toggleButtons = () => {
     setDisabledButton(!disabledbutton);
@@ -46,33 +47,13 @@ const Profile = () => {
     window.location.href = '/';
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log('form event', e);
-    try {
-      const formData = new FormData(e.target);
-      const response = await addMyAddress({
-        name: formData.get('name'),
-        addressLine1: formData.get('addressLine1'),
-        addressLine2: formData.get('addressLine2'),
-        phoneNumber: formData.get('phoneNumber'),
-        country: formData.get('country'),
-        state: formData.get('state'),
-        district: formData.get('district'),
-        pin: formData.get('pin'),
-        landmark: formData.get('landmark'),
-      });
-      // console.log(response);
-    } catch (error) {
-      console.log('Unable to Add new Address', error);
-    }
-  };
-
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await getMyProfile();
         console.log('getmyprofile response', response);
+        console.log(response.name, response.phone_number, response.email);
+        setUserData(response);
       } catch (error) {
         console.log('catch prt:', error.response.data);
       }
@@ -91,7 +72,15 @@ const Profile = () => {
             disabled={disabledbutton}
           />
           <br />
-          <TextField className={classes.textField} label="Phone" type="phone" variant="outlined" disabled={true} />
+          <TextField
+            className={classes.textField}
+            // label="Phone"
+            type="phone"
+            variant="outlined"
+            value={displayUserData.phone_number}
+            disabled={true}
+          />
+
           <TextField
             className={classes.textField}
             label="Email id"
@@ -159,7 +148,6 @@ const Profile = () => {
             )}
           </form>
         </div>
-
         <AddNewAddress />
         <button className={classes.button} id={classes.logOut} onClick={deleteKey}>
           Log out
