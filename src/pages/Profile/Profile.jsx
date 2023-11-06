@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import {
   getMyAddresses,
   addMyAddress,
-  // updateMyAddress,
+  updateMyAddress,
   deleteMyAddress,
   updateMyPersonalInfo,
   getMyProfile,
@@ -80,26 +80,28 @@ const Profile = () => {
     // setAddressResponse((()))
   };
 
-  // const updateDetails = async (e) => {
-  //   console.log('update event', e);
-  //   e.preventDefault();
-  //   try {
-  //     const formData = new FormData(e.target);
-  //     const res = await updateMyAddress({
-  //       name: formData.get('name'),
-  //       addressLine1: formData.get('addressLine1'),
-  //       addressLine2: formData.get('addressLine2'),
-  //       phoneNumber: formData.get('phoneNumber'),
-  //       country: formData.get('country'),
-  //       state: formData.get('state'),
-  //       district: formData.get('district'),
-  //       pin: formData.get('pin'),
-  //       landmark: formData.get('landmark'),
-  //     });
-  //   } catch (error) {
-  //     console.log('Unable to Update Details', error);
-  //   }
-  // };
+  const handleUpdateAddress = async (e) => {
+    console.log('update event', e);
+    e.preventDefault();
+    try {
+      const formData = new FormData(e.target);
+      const res = await updateMyAddress({
+        id: id,
+        name: formData.get('name'),
+        addressLine1: formData.get('addressLine1'),
+        addressLine2: formData.get('addressLine2'),
+        phoneNumber: formData.get('phoneNumber'),
+        country: formData.get('country'),
+        state: formData.get('state'),
+        district: formData.get('district'),
+        pin: formData.get('pin'),
+        landmark: formData.get('landmark'),
+      });
+      console.log(res);
+    } catch (error) {
+      console.log('Unable to Update Details', error);
+    }
+  };
 
   return (
     <>
@@ -154,7 +156,7 @@ const Profile = () => {
               </label>
 
               {addressResponse.map((each, i) => (
-                <form action="" key={i} style={{ marginTop: '1rem' }}>
+                <form action="" key={i} style={{ marginTop: '1rem' }} onSubmit={() => handleUpdateAddress(e)}>
                   <TextField
                     className={classes.textField2}
                     label="Enter your Name"
