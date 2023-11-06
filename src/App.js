@@ -6,9 +6,13 @@ import Footer from './components/Footer/Footer';
 import BottomNavBar from './components/BottomNavBar/BottomNavBar';
 import Rewards from './pages/Rewards/Rewards';
 import Cart from './pages/Cart/Cart';
-import SecondaryBottomNavbar from './components/SecondaryBottomNavBar/SecondaryBottomNavbar'
+import SecondaryBottomNavbar from './components/SecondaryBottomNavBar/SecondaryBottomNavbar';
 import Profile from './pages/Profile/Profile';
 import Login from './pages/LoginSignup/Login';
+import LegalPage from './pages/LegalPage';
+
+import privacyPolicyContentPath from './contents/privacy-policy.md';
+
 function AppWrapper({ children }) {
   return (
     <>
@@ -23,8 +27,6 @@ function AppWrapper({ children }) {
 }
 
 function App() {
-
-
   const router = createBrowserRouter([
     {
       path: '/',
@@ -51,22 +53,31 @@ function App() {
       ),
     },
     {
-      path:'/profile',
-      element:(
+      path: '/profile',
+      element: (
         <AppWrapper>
-          <Profile/>
+          <Profile />
         </AppWrapper>
-      )
+      ),
     },
     {
-      path:'/login',
-      element:(
+      path: '/login',
+      element: (
         <AppWrapper>
-          <Login/>
+          <Login />
         </AppWrapper>
-      )
-    }
+      ),
+    },
+    {
+      path: '/privacy-policy',
+      element: (
+        <AppWrapper>
+          <LegalPage contentPath={privacyPolicyContentPath} />
+        </AppWrapper>
+      ),
+    },
   ]);
+
   return (
     <>
       <RouterProvider router={router} />
