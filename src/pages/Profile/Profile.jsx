@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import {
   getMyAddresses,
   addMyAddress,
-  updateMyAddress,
+  // updateMyAddress,
   deleteMyAddress,
   updateMyPersonalInfo,
   getMyProfile,
@@ -30,15 +30,22 @@ const Profile = () => {
   ];
 
   const [disabledbutton, setDisabledButton] = useState(true);
-  const [disabledbutton2, setDisabledButton2] = useState(true);
+
+  //  to enable editing of adresses
+  const [disabledbutton2, setDisabledButton2] = useState([]);
+
   const [displayUserData, setUserData] = useState({});
   const [addressResponse, setAddressResponse] = useState([]);
 
   const toggleButtons = () => {
     setDisabledButton(!disabledbutton);
   };
-  const toggleButtons2 = () => {
-    setDisabledButton2(!disabledbutton2);
+
+  // toggle editing adresses
+  const toggleButtons2 = (index) => {
+    const newEditBoxes = [...disabledbutton2];
+    newEditBoxes[index] = !newEditBoxes[index];
+    setDisabledButton2(newEditBoxes);
   };
 
   const deleteKey = (e) => {
@@ -73,26 +80,26 @@ const Profile = () => {
     // setAddressResponse((()))
   };
 
-  const updateDetails = async (e) => {
-    console.log('update event', e);
-    e.preventDefault();
-    try {
-      const formData = new FormData(e.target);
-      const res = await updateMyAddress({
-        name: formData.get('name'),
-        addressLine1: formData.get('addressLine1'),
-        addressLine2: formData.get('addressLine2'),
-        phoneNumber: formData.get('phoneNumber'),
-        country: formData.get('country'),
-        state: formData.get('state'),
-        district: formData.get('district'),
-        pin: formData.get('pin'),
-        landmark: formData.get('landmark'),
-      });
-    } catch (error) {
-      console.log('Unable to Update Details', error);
-    }
-  };
+  // const updateDetails = async (e) => {
+  //   console.log('update event', e);
+  //   e.preventDefault();
+  //   try {
+  //     const formData = new FormData(e.target);
+  //     const res = await updateMyAddress({
+  //       name: formData.get('name'),
+  //       addressLine1: formData.get('addressLine1'),
+  //       addressLine2: formData.get('addressLine2'),
+  //       phoneNumber: formData.get('phoneNumber'),
+  //       country: formData.get('country'),
+  //       state: formData.get('state'),
+  //       district: formData.get('district'),
+  //       pin: formData.get('pin'),
+  //       landmark: formData.get('landmark'),
+  //     });
+  //   } catch (error) {
+  //     console.log('Unable to Update Details', error);
+  //   }
+  // };
 
   return (
     <>
@@ -147,13 +154,13 @@ const Profile = () => {
               </label>
 
               {addressResponse.map((each, i) => (
-                <form action="" key={i} style={{ marginTop: '1rem' }} onSubmit={updateDetails}>
+                <form action="" key={i} style={{ marginTop: '1rem' }}>
                   <TextField
                     className={classes.textField2}
                     label="Enter your Name"
                     variant="outlined"
                     value={each.name}
-                    disabled={disabledbutton2}
+                    disabled={!disabledbutton2[i]}
                     InputProps={{
                       style: {
                         color: '#000000',
@@ -165,14 +172,14 @@ const Profile = () => {
                     label="Address Line 1"
                     variant="outlined"
                     value={each.address_line_1}
-                    disabled={disabledbutton2}
+                    disabled={!disabledbutton2[i]}
                   />
                   <TextField
                     className={classes.textField2}
                     label="Address Line 2"
                     variant="outlined"
                     value={each.address_line_2}
-                    disabled={disabledbutton2}
+                    disabled={!disabledbutton2[i]}
                   />
                   <br />
 
@@ -181,7 +188,7 @@ const Profile = () => {
                     label="District"
                     variant="outlined"
                     value={each.district}
-                    disabled={disabledbutton2}
+                    disabled={!disabledbutton2[i]}
                   />
 
                   <TextField
@@ -189,7 +196,7 @@ const Profile = () => {
                     label="State"
                     variant="outlined"
                     value={each.state}
-                    disabled={disabledbutton2}
+                    disabled={!disabledbutton2[i]}
                   />
 
                   <TextField
@@ -205,7 +212,7 @@ const Profile = () => {
                     label="Pin-code"
                     variant="outlined"
                     value={each.pin}
-                    disabled={disabledbutton2}
+                    disabled={!disabledbutton2[i]}
                   />
 
                   <TextField
@@ -213,20 +220,20 @@ const Profile = () => {
                     label="Landmark"
                     variant="outlined"
                     value={each.landmark}
-                    disabled={disabledbutton2}
+                    disabled={!disabledbutton2[i]}
                   />
                   <div style={{ display: 'flex', marginTop: '1rem' }}>
-                    {!disabledbutton2 ? (
+                    {disabledbutton2[i] ? (
                       <div
                         className={classes.button}
                         onClick={() => {
-                          toggleButtons2();
+                          toggleButtons2(i);
                         }}
                       >
                         Save Details
                       </div>
                     ) : (
-                      <div className={classes.button2} onClick={toggleButtons2}>
+                      <div className={classes.button2} onClick={() => toggleButtons2(i)}>
                         Edit Details
                       </div>
                     )}

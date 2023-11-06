@@ -5,6 +5,7 @@ import { addMyAddress } from '../../services/account.services';
 
 function AddNewAddress() {
   const [isFormVisibile, setFormVisible] = useState(false);
+  const [addresses, setAddresses] = useState([]);
 
   const toggleForm = () => {
     setFormVisible(!isFormVisibile);
@@ -26,7 +27,10 @@ function AddNewAddress() {
         pin: formData.get('pin'),
         landmark: formData.get('landmark'),
       });
-      // console.log(response);
+      console.log('add response', response);
+      setAddresses([...addresses, response]);
+
+      e.target.reset();
     } catch (error) {
       console.log('Unable to Add new Address', error);
     }

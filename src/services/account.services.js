@@ -52,7 +52,6 @@ export const addMyAddress = async ({
   );
   return res.data;
 };
-
 export const updateMyAddress = async ({
   id,
   name,
@@ -82,7 +81,6 @@ export const updateMyAddress = async ({
   );
   return res.data;
 };
-
 export const deleteMyAddress = async (addressId) => {
   const res = await axios.delete(
     `${SERVER_BASE_URL}user/account/me/address/${addressId}`,

@@ -44,6 +44,17 @@ input[type='text']:active {
   color: white;
   border-radius: 5px;
   z-index: 10;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.1s;
+  &:hover {
+    background-color: rgb(0, 128, 255);
+  }
+  &:active {
+    /* transform: scale(0.98); */
+    background-color: rgb(10, 138, 255);
+  }
 }
 .button2 {
   font-family: 'Rubik', sans-serif;
@@ -55,6 +66,15 @@ input[type='text']:active {
   margin-top: 30px;
   color: white;
   border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: rgb(20, 50, 10);
+  }
+  &:active {
+    transform: scale(0.99);
+  }
 }
 .button3 {
   font-family: 'Rubik', sans-serif;
@@ -66,6 +86,16 @@ input[type='text']:active {
   margin-top: 30px;
   color: white;
   border-radius: 5px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.1s;
+  &:hover {
+    background-color: rgb(128, 0, 0);
+  }
+  &:active {
+    transform: scale(0.99);
+  }
 }
 /* } */
 #logOut {
