@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import TextField from '@mui/material/TextField';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   // <div className="footer-col-left">
@@ -39,8 +40,21 @@ function Footer() {
         <div className="footer-col">
           <h2>OUR POLICIES</h2>
           <ol className="footer-list">
-            <li>Privacy Policy</li>
-            <li>Refund Policy</li>
+            <Link to="/privacy-policy">
+              <li>Privacy Policy</li>
+            </Link>
+            <Link to="/refund-policy">
+              <li>Refund Policy</li>
+            </Link>
+            <Link to="/shipping-policy">
+              <li>Shipping Policy</li>
+            </Link>
+            <Link to="/cookie-policy">
+              <li>Cookie Policy</li>
+            </Link>
+            <Link to="/terms-of-services">
+              <li>Terms of Services</li>
+            </Link>
           </ol>
         </div>
         <div className="footer-col">

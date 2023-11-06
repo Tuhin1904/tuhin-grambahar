@@ -11,7 +11,7 @@ const LegalPage = ({ contentPath }) => {
       .then((data) => {
         setMarkdownContent(data);
       });
-  }, []);
+  }, [contentPath]);
 
   return (
     <div className="container px-4 py-20 mx-auto">

@@ -12,6 +12,10 @@ import Login from './pages/LoginSignup/Login';
 import LegalPage from './pages/LegalPage';
 
 import privacyPolicyContentPath from './contents/privacy-policy.md';
+import cookiePolicyContentPath from './contents/cookie-policy.md';
+import refundPolicyContentPath from './contents/refund-policy.md';
+import shippingPolicyContentPath from './contents/shipping-policy.md';
+import termsOfServicesContentPath from './contents/terms-of-services.md';
 
 function AppWrapper({ children }) {
   return (
@@ -73,6 +77,38 @@ function App() {
       element: (
         <AppWrapper>
           <LegalPage contentPath={privacyPolicyContentPath} />
+        </AppWrapper>
+      ),
+    },
+    {
+      path: '/refund-policy',
+      element: (
+        <AppWrapper>
+          <LegalPage contentPath={refundPolicyContentPath} />
+        </AppWrapper>
+      ),
+    },
+    {
+      path: '/cookie-policy',
+      element: (
+        <AppWrapper>
+          <LegalPage contentPath={cookiePolicyContentPath} />
+        </AppWrapper>
+      ),
+    },
+    {
+      path: '/shipping-policy',
+      element: (
+        <AppWrapper>
+          <LegalPage contentPath={shippingPolicyContentPath} />
+        </AppWrapper>
+      ),
+    },
+    {
+      path: '/terms-of-services',
+      element: (
+        <AppWrapper>
+          <LegalPage contentPath={termsOfServicesContentPath} />
         </AppWrapper>
       ),
     },
