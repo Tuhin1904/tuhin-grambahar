@@ -52,6 +52,8 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
         const response = await getMyProfile();
+
+        // for all responses
         const response2 = await getMyAddresses();
         // console.log('My storeed address are:', response2);
         // console.log('getmyprofile response', response);
@@ -63,11 +65,33 @@ const Profile = () => {
       }
     };
     fetchUserData();
-  }, []);
+  }, [addressResponse]);
 
   const handleDelete = async (id) => {
     const response = await deleteMyAddress(id);
-    console.log('delete response', response);
+    // console.log('delete response', response);
+    // setAddressResponse((()))
+  };
+
+  const updateDetails = async (e) => {
+    console.log('update event', e);
+    e.preventDefault();
+    try {
+      const formData = new FormData(e.target);
+      const res = await updateMyAddress({
+        name: formData.get('name'),
+        addressLine1: formData.get('addressLine1'),
+        addressLine2: formData.get('addressLine2'),
+        phoneNumber: formData.get('phoneNumber'),
+        country: formData.get('country'),
+        state: formData.get('state'),
+        district: formData.get('district'),
+        pin: formData.get('pin'),
+        landmark: formData.get('landmark'),
+      });
+    } catch (error) {
+      console.log('Unable to Update Details', error);
+    }
   };
 
   return (
@@ -123,7 +147,7 @@ const Profile = () => {
               </label>
 
               {addressResponse.map((each, i) => (
-                <form action="" key={i} style={{ marginTop: '1rem' }}>
+                <form action="" key={i} style={{ marginTop: '1rem' }} onSubmit={updateDetails}>
                   <TextField
                     className={classes.textField2}
                     label="Enter your Name"
@@ -193,7 +217,12 @@ const Profile = () => {
                   />
                   <div style={{ display: 'flex', marginTop: '1rem' }}>
                     {!disabledbutton2 ? (
-                      <div className={classes.button} onClick={toggleButtons2}>
+                      <div
+                        className={classes.button}
+                        onClick={() => {
+                          toggleButtons2();
+                        }}
+                      >
                         Save Details
                       </div>
                     ) : (
