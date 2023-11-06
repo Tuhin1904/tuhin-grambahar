@@ -17,13 +17,13 @@ import refundPolicyContentPath from './contents/refund-policy.md';
 import shippingPolicyContentPath from './contents/shipping-policy.md';
 import termsOfServicesContentPath from './contents/terms-of-services.md';
 
-function AppWrapper({ children }) {
+function AppWrapper({ children, footerPb = '' }) {
   return (
     <>
       <TopHeader />
       <NavBar />
       {children}
-      <Footer />
+      <Footer pb={footerPb} />
       {/* <SecondaryBottomNavbar/> */}
       {/* <BottomNavBar /> */}
     </>
@@ -35,7 +35,7 @@ function App() {
     {
       path: '/',
       element: (
-        <AppWrapper>
+        <AppWrapper footerPb="pb-16">
           <HomePage />
         </AppWrapper>
       ),

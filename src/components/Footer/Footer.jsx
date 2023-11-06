@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Footer() {
+function Footer({ pb = '' }) {
   return (
-    <div className="pt-6 bg-white2">
+    <div className={`pt-6 bg-white2 ${pb}`}>
       <div className="container grid grid-cols-1 px-4 pb-10 mx-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-12 gap-y-10">
         <div></div>
         <div className="footer-col">
