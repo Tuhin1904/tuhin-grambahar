@@ -9,7 +9,7 @@ import Cart from './pages/Cart/Cart';
 import SecondaryBottomNavbar from './components/SecondaryBottomNavBar/SecondaryBottomNavbar';
 import Profile from './pages/Profile/Profile';
 import Login from './pages/LoginSignup/Login';
-import LegalPage from './pages/LegalPage';
+import StaticPageWithMdRendering from './pages/StaticPageWithMdRendering';
 
 import privacyPolicyContentPath from './contents/privacy-policy.md';
 import cookiePolicyContentPath from './contents/cookie-policy.md';
@@ -76,7 +76,7 @@ function App() {
       path: '/privacy-policy',
       element: (
         <AppWrapper>
-          <LegalPage contentPath={privacyPolicyContentPath} />
+          <StaticPageWithMdRendering contentPath={privacyPolicyContentPath} />
         </AppWrapper>
       ),
     },
@@ -84,7 +84,7 @@ function App() {
       path: '/refund-policy',
       element: (
         <AppWrapper>
-          <LegalPage contentPath={refundPolicyContentPath} />
+          <StaticPageWithMdRendering contentPath={refundPolicyContentPath} />
         </AppWrapper>
       ),
     },
@@ -92,7 +92,7 @@ function App() {
       path: '/cookie-policy',
       element: (
         <AppWrapper>
-          <LegalPage contentPath={cookiePolicyContentPath} />
+          <StaticPageWithMdRendering contentPath={cookiePolicyContentPath} />
         </AppWrapper>
       ),
     },
@@ -100,7 +100,7 @@ function App() {
       path: '/shipping-policy',
       element: (
         <AppWrapper>
-          <LegalPage contentPath={shippingPolicyContentPath} />
+          <StaticPageWithMdRendering contentPath={shippingPolicyContentPath} />
         </AppWrapper>
       ),
     },
@@ -108,7 +108,7 @@ function App() {
       path: '/terms-of-services',
       element: (
         <AppWrapper>
-          <LegalPage contentPath={termsOfServicesContentPath} />
+          <StaticPageWithMdRendering contentPath={termsOfServicesContentPath} />
         </AppWrapper>
       ),
     },

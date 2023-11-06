@@ -1,7 +1,7 @@
 import { marked } from 'marked';
 import { useEffect, useState } from 'react';
 
-const LegalPage = ({ contentPath }) => {
+const StaticPageWithMdRendering = ({ contentPath }) => {
   const [markdownContent, setMarkdownContent] = useState('');
 
   useEffect(() => {
@@ -25,4 +25,4 @@ const LegalPage = ({ contentPath }) => {
   );
 };
 
-export default LegalPage;
+export default StaticPageWithMdRendering;
