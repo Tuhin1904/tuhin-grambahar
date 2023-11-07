@@ -35,7 +35,7 @@ function App() {
     {
       path: '/',
       element: (
-        <AppWrapper footerPb="pb-16">
+        <AppWrapper footerPb="pb-16 sm:pb-0">
           <HomePage />
         </AppWrapper>
       ),
