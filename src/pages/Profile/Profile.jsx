@@ -72,7 +72,7 @@ const Profile = () => {
       }
     };
     fetchUserData();
-  }, [addressResponse]);
+  }, []);
 
   const handleDelete = async (id) => {
     const response = await deleteMyAddress(id);
