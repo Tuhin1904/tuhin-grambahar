@@ -61,7 +61,10 @@ function MobileNavBar() {
       {open && (
         <div className="fixed right-0 z-50 w-64 h-screen px-6 pt-8 bg-white shadow-2xl top-22 pb-28">
           <ul className="text-base">
-            <li className="mb-4"> Products </li> <li className="mb-4"> About US </li>{' '}
+            <li className="mb-4"> Products </li>{' '}
+            <Link to="/about-us">
+              <li className="mb-4"> About US </li>
+            </Link>{' '}
             <li className="mb-4"> Rewards </li> <li className="mb-4"> Feedback </li> <li className="mb-4"> Career </li>{' '}
             <li className="mb-4"> Meet Our Farmers </li>{' '}
           </ul>{' '}

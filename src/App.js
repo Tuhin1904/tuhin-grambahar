@@ -10,12 +10,14 @@ import SecondaryBottomNavbar from './components/SecondaryBottomNavBar/SecondaryB
 import Profile from './pages/Profile/Profile';
 import Login from './pages/LoginSignup/Login';
 import StaticPageWithMdRendering from './pages/StaticPageWithMdRendering';
+import ContactUs from './pages/ContactPage/ContactUs';
 
 import privacyPolicyContentPath from './contents/privacy-policy.md';
 import cookiePolicyContentPath from './contents/cookie-policy.md';
 import refundPolicyContentPath from './contents/refund-policy.md';
 import shippingPolicyContentPath from './contents/shipping-policy.md';
 import termsOfServicesContentPath from './contents/terms-of-services.md';
+import aboutUs from './contents/about-us.md';
 
 function AppWrapper({ children, footerPb = '' }) {
   return (
@@ -31,6 +33,8 @@ function AppWrapper({ children, footerPb = '' }) {
 }
 
 function App() {
+  const isUserLoggedIn = localStorage.getItem('isLoggedIn');
+  console.log('is logged in :', isUserLoggedIn);
   const router = createBrowserRouter([
     {
       path: '/',
@@ -66,9 +70,13 @@ function App() {
     },
     {
       path: '/login',
+      element: <AppWrapper>{isUserLoggedIn ? <Profile /> : <Login />}</AppWrapper>,
+    },
+    {
+      path: '/contact-us',
       element: (
         <AppWrapper>
-          <Login />
+          <ContactUs />
         </AppWrapper>
       ),
     },
@@ -109,6 +117,14 @@ function App() {
       element: (
         <AppWrapper>
           <StaticPageWithMdRendering contentPath={termsOfServicesContentPath} />
+        </AppWrapper>
+      ),
+    },
+    {
+      path: '/about-us',
+      element: (
+        <AppWrapper>
+          <StaticPageWithMdRendering contentPath={aboutUs} />
         </AppWrapper>
       ),
     },

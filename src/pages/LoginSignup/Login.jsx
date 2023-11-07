@@ -57,6 +57,7 @@ function Login() {
   const [pNumber, setPNumber] = useState('');
   const [otp, setOtp] = useState('');
   const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   const handleSendOtp = async () => {
@@ -83,7 +84,7 @@ function Login() {
       localStorage.setItem('isLoggedIn', 'true');
 
       // console.log('before');
-      navigate('/profile');
+      navigate('/');
       // console.log('after');
     } catch (error) {
       console.log('inside catch');
@@ -113,6 +114,7 @@ function Login() {
             <label htmlFor="otp">Enter your OTP here:</label>
             <input id="otp" placeholder="OTP" value={otp} type="Password" onChange={(e) => setOtp(e.target.value)} />
             <button onClick={verifyOTP}>Verify</button>
+            {error && <p style={{ color: 'red' }}> Wrong OTP Entered!</p>}
           </>
         ) : (
           <button onClick={handleSendOtp}>Send OTP</button>

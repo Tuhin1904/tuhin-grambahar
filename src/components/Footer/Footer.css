@@ -1,0 +1,11 @@
+.contactButton {
+  background-color: #7ab35b;
+  padding: 5px 40px;
+  border-radius: 20px;
+}
+.contactButton:hover {
+  background-color: #58ae33;
+}
+.contactButton:active {
+  background-color: #7ab35b;
+}

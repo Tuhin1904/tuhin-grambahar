@@ -28,7 +28,9 @@ function NavBar() {
         {/* this section contains all the navigation links */}
         <div className="nav-menu">
           <div className="nav-item">Products</div>
-          <div className="nav-item">About US</div>
+          <Link to="/about-us">
+            <div className="nav-item">About US</div>
+          </Link>
           <div className="nav-item">Rewards</div>
           <div className="nav-item">Feedback</div>
           <div className="nav-item">Career</div>

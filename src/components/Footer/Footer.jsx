@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Footer.css';
 
 function Footer({ pb = '' }) {
   return (
@@ -37,9 +38,11 @@ function Footer({ pb = '' }) {
         </div>
         <div className="footer-col">
           <p className="mb-1 text-lg font-bold text-primary">CONTACT DETAILS</p>
+          <Link to="/contact-us">
+            <button className="contactButton">Contact Us</button>
+          </Link>
           <ol className="footer-list">
-            <li className="mb-1">Privacy Policy</li>
-            <li className="mb-1">Refund Policy</li>
+            <li className="mb-1">icons</li>
           </ol>
         </div>
 
