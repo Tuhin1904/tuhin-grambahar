@@ -74,6 +74,7 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
           {/* second part for product buying options */}
           <div className="product-buying-options">
             <h2 className="product-title">{product?.name}</h2>
+            <p className="-mb-1 text-sm">{product?.short_description}</p>
             <p className="prod-desc">{product?.subtitle}</p>
 
             <p className="product-price">
@@ -138,6 +139,7 @@ function HomePageProduct({ products, product, onChangeProductHandler }) {
         <HomeProductSwiper />
         <div className="sm-product-buying-options">
           <div className="sm-product-heading">{product?.name}</div>
+          <p className="text-sm">{product?.short_description}</p>
           <div className="sm-prod_desc">{product?.subtitle}</div>
           <p className="product-price">
             <span id="offer-price">

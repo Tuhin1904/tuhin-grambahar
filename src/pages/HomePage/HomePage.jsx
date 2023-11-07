@@ -4,18 +4,15 @@ import './HomePage.css';
 import HomeProduct from '../../components/HomeProduct/HomeProduct';
 import HeroBottom from '../../components/HeroSectionBottom/HeroBottom';
 import FAQ from '../../components/FAQ/FAQ';
-
 import CustomSwiper from '../../components/CustomSwiper/CustomSwiper';
-import HomeProductDescription from '../../components/HomeProdDescription/HomeProductDescription';
 import AllReviews from '../../components/Review/AllReviews';
 import SecondaryBottomNavbar from '../../components/SecondaryBottomNavBar/SecondaryBottomNavbar';
 
-function HomePage() {
+function HomePage({ productDescription }) {
   return (
     <>
       <CustomSwiper />
       <HomeProduct />
-      <HomeProductDescription />
       <HeroBottom />
       <div className="home-page-container">
         <div className="grambahar-product-story-container">
@@ -43,7 +40,7 @@ function HomePage() {
       </div>
       <FAQ />
       <AllReviews />
-      <SecondaryBottomNavbar/>
+      <SecondaryBottomNavbar />
       {/* <Footer />
       <BottomNavBar /> */}
     </>

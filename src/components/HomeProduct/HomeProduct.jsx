@@ -5,6 +5,7 @@ import './HomeProduct.css';
 import { useQuery } from 'react-query';
 import { getBestSellerProduct } from '../../services/product.service';
 import HomePageProduct from './HomePageProduct';
+import HomeProductDescription from '../HomeProdDescription/HomeProductDescription';
 
 function HomeProduct() {
   const [selectedProduct, setSelectedProduct] = useState(0);
@@ -15,11 +16,14 @@ function HomeProduct() {
   };
 
   return (
-    <HomePageProduct
-      products={data || []}
-      product={data?.[selectedProduct]}
-      onChangeProductHandler={onChangeProductHandler}
-    />
+    <>
+      <HomePageProduct
+        products={data || []}
+        product={data?.[selectedProduct]}
+        onChangeProductHandler={onChangeProductHandler}
+      />
+      <HomeProductDescription productDescription={data?.[selectedProduct]?.description} />
+    </>
   );
 }
 
