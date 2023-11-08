@@ -9,3 +9,12 @@
 .contactButton:active {
   background-color: #7ab35b;
 }
+.container{
+  display: flex;
+}
+.rightfooter{
+  display: flex;
+}
+.footer-col{
+  margin-right: 5rem;
+}

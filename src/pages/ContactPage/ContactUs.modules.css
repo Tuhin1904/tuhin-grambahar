@@ -1,21 +1,16 @@
-.contactBody{
-  min-height: 50vh;
-  display: flex;
-  flex-direction: row;
-  
-}
-.leftContainer{
-  flex:0.5;
-  padding:2rem;
-}
 
-  .container {
-    margin-top: 50px;
-    padding: 10px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+.container {
+  padding:1rem;
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
   }
+  .leftContainer{
+      flex:1;
+  }
+  .rightContainer{
+  }
+  
   .label {
     color: rgb(146, 147, 149);
     font-family: 'Rubik', sans-serif;
@@ -25,7 +20,7 @@
   }
   input[type='text'] {
     outline: none;
-    border-bottom: 1px solid rgb(146, 147, 149);
+    /* border-bottom: 1px solid rgb(146, 147, 149); */
     width: 100%;
   }
   input[type='text']:active {
@@ -34,8 +29,9 @@
   .textField {
     display: block;
     width: 100%;
-    margin-bottom: 5px !important;
+    /* margin-bottom: 5px !important; */
     color: black;
+    border-radius: 5px; 
   }
   .button {
     font-family: 'Rubik', sans-serif;
@@ -64,6 +60,7 @@
   display: flex; /* Display children elements in a row */
   justify-content: space-between; /* Space elements evenly within the row */
   margin-bottom: 10px; /* Adjust the margin between rows as needed */
+  margin-right: 2rem;
 }
 
   
