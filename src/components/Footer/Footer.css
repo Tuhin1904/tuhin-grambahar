@@ -17,4 +17,5 @@
 }
 .footer-col{
   margin-right: 5rem;
+  flex:0.3;
 }
