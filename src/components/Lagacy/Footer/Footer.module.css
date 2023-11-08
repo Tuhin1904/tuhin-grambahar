@@ -1,0 +1,23 @@
+.footerStyle {
+  .contactButton {
+    background-color: #7ab35b;
+    padding: 5px 40px;
+    border-radius: 20px;
+  }
+  .contactButton:hover {
+    background-color: #58ae33;
+  }
+  .contactButton:active {
+    background-color: #7ab35b;
+  }
+  .container {
+    display: flex;
+  }
+  .rightfooter {
+    display: flex;
+  }
+  .footer-col {
+    margin-right: 5rem;
+    flex: 0.3;
+  }
+}
