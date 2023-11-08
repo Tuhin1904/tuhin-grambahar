@@ -9,13 +9,22 @@
 .contactButton:active {
   background-color: #7ab35b;
 }
-.container{
+.container {
   display: flex;
+  width: 100vw;
 }
-.rightfooter{
+.rightfooter {
   display: flex;
+  width: 70vw;
 }
-.footer-col{
+.footer-col {
   margin-right: 5rem;
-  flex:0.3;
+  /* width: 10rem; */
+}
+.leftfooter {
+  width: 30vw;
+  margin-left: 2rem;
+}
+.inputButton {
+  alignitems: center;
 }

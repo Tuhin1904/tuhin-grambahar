@@ -106,7 +106,7 @@ function Profile() {
   };
 
   return (
-    <div className="container px-4 pt-10 mx-auto">
+    <div className="container px-4 pt-10 mx-auto" style={{ flexDirection: 'column' }}>
       <h1 className="mb-5 text-xl font-bold">My Account</h1>
 
       <UserDetailsSection classes={classes} userDetails={userDetails} />
