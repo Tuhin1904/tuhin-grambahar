@@ -4,6 +4,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { forwardRef, useEffect, useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import InitialOrderScreen from './InitialOrderScreen';
 import { getCart, setCart } from '@/helpers/localStorage.helper';
 import AuthScreen from './AuthScreen';
@@ -33,6 +34,7 @@ function OderProcessingDialog({ open, handleClose }) {
   const [quantity, setQuantity] = useState(1);
   const [orderScreen, setOrderScreen] = useState(ORDER_SCREEN_CONFIGS.initialScreen.name);
   const [error, setError] = useState('');
+  const isMobile = useMediaQuery('(max-width:639px)');
 
   const goToAuthSection = () => {
     setCart({ product, quantity });
@@ -73,7 +75,7 @@ function OderProcessingDialog({ open, handleClose }) {
   if (!open) return null;
 
   return (
-    <Dialog open={open} TransitionComponent={Transition} keepMounted maxWidth="sm" fullWidth>
+    <Dialog open={open} TransitionComponent={Transition} keepMounted maxWidth="sm" fullWidth fullScreen={isMobile}>
       <DialogTitle>
         <button type="button" className="mr-3 text-secondary-black" onClick={onCLickBackHandler}>
           <ArrowBackIcon sx={{ fontSize: '20px' }} />
