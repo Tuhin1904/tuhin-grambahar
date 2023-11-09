@@ -7,6 +7,18 @@ import Rating from './Rating';
 import { getAbsImageUrl } from '@/services';
 import OderProcessingDialog from './OderProcessingDialog';
 
+function PricingSection({ product }) {
+  const discount = Math.round(((Number(product.mrp) - Number(product.sellingPrice)) / Number(product.mrp)) * 100);
+
+  return (
+    <div className="mt-3">
+      <span className="mr-3 text-2xl font-bold">{getPriceWithCurrencySymbol(product.sellingPrice)}</span>
+      <span className="ml-2 line-through text-secondary-black">{getPriceWithCurrencySymbol(product.mrp)}</span>
+      {discount > 0 && <span className="ml-3 font-bold text-secondary">{discount}% off</span>}
+    </div>
+  );
+}
+
 function ProductDetails({ product, products, onChangeProductHandler }) {
   const [mainImage, setMainImage] = useState(product?.images?.[0]);
   const [quantity, setQuantity] = useState(1);
@@ -17,7 +29,10 @@ function ProductDetails({ product, products, onChangeProductHandler }) {
       <div className="container px-4 pt-5 mx-auto text-primary-black">
         <div className="grid grid-cols-1 gap-x-12 gap-y-14 sm:grid-cols-2">
           <div className="">
-            <div>
+            <div className="relative">
+              <span className="absolute right-0 px-3 font-medium text-white py-0.5 text-sm rounded-l-full top-3 bg-primary">
+                100% Natural
+              </span>
               <Image
                 src={getAbsImageUrl(mainImage)}
                 alt={product.name}
@@ -46,10 +61,7 @@ function ProductDetails({ product, products, onChangeProductHandler }) {
             <div className="mt-2">
               <Rating rating={product.rating} totalRating={product.totalRating} />
             </div>
-            <div className="mt-3">
-              <span className="mr-3 text-2xl font-bold">{getPriceWithCurrencySymbol(product.sellingPrice)}</span>
-              <span className="ml-2 line-through text-secondary-black">{getPriceWithCurrencySymbol(product.mrp)}</span>
-            </div>
+            <PricingSection product={product} />
             <div className="mt-4 mb-2 font-medium">Choose Product Variant:</div>
             <div className="grid items-center grid-cols-2 sm:flex">
               {products.map((productVariant, index) => (
