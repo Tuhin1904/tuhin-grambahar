@@ -1,6 +1,6 @@
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import { getPriceWithCurrencySymbol } from '@/helpers/product.helper';
-import OrderProductDetails from './OrtderProductDetials';
+import OrderProductDetails from './OrderProductDetails';
 import FullWithPrimaryButton from './FullWithPrimaryButton';
 
 function InitialOrderScreen({ product, quantity, setQuantity, continueHandler }) {

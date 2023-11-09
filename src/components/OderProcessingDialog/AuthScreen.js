@@ -5,7 +5,7 @@ import { sendLoginOtp, verifyLoginOtp } from '@/services/auth.service';
 import ErrorAlert from './ErrorAlert';
 import { getMyProfile, updateMyPersonalInfo } from '@/services/account.services';
 import { getLocalStorageUser, setLocalStorageUser } from '@/helpers/localStorage.helper';
-import OrderProductDetails from './OrtderProductDetials';
+import OrderProductDetails from './OrderProductDetails';
 
 function AuthScreen({ product, quantity, continueHandler }) {
   const [user, setUser] = useState(null);

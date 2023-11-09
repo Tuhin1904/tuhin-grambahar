@@ -9,6 +9,8 @@ import InitialOrderScreen from './InitialOrderScreen';
 import { getCart, setCart } from '@/helpers/localStorage.helper';
 import AuthScreen from './AuthScreen';
 import ErrorAlert from './ErrorAlert';
+import AddressScreen from './AddressScreen';
+import { getMyAddresses } from '@/services/account.services';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -34,6 +36,8 @@ function OderProcessingDialog({ open, handleClose }) {
   const [quantity, setQuantity] = useState(1);
   const [orderScreen, setOrderScreen] = useState(ORDER_SCREEN_CONFIGS.initialScreen.name);
   const [error, setError] = useState('');
+  const [userAddress, setUserAddress] = useState([]);
+
   const isMobile = useMediaQuery('(max-width:639px)');
 
   const goToAuthSection = () => {
@@ -45,6 +49,9 @@ function OderProcessingDialog({ open, handleClose }) {
     setError(() => '');
     try {
       await setCart({ product, quantity });
+      const addresses = await getMyAddresses();
+      setUserAddress(() => addresses);
+
       setOrderScreen(ORDER_SCREEN_CONFIGS.addressScreen.name);
     } catch (err) {
       console.error('📢[index.js]: err: ', err);
@@ -95,6 +102,17 @@ function OderProcessingDialog({ open, handleClose }) {
         {product && orderScreen === ORDER_SCREEN_CONFIGS.authScreen.name && (
           <AuthScreen product={product} quantity={quantity} continueHandler={goToAddressSelectionScreen} />
         )}
+
+        {product && orderScreen === ORDER_SCREEN_CONFIGS.addressScreen.name && (
+          <AddressScreen
+            product={product}
+            quantity={quantity}
+            userAddress={userAddress}
+            setUserAddress={setUserAddress}
+            continueHandler={goToAddressSelectionScreen}
+          />
+        )}
+
         <ErrorAlert error={error} />
       </DialogContent>
     </Dialog>
