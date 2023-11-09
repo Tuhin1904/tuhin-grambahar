@@ -8,9 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#7ab35b',
         secondary: '#feb926',
+        'secondary-black': '#121212BF',
         white2: '#f2f2f2',
+        primary: '#7ab35b',
+        'primary-black': '#121212',
       },
       spacing: {
         18: '4.5rem',

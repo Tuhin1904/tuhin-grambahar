@@ -2,7 +2,7 @@ import React from 'react';
 import './HomePage.css';
 
 import HomeProduct from '../../components/Lagacy/HomeProduct/HomeProduct';
-import HeroBottom from '../../components/Lagacy/HeroSectionBottom/HeroBottom';
+import HeroBottom from '../../components/Lagacy/HomePageBanner';
 import FAQ from '../../components/Lagacy/FAQ/FAQ';
 import CustomSwiper from '../../components/Lagacy/CustomSwiper/CustomSwiper';
 import AllReviews from '../../components/Lagacy/Review/AllReviews';
