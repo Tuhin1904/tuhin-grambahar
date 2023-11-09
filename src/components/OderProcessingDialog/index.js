@@ -42,6 +42,10 @@ function OderProcessingDialog({ open, handleClose, title = '' }) {
   }, [open]);
 
   const onCLickBackHandler = () => {
+    setCart({
+      product,
+      quantity,
+    });
     if (orderScreen === ORDER_SCREEN_CONFIGS.authScreen.name) {
       setOrderScreen(ORDER_SCREEN_CONFIGS.initialScreen.name);
     } else {
