@@ -7,6 +7,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import InitialOrderScreen from './InitialOrderScreen';
 import { getCart, setCart } from '@/helpers/localStorage.helper';
 import AuthScreen from './AuthScreen';
+import ErrorAlert from './ErrorAlert';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -21,15 +22,32 @@ const ORDER_SCREEN_CONFIGS = {
     name: 'authScreen',
     title: 'Your Cart | User Details',
   },
+  addressScreen: {
+    name: 'addressScreen',
+    title: 'Checkout | Address',
+  },
 };
+
 function OderProcessingDialog({ open, handleClose }) {
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [orderScreen, setOrderScreen] = useState(ORDER_SCREEN_CONFIGS.initialScreen.name);
+  const [error, setError] = useState('');
 
   const goToAuthSection = () => {
     setCart({ product, quantity });
     setOrderScreen(ORDER_SCREEN_CONFIGS.authScreen.name);
+  };
+
+  const goToAddressSelectionScreen = async () => {
+    setError(() => '');
+    try {
+      await setCart({ product, quantity });
+      setOrderScreen(ORDER_SCREEN_CONFIGS.addressScreen.name);
+    } catch (err) {
+      console.error('📢[index.js]: err: ', err);
+      setError(err?.response?.data?.error || err?.message || 'Error at updating cart');
+    }
   };
 
   useEffect(() => {
@@ -73,8 +91,9 @@ function OderProcessingDialog({ open, handleClose }) {
           />
         )}
         {product && orderScreen === ORDER_SCREEN_CONFIGS.authScreen.name && (
-          <AuthScreen product={product} quantity={quantity} continueHandler={goToAuthSection} />
+          <AuthScreen product={product} quantity={quantity} continueHandler={goToAddressSelectionScreen} />
         )}
+        <ErrorAlert error={error} />
       </DialogContent>
     </Dialog>
   );

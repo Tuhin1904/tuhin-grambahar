@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import FullWithPrimaryButton from './FullWithPrimaryButton';
 import { sendLoginOtp, verifyLoginOtp } from '@/services/auth.service';
 import ErrorAlert from './ErrorAlert';
-import { getMyProfile, updateMyAddress, updateMyPersonalInfo } from '@/services/account.services';
+import { getMyProfile, updateMyPersonalInfo } from '@/services/account.services';
 import { getLocalStorageUser, setLocalStorageUser } from '@/helpers/localStorage.helper';
 import OrderProductDetails from './OrtderProductDetials';
 
@@ -54,7 +54,7 @@ function AuthScreen({ product, quantity, continueHandler }) {
     setError('');
     try {
       await updateMyPersonalInfo({ email: userEmail, name: userName });
-      continueHandler();
+      await continueHandler();
     } catch (err) {
       console.error('📢[AuthScreen.js]: err: ', err);
       setError(err?.response?.data?.error || err?.message || 'Error at sending otp');
