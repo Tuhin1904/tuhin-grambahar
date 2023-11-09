@@ -6,15 +6,50 @@ import { getPriceWithCurrencySymbol } from '@/helpers/product.helper';
 import Rating from './Rating';
 import { getAbsImageUrl } from '@/services';
 import OderProcessingDialog from './OderProcessingDialog';
+import { setCart } from '@/helpers/localStorage.helper';
 
-function PricingSection({ product }) {
+export function PricingSection({ product, pricingTextSizeClass = 'text-2xl', className = 'mt-3' }) {
   const discount = Math.round(((Number(product.mrp) - Number(product.sellingPrice)) / Number(product.mrp)) * 100);
 
   return (
-    <div className="mt-3">
-      <span className="mr-3 text-2xl font-bold">{getPriceWithCurrencySymbol(product.sellingPrice)}</span>
+    <div className={className}>
+      <span className={`mr-3 font-bold ${pricingTextSizeClass}`}>
+        {getPriceWithCurrencySymbol(product.sellingPrice)}
+      </span>
       <span className="ml-2 line-through text-secondary-black">{getPriceWithCurrencySymbol(product.mrp)}</span>
       {discount > 0 && <span className="ml-3 font-bold text-secondary">{discount}% off</span>}
+    </div>
+  );
+}
+
+export function ProductQuantity({
+  quantity,
+  inCreaseQuantityHandler,
+  decreaseQuantityHandler,
+  className = '',
+  readOnly = false,
+}) {
+  return (
+    <div className={`flex w-full text-xl border-2 rounded-full sm:w-48 border-primary ${className}`}>
+      <button
+        className="w-16 text-white rounded-l-full sm:w-14 bg-primary disabled:opacity-80 disabled:cursor-default"
+        type="button"
+        disabled={readOnly || quantity < 2}
+        onClick={decreaseQuantityHandler}
+      >
+        <RemoveIcon />
+      </button>
+      <div className="flex-grow py-0.5 mx-5 font-bold text-center text-primary disabled:cursor-default disabled:opacity-80">
+        {quantity}
+      </div>
+      <button
+        className="w-16 text-white rounded-r-full sm:w-14 bg-primary"
+        type="button"
+        disabled={readOnly}
+        onClick={inCreaseQuantityHandler}
+      >
+        <AddIcon />
+      </button>
     </div>
   );
 }
@@ -23,6 +58,11 @@ function ProductDetails({ product, products, onChangeProductHandler }) {
   const [mainImage, setMainImage] = useState(product?.images?.[0]);
   const [quantity, setQuantity] = useState(1);
   const [processCheckout, setProcessCheckout] = useState(false);
+
+  const onClickBuyNowHandler = () => {
+    setCart({ product, quantity });
+    setProcessCheckout(true);
+  };
 
   return (
     <>
@@ -78,28 +118,15 @@ function ProductDetails({ product, products, onChangeProductHandler }) {
               ))}
             </div>
             <div className="mt-6 mb-2 font-medium">Quantity:</div>
-            <div className="flex w-full text-xl border-2 rounded-full sm:w-48 border-primary">
-              <button
-                className="w-16 text-white rounded-l-full sm:w-14 bg-primary disabled:opacity-80"
-                type="button"
-                disabled={quantity < 2}
-                onClick={() => setQuantity((prevQuantity) => prevQuantity - 1)}
-              >
-                <RemoveIcon />
-              </button>
-              <div className="flex-grow py-1 mx-5 font-bold text-center text-primary">{quantity}</div>
-              <button
-                className="w-16 text-white rounded-r-full sm:w-14 bg-primary"
-                type="button"
-                onClick={() => setQuantity((prevQuantity) => prevQuantity + 1)}
-              >
-                <AddIcon />
-              </button>
-            </div>
+            <ProductQuantity
+              quantity={quantity}
+              inCreaseQuantityHandler={() => setQuantity((prevQuantity) => prevQuantity + 1)}
+              decreaseQuantityHandler={() => setQuantity((prevQuantity) => prevQuantity - 1)}
+            />
             <div className="mt-8 sm:mt-6">
               <button
                 type="button"
-                onClick={() => setProcessCheckout(true)}
+                onClick={onClickBuyNowHandler}
                 className="w-full px-16 py-2 font-semibold text-white rounded-full sm:w-auto bg-primary border-primary"
               >
                 Buy Now
