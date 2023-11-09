@@ -1,6 +1,7 @@
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import { getPriceWithCurrencySymbol } from '@/helpers/product.helper';
 import OrderProductDetails from './OrtderProductDetials';
+import FullWithPrimaryButton from './FullWithPrimaryButton';
 
 function InitialOrderScreen({ product, quantity, setQuantity, continueHandler }) {
   return (
@@ -26,13 +27,9 @@ function InitialOrderScreen({ product, quantity, setQuantity, continueHandler })
       </div>
 
       <div className="mt-6">
-        <button
-          onClick={continueHandler}
-          className="w-full py-2 text-lg font-bold text-center text-white rounded-full bg-primary"
-          type="button"
-        >
+        <FullWithPrimaryButton onClick={continueHandler} className="font-bold">
           Process to Checkout <ShoppingCartCheckoutIcon sx={{ fontSize: '24px', marginLeft: '8px' }} />
-        </button>
+        </FullWithPrimaryButton>
       </div>
     </>
   );

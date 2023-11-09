@@ -1,58 +1,12 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
 import { getPriceWithCurrencySymbol } from '@/helpers/product.helper';
 import Rating from './Rating';
 import { getAbsImageUrl } from '@/services';
 import OderProcessingDialog from './OderProcessingDialog';
 import { setCart } from '@/helpers/localStorage.helper';
-
-export function PricingSection({ product, pricingTextSizeClass = 'text-2xl', className = 'mt-3' }) {
-  const discount = Math.round(((Number(product.mrp) - Number(product.sellingPrice)) / Number(product.mrp)) * 100);
-
-  return (
-    <div className={className}>
-      <span className={`mr-3 font-bold ${pricingTextSizeClass}`}>
-        {getPriceWithCurrencySymbol(product.sellingPrice)}
-      </span>
-      <span className="ml-2 line-through text-secondary-black">{getPriceWithCurrencySymbol(product.mrp)}</span>
-      {discount > 0 && <span className="ml-3 font-bold text-secondary">{discount}% off</span>}
-    </div>
-  );
-}
-
-export function ProductQuantity({
-  quantity,
-  inCreaseQuantityHandler,
-  decreaseQuantityHandler,
-  className = '',
-  readOnly = false,
-}) {
-  return (
-    <div className={`flex w-full text-xl border-2 rounded-full sm:w-48 border-primary ${className}`}>
-      <button
-        className="w-16 text-white rounded-l-full sm:w-14 bg-primary disabled:opacity-80 disabled:cursor-default"
-        type="button"
-        disabled={readOnly || quantity < 2}
-        onClick={decreaseQuantityHandler}
-      >
-        <RemoveIcon />
-      </button>
-      <div className="flex-grow py-0.5 mx-5 font-bold text-center text-primary disabled:cursor-default disabled:opacity-80">
-        {quantity}
-      </div>
-      <button
-        className="w-16 text-white rounded-r-full sm:w-14 bg-primary"
-        type="button"
-        disabled={readOnly}
-        onClick={inCreaseQuantityHandler}
-      >
-        <AddIcon />
-      </button>
-    </div>
-  );
-}
+import PricingSection from './PricingSection';
+import ProductQuantity from './ProductQuantity';
 
 function ProductDetails({ product, products, onChangeProductHandler }) {
   const [mainImage, setMainImage] = useState(product?.images?.[0]);

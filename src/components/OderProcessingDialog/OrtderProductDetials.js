@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import { getAbsImageUrl } from '@/services';
-import { PricingSection, ProductQuantity } from '../ProductDetails';
 import { getPriceWithCurrencySymbol } from '@/helpers/product.helper';
+import PricingSection from '../PricingSection';
+import ProductQuantity from '../ProductQuantity';
 
-function OrderProductDetails({ product, quantity, setQuantity }) {
+function OrderProductDetails({ product, quantity, setQuantity, readOnly = false }) {
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-x-8 text-primary-black">
@@ -23,6 +24,7 @@ function OrderProductDetails({ product, quantity, setQuantity }) {
           <div className="grid items-center grid-cols-2 mt-3">
             <ProductQuantity
               quantity={quantity}
+              readOnly={readOnly}
               inCreaseQuantityHandler={() => setQuantity((qty) => qty + 1)}
               decreaseQuantityHandler={() => setQuantity((qty) => qty - 1)}
             />

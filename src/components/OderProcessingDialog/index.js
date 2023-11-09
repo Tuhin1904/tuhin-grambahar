@@ -1,6 +1,4 @@
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
@@ -8,6 +6,7 @@ import { forwardRef, useEffect, useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import InitialOrderScreen from './InitialOrderScreen';
 import { getCart, setCart } from '@/helpers/localStorage.helper';
+import AuthScreen from './AuthScreen';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -23,7 +22,7 @@ const ORDER_SCREEN_CONFIGS = {
     title: 'Your Cart | User Details',
   },
 };
-function OderProcessingDialog({ open, handleClose, title = '' }) {
+function OderProcessingDialog({ open, handleClose }) {
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [orderScreen, setOrderScreen] = useState(ORDER_SCREEN_CONFIGS.initialScreen.name);
@@ -72,6 +71,9 @@ function OderProcessingDialog({ open, handleClose, title = '' }) {
             setQuantity={setQuantity}
             continueHandler={goToAuthSection}
           />
+        )}
+        {product && orderScreen === ORDER_SCREEN_CONFIGS.authScreen.name && (
+          <AuthScreen product={product} quantity={quantity} continueHandler={goToAuthSection} />
         )}
       </DialogContent>
     </Dialog>
