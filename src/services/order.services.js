@@ -12,11 +12,13 @@ export const getMyOrderById = async (orderId) => {
   return res.data;
 };
 
-export const createMyOrder = async ({ cartId, addressId }) => {
-  const res = await axios.patch(
-    `${SERVER_BASE_URL}user/account/cart`,
+export const createMyOrder = async ({ cartId, addressId, paymentMethod }) => {
+  const res = await axios.post(
+    `${SERVER_BASE_URL}user/account/me/order`,
     {
-      products,
+      address_id: addressId,
+      payment_method: paymentMethod || 'prepaid',
+      cart_id: cartId,
     },
     getAxiosHeaderWithAccessToken(),
   );

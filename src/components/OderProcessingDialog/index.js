@@ -12,6 +12,8 @@ import ErrorAlert from './ErrorAlert';
 import AddressScreen from './AddressScreen';
 import { getMyAddresses } from '@/services/account.services';
 import OrderSummaryScreen from './OrderSummaryScreen';
+import { updateMyCart } from '@/services/cart.servies';
+import { createMyOrder } from '@/services/order.services';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -43,13 +45,21 @@ function OderProcessingDialog({ open, handleClose }) {
   const [error, setError] = useState('');
   const [userAddress, setUserAddress] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
-  const [isPreOrder, setIsPreOrder] = useState(true);
+  const [isPrepaidOrder, setIsPrepaidOrder] = useState(true);
+  const [cartId, setCartId] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const isMobile = useMediaQuery('(max-width:639px)');
 
-  const goToAuthSection = () => {
-    setCart({ product, quantity });
-    setOrderScreen(ORDER_SCREEN_CONFIGS.authScreen.name);
+  const goToAuthSection = async () => {
+    setError(() => '');
+    try {
+      await updateMyCart([{ product: Number(product.id), quantity }]);
+      setOrderScreen(ORDER_SCREEN_CONFIGS.authScreen.name);
+    } catch (err) {
+      console.error('📢[index.js]: err: ', err);
+      setError(err?.response?.data?.error || err?.message || 'Error at updating cart');
+    }
   };
 
   const goToAddressSelectionScreen = async () => {
@@ -86,7 +96,39 @@ function OderProcessingDialog({ open, handleClose }) {
     }
   };
 
-  const processOrderAndPaymentHandler = async () => {};
+  const processOrderAndPaymentHandler = async () => {
+    setError(() => '');
+    setLoading(true);
+    try {
+      const userCart = await updateMyCart([{ product: Number(product.id), quantity }]);
+      const orderRes = await createMyOrder({
+        cartId: userCart.id,
+        addressId: selectedAddress,
+        paymentMethod: isPrepaidOrder ? 'prepaid' : 'cod',
+      });
+      console.log('📢[index.js:105]: orderRes: ', orderRes);
+      console.log('📢[index.js:96]: userCart: ', userCart);
+    } catch (err) {
+      console.error('📢[index.js]: err: ', err);
+      setError(err?.response?.data?.error || err?.message || 'Error at updating cart');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const disableBackButton = () => {
+    const backButton = document.querySelector('[data-id="cart-process-back-button"]');
+    if (backButton) {
+      backButton.disabled = true;
+    }
+  };
+
+  const enableBackButton = () => {
+    const backButton = document.querySelector('[data-id="cart-process-back-button"]');
+    if (backButton) {
+      backButton.disabled = false;
+    }
+  };
 
   useEffect(() => {
     if (open) {
@@ -101,7 +143,12 @@ function OderProcessingDialog({ open, handleClose }) {
   return (
     <Dialog open={open} TransitionComponent={Transition} keepMounted maxWidth="sm" fullWidth fullScreen={isMobile}>
       <DialogTitle>
-        <button type="button" className="mr-3 text-secondary-black" onClick={onCLickBackHandler}>
+        <button
+          type="button"
+          className="mr-3 text-secondary-black"
+          data-id="cart-process-back-button"
+          onClick={onCLickBackHandler}
+        >
           <ArrowBackIcon sx={{ fontSize: '20px' }} />
         </button>
         {ORDER_SCREEN_CONFIGS[orderScreen].title}
@@ -114,10 +161,18 @@ function OderProcessingDialog({ open, handleClose }) {
             quantity={quantity}
             setQuantity={setQuantity}
             continueHandler={goToAuthSection}
+            disableBackButton={disableBackButton}
+            enableBackButton={enableBackButton}
           />
         )}
         {product && orderScreen === ORDER_SCREEN_CONFIGS.authScreen.name && (
-          <AuthScreen product={product} quantity={quantity} continueHandler={goToAddressSelectionScreen} />
+          <AuthScreen
+            product={product}
+            quantity={quantity}
+            continueHandler={goToAddressSelectionScreen}
+            disableBackButton={disableBackButton}
+            enableBackButton={enableBackButton}
+          />
         )}
 
         {product && orderScreen === ORDER_SCREEN_CONFIGS.addressScreen.name && (
@@ -129,6 +184,8 @@ function OderProcessingDialog({ open, handleClose }) {
             selectedAddress={selectedAddress}
             setSelectedAddress={setSelectedAddress}
             continueHandler={goToSummerySection}
+            disableBackButton={disableBackButton}
+            enableBackButton={enableBackButton}
           />
         )}
 
@@ -138,9 +195,11 @@ function OderProcessingDialog({ open, handleClose }) {
             quantity={quantity}
             selectedAddress={userAddress.find((address) => address.id === selectedAddress)}
             continueHandler={processOrderAndPaymentHandler}
-            isPreOrder={isPreOrder}
-            setIsPreOrder={setIsPreOrder}
+            isPrepaidOrder={isPrepaidOrder}
+            setIsPrepaidOrder={setIsPrepaidOrder}
             setQuantity={setQuantity}
+            disableBackButton={disableBackButton}
+            enableBackButton={enableBackButton}
           />
         )}
 

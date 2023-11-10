@@ -8,7 +8,7 @@ import { getMyProfile, updateMyPersonalInfo } from '@/services/account.services'
 import { getLocalStorageUser, setLocalStorageUser } from '@/helpers/localStorage.helper';
 import OrderProductDetails from './OrderProductDetails';
 
-function AuthScreen({ product, quantity, continueHandler }) {
+function AuthScreen({ product, quantity, continueHandler, disableBackButton, enableBackButton }) {
   const [user, setUser] = useState(null);
   const [error, setError] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -21,6 +21,7 @@ function AuthScreen({ product, quantity, continueHandler }) {
   const sendOtpHandler = async () => {
     setLoading(true);
     setError('');
+    disableBackButton();
     try {
       await sendLoginOtp(phoneNumber);
       setShowOtp(true);
@@ -29,12 +30,14 @@ function AuthScreen({ product, quantity, continueHandler }) {
       setError(err?.response?.data?.error || err?.message || 'Error at sending otp');
     } finally {
       setLoading(false);
+      enableBackButton();
     }
   };
 
   const verifyOtpHandler = async () => {
     setLoading(true);
     setError('');
+    disableBackButton();
     try {
       const res = await verifyLoginOtp(phoneNumber, otp);
       setLocalStorageUser(res);
@@ -47,12 +50,14 @@ function AuthScreen({ product, quantity, continueHandler }) {
       setError(err?.response?.data?.error || err?.message || 'Error at sending otp');
     } finally {
       setLoading(false);
+      enableBackButton();
     }
   };
 
   const saveUserDateHandler = async () => {
     setLoading(true);
     setError('');
+    disableBackButton();
     try {
       await updateMyPersonalInfo({ email: userEmail, name: userName });
       await continueHandler();
@@ -61,6 +66,7 @@ function AuthScreen({ product, quantity, continueHandler }) {
       setError(err?.response?.data?.error || err?.message || 'Error at sending otp');
     } finally {
       setLoading(false);
+      enableBackButton();
     }
   };
 
@@ -68,6 +74,7 @@ function AuthScreen({ product, quantity, continueHandler }) {
     const localUser = getLocalStorageUser();
     if (localUser?.auth) {
       setLoading(() => true);
+      disableBackButton();
       getMyProfile()
         .then((res) => {
           setUserName(() => res.name);
@@ -76,11 +83,13 @@ function AuthScreen({ product, quantity, continueHandler }) {
             continueHandler();
           }
           setLoading(() => false);
+          enableBackButton();
         })
         .catch((err) => {
           console.error('📢[AuthScreen.js]: err: ', err);
           setError(err?.response?.data?.error || err?.message || 'Error at getting user profile');
           setLoading(() => false);
+          enableBackButton();
         });
     }
 

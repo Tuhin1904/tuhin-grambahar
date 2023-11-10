@@ -11,9 +11,11 @@ function OrderSummaryScreen({
   quantity,
   selectedAddress,
   continueHandler,
-  isPreOrder,
-  setIsPreOrder,
+  isPrepaidOrder,
+  setIsPrepaidOrder,
   setQuantity,
+  disableBackButton,
+  enableBackButton,
 }) {
   return (
     <>
@@ -38,25 +40,25 @@ function OrderSummaryScreen({
         <div className="grid grid-cols-2 border-2 rounded-full border-primary">
           <button
             type="button"
-            onClick={() => setIsPreOrder(() => true)}
+            onClick={() => setIsPrepaidOrder(() => true)}
             className={`py-2 font-semibold text-center rounded-l-full ${
-              isPreOrder ? 'text-white bg-primary' : 'text-secondary-black'
+              isPrepaidOrder ? 'text-white bg-primary' : 'text-secondary-black'
             }`}
           >
             Online Payment (Prepaid)
           </button>
           <button
             type="button"
-            onClick={() => setIsPreOrder(() => false)}
+            onClick={() => setIsPrepaidOrder(() => false)}
             className={`py-2 font-semibold text-center rounded-r-full ${
-              isPreOrder ? 'text-secondary-black' : 'text-white bg-primary'
+              isPrepaidOrder ? 'text-secondary-black' : 'text-white bg-primary'
             }`}
           >
             Cash On Delivery (COD)
           </button>
         </div>
       </div>
-      {!isPreOrder && (
+      {!isPrepaidOrder && (
         <p className="mt-3 text-sm italic text-right">
           You can save {getPriceWithCurrencySymbol(DELIVERY_CHARGE)} by paying online
         </p>
@@ -66,7 +68,7 @@ function OrderSummaryScreen({
         product={product}
         quantity={quantity}
         showDeliveryCharge
-        deliveryCharge={isPreOrder ? 0 : DELIVERY_CHARGE}
+        deliveryCharge={isPrepaidOrder ? 0 : DELIVERY_CHARGE}
       />
 
       <div className="mt-8">

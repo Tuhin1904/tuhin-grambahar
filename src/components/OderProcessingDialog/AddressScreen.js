@@ -22,6 +22,8 @@ function AddressScreen({
   selectedAddress,
   setSelectedAddress,
   continueHandler,
+  disableBackButton,
+  enableBackButton,
 }) {
   const [editAddressId, setEditAddressId] = useState(null);
   const [deleteAddressId, setDeleteAddressId] = useState(null);
@@ -32,6 +34,8 @@ function AddressScreen({
   const onAddressUpdateHandler = async (address) => {
     setLoading(true);
     setError('');
+    disableBackButton();
+
     try {
       const response = await updateMyAddress({
         id: editAddressId,
@@ -72,12 +76,14 @@ function AddressScreen({
       setError(err?.response?.data?.error || err?.message || 'Error at updating address');
     } finally {
       setLoading(false);
+      enableBackButton();
     }
   };
 
   const onClickDeleteAddressHandler = async () => {
     setError('');
     setLoading(true);
+    disableBackButton();
     try {
       await deleteMyAddress(deleteAddressId);
       const newAddress = await getMyAddresses();
@@ -89,6 +95,7 @@ function AddressScreen({
       setError(err?.response?.data?.error || err?.message || 'Error at deleting address');
     } finally {
       setLoading(false);
+      enableBackButton();
     }
   };
 
@@ -99,6 +106,7 @@ function AddressScreen({
   const addNewAddressHandler = async (address) => {
     setError('');
     setLoading(true);
+    disableBackButton();
     try {
       const response = await addMyAddress({
         name: address.name,
@@ -121,6 +129,7 @@ function AddressScreen({
       setError(err?.response?.data?.error || err?.message || 'Error at adding new address');
     } finally {
       setLoading(false);
+      enableBackButton();
     }
   };
 
