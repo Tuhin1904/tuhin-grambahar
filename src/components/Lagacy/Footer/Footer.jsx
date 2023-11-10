@@ -12,7 +12,7 @@ function Footer({ pb = '' }) {
           </Link>
           <div className="officeBranch">
             <p>
-              <b>Our Store:</b>34/9, Pandit Kalimoy Ghatak Lane, Ranaghat, Nadia, West Bengal, 741201, India.
+              <b>Our Store:</b> Ranaghat, Nadia, WB, IN.
             </p>
           </div>
 

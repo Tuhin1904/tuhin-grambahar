@@ -1,5 +1,6 @@
 import TextField from '@mui/material/TextField';
 import { useEffect, useState } from 'react';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import FullWithPrimaryButton from './FullWithPrimaryButton';
 import { sendLoginOtp, verifyLoginOtp } from '@/services/auth.service';
 import ErrorAlert from './ErrorAlert';
@@ -69,9 +70,11 @@ function AuthScreen({ product, quantity, continueHandler }) {
       setLoading(() => true);
       getMyProfile()
         .then((res) => {
-          console.log('📢[AuthScreen.js:60]: res: ', res);
           setUserName(() => res.name);
           setUserEmail(() => res.email);
+          if (res.name && res.email) {
+            continueHandler();
+          }
           setLoading(() => false);
         })
         .catch((err) => {
@@ -122,6 +125,7 @@ function AuthScreen({ product, quantity, continueHandler }) {
           loading={loading}
         >
           Continue to Checkout
+          <ArrowForwardIcon sx={{ fontSize: '24px', marginLeft: '8px' }} />
         </FullWithPrimaryButton>
         <ErrorAlert error={error} />
       </>
