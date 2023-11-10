@@ -59,14 +59,6 @@ function OderProcessingDialog({ open, handleClose }) {
     }
   };
 
-  useEffect(() => {
-    if (open) {
-      const cart = getCart();
-      setProduct(cart?.product);
-      setQuantity(cart?.quantity);
-    }
-  }, [open]);
-
   const onCLickBackHandler = () => {
     setCart({
       product,
@@ -74,10 +66,20 @@ function OderProcessingDialog({ open, handleClose }) {
     });
     if (orderScreen === ORDER_SCREEN_CONFIGS.authScreen.name) {
       setOrderScreen(ORDER_SCREEN_CONFIGS.initialScreen.name);
+    } else if (orderScreen === ORDER_SCREEN_CONFIGS.addressScreen.name) {
+      setOrderScreen(ORDER_SCREEN_CONFIGS.initialScreen.name);
     } else {
       handleClose();
     }
   };
+
+  useEffect(() => {
+    if (open) {
+      const cart = getCart();
+      setProduct(cart?.product);
+      setQuantity(cart?.quantity);
+    }
+  }, [open]);
 
   if (!open) return null;
 
