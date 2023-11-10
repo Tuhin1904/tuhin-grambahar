@@ -2,30 +2,24 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import CheckIcon from '@mui/icons-material/Check';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Button from '@mui/material/Button';
 import ErrorAlert from './ErrorAlert';
-import { updateMyAddress } from '@/services/account.services';
+import { deleteMyAddress, getMyAddresses, updateMyAddress } from '@/services/account.services';
 import AddressModificationDialog from './AddressModificationDialog';
 import OrderProductDetails from './OrderProductDetails';
+import DeleteAddressDialog from './DeleteAddressDialog';
 
 function AddressScreen({ product, quantity, userAddress, setUserAddress }) {
-  console.log('📢[AddressScreen.js:4]: userAddress: ', userAddress);
-  const [openAddressEditingDialog, setOpenAddressEditingDialog] = useState(null);
+  const [editAddressId, setEditAddressId] = useState(null);
+  const [deleteAddressId, setDeleteAddressId] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [deleteAddressId, setDeleteAddressId] = useState('');
 
   const onAddressUpdateHandler = async (address) => {
     setLoading(true);
     setError('');
     try {
       const response = await updateMyAddress({
-        id: openAddressEditingDialog,
+        id: editAddressId,
         name: address.name,
         addressLine1: address.address_line_1,
         addressLine2: address.address_line_2,
@@ -39,7 +33,7 @@ function AddressScreen({ product, quantity, userAddress, setUserAddress }) {
 
       setUserAddress((prev) => {
         return prev.map((addr) => {
-          if (addr.id === openAddressEditingDialog) {
+          if (addr.id === editAddressId) {
             return {
               ...addr,
               address_line_1: response?.address_line_1 || '',
@@ -56,10 +50,28 @@ function AddressScreen({ product, quantity, userAddress, setUserAddress }) {
           return addr;
         });
       });
-      setOpenAddressEditingDialog(() => null);
+      setEditAddressId(() => null);
+      setDeleteAddressId(() => null);
     } catch (err) {
       console.error('📢[AddressScreen.js]: err: ', err);
       setError(err?.response?.data?.error || err?.message || 'Error at updating address');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const onClickDeleteAddressHandler = async () => {
+    setError('');
+    setLoading(true);
+    try {
+      await deleteMyAddress(deleteAddressId);
+      const newAddress = await getMyAddresses();
+      setUserAddress(() => newAddress);
+      setEditAddressId(() => null);
+      setDeleteAddressId(() => null);
+    } catch (err) {
+      console.error('📢[AddressScreen.js]: err: ', err);
+      setError(err?.response?.data?.error || err?.message || 'Error at deleting address');
     } finally {
       setLoading(false);
     }
@@ -80,7 +92,7 @@ function AddressScreen({ product, quantity, userAddress, setUserAddress }) {
                 <button
                   type="button"
                   className="text-secondary-black"
-                  onClick={() => setOpenAddressEditingDialog(() => address.id)}
+                  onClick={() => setEditAddressId(() => address.id)}
                 >
                   <EditIcon
                     sx={{
@@ -101,52 +113,36 @@ function AddressScreen({ product, quantity, userAddress, setUserAddress }) {
         </ul>
       )}
 
-      {openAddressEditingDialog && (
+      {editAddressId && (
         <AddressModificationDialog
-          open={openAddressEditingDialog}
+          open={editAddressId}
           title="Edit Address"
-          initialAddress={userAddress.find((address) => address.id === openAddressEditingDialog)}
+          initialAddress={userAddress.find((address) => address.id === editAddressId)}
           actionButtonLabel={
             <>
               <CheckIcon sx={{ mr: 1.5, fontSize: '22px' }} />
               Update Address
             </>
           }
-          onClickCLoseHandler={() => setOpenAddressEditingDialog(() => null)}
+          onClickCLoseHandler={() => setEditAddressId(() => null)}
           loading={loading}
           actionButtonHandler={onAddressUpdateHandler}
         >
           <div className="flex items-end justify-end my-3">
             <button
               type="button"
-              onClick={() => setDeleteAddressId(() => openAddressEditingDialog)}
+              onClick={() => setDeleteAddressId(() => editAddressId)}
               className="flex items-center text-sm font-medium text-red-500"
             >
               <DeleteIcon sx={{ fontSize: '20px', mr: 1 }} />
               Delete Address
             </button>
-
-            <Dialog
-              open={deleteAddressId}
-              onClose={() => setDeleteAddressId('')}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-            >
-              <DialogTitle id="alert-dialog-title">Delete Address</DialogTitle>
-              <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                  Are you sure you want to delete this address?
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button disabled={loading} color="inherit" onClick={() => setDeleteAddressId('')}>
-                  Cancel
-                </Button>
-                <Button disabled={loading} autoFocus color="error">
-                  Yes, Delete
-                </Button>
-              </DialogActions>
-            </Dialog>
+            <DeleteAddressDialog
+              deleteAddressId={deleteAddressId}
+              setDeleteAddressId={setDeleteAddressId}
+              loading={loading}
+              onClickDeleteAddressHandler={onClickDeleteAddressHandler}
+            />
           </div>
         </AddressModificationDialog>
       )}

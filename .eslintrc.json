@@ -30,6 +30,14 @@
     "import/no-extraneous-dependencies": "warn",
     "jsx-a11y/control-has-associated-label": "off",
     "import/prefer-default-export": "off",
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "error"
+        ]
+      }
+    ],
     "react/jsx-filename-extension": [
       1,
       {
