@@ -86,6 +86,8 @@ function OderProcessingDialog({ open, handleClose }) {
     }
   };
 
+  const processOrderAndPaymentHandler = async () => {};
+
   useEffect(() => {
     if (open) {
       const cart = getCart();
@@ -135,9 +137,10 @@ function OderProcessingDialog({ open, handleClose }) {
             product={product}
             quantity={quantity}
             selectedAddress={userAddress.find((address) => address.id === selectedAddress)}
-            continueHandler={goToSummerySection}
+            continueHandler={processOrderAndPaymentHandler}
             isPreOrder={isPreOrder}
             setIsPreOrder={setIsPreOrder}
+            setQuantity={setQuantity}
           />
         )}
 

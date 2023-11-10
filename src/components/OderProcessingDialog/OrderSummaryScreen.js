@@ -6,11 +6,19 @@ import FullWithPrimaryButton from './FullWithPrimaryButton';
 
 const DELIVERY_CHARGE = 40;
 
-function OrderSummaryScreen({ product, quantity, selectedAddress, continueHandler, isPreOrder, setIsPreOrder }) {
+function OrderSummaryScreen({
+  product,
+  quantity,
+  selectedAddress,
+  continueHandler,
+  isPreOrder,
+  setIsPreOrder,
+  setQuantity,
+}) {
   return (
     <>
       <div className="py-3 border-b shadow-sm mb-9 border-primary">
-        <OrderProductDetails product={product} quantity={quantity} readOnly />
+        <OrderProductDetails product={product} quantity={quantity} setQuantity={setQuantity} />
       </div>
       <div className="text-sm">
         <p className="mb-2 text-base font-semibold">Delivered To</p>
@@ -62,7 +70,7 @@ function OrderSummaryScreen({ product, quantity, selectedAddress, continueHandle
       />
 
       <div className="mt-8">
-        <FullWithPrimaryButton>
+        <FullWithPrimaryButton onClick={continueHandler}>
           Process Payment
           <ContactlessIcon sx={{ fontSize: '24px', marginLeft: '8px' }} />
         </FullWithPrimaryButton>
