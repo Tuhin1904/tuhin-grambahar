@@ -139,6 +139,7 @@ function AddressScreen({
         <OrderProductDetails product={product} quantity={quantity} readOnly />
       </div>
 
+      <p className="mb-2 font-semibold">Select Delivery Address</p>
       {userAddress?.length > 0 && (
         <ul className="text-sm text-primary-black">
           {userAddress.map((address) => (
