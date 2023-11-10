@@ -1,16 +1,28 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import CheckIcon from '@mui/icons-material/Check';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import AddIcon from '@mui/icons-material/Add';
+import HomeIcon from '@mui/icons-material/Home';
 import ErrorAlert from './ErrorAlert';
 import { addMyAddress, deleteMyAddress, getMyAddresses, updateMyAddress } from '@/services/account.services';
 import AddressModificationDialog from './AddressModificationDialog';
 import OrderProductDetails from './OrderProductDetails';
 import DeleteAddressDialog from './DeleteAddressDialog';
+import FullWithPrimaryButton from './FullWithPrimaryButton';
 
-function AddressScreen({ product, quantity, userAddress, setUserAddress }) {
+function AddressScreen({
+  product,
+  quantity,
+  userAddress,
+  setUserAddress,
+  selectedAddress,
+  setSelectedAddress,
+  continueHandler,
+}) {
   const [editAddressId, setEditAddressId] = useState(null);
   const [deleteAddressId, setDeleteAddressId] = useState(null);
   const [error, setError] = useState('');
@@ -121,7 +133,17 @@ function AddressScreen({ product, quantity, userAddress, setUserAddress }) {
       {userAddress?.length > 0 && (
         <ul className="text-sm text-primary-black">
           {userAddress.map((address) => (
-            <li key={address.id} className="pb-2 mb-2 border-b last:border-b-0 border-x-gray-800">
+            <li
+              onClick={() => {
+                setSelectedAddress(() => address.id);
+              }}
+              key={address.id}
+              className={`px-2 pb-2 py-1.5 duration-500 mb-1 mt-1 border ease-in-out border-b cursor-pointer hover:bg-opacity-5 hover:bg-primary  ${
+                address.id === selectedAddress
+                  ? 'border-primary bg-primary bg-opacity-10'
+                  : 'border-transparent border-b-gray-800 last:border-b-0'
+              }`}
+            >
               <div className="mb-0.5 flex">
                 <p className="flex-grow mr-3 font-medium">{address.name}</p>
                 <button
@@ -182,11 +204,11 @@ function AddressScreen({ product, quantity, userAddress, setUserAddress }) {
         </AddressModificationDialog>
       )}
 
-      <div className="flex items-center justify-center mt-6">
+      <div className="flex items-center justify-end mt-6">
         <button
           type="button"
           onClick={toggleAddNewAddress}
-          className="flex items-center px-6 py-1 text-sm font-medium text-white border-2 rounded-full bg-primary border-primary"
+          className="flex items-center px-4 py-1 text-sm font-semibold border-2 rounded-l-full text-primary border-primary"
         >
           <AddCircleIcon sx={{ mr: 1, fontSize: '19px' }} />
           Add Address
@@ -208,6 +230,16 @@ function AddressScreen({ product, quantity, userAddress, setUserAddress }) {
           actionButtonHandler={addNewAddressHandler}
         />
       )}
+
+      <div className="mt-8">
+        <FullWithPrimaryButton
+          onClick={continueHandler}
+          disabled={!userAddress.some((adds) => adds.id === selectedAddress)}
+        >
+          Delivered to this address <HomeIcon sx={{ fontSize: '24px', marginLeft: '8px' }} />
+        </FullWithPrimaryButton>
+      </div>
+
       <ErrorAlert error={error} />
     </>
   );

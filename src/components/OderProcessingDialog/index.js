@@ -11,6 +11,7 @@ import AuthScreen from './AuthScreen';
 import ErrorAlert from './ErrorAlert';
 import AddressScreen from './AddressScreen';
 import { getMyAddresses } from '@/services/account.services';
+import OrderSummaryScreen from './OrderSummaryScreen';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -29,6 +30,10 @@ const ORDER_SCREEN_CONFIGS = {
     name: 'addressScreen',
     title: 'Checkout | Address',
   },
+  orderSummeryScreen: {
+    name: 'orderSummeryScreen',
+    title: 'Checkout | Order Summary',
+  },
 };
 
 function OderProcessingDialog({ open, handleClose }) {
@@ -37,6 +42,8 @@ function OderProcessingDialog({ open, handleClose }) {
   const [orderScreen, setOrderScreen] = useState(ORDER_SCREEN_CONFIGS.initialScreen.name);
   const [error, setError] = useState('');
   const [userAddress, setUserAddress] = useState([]);
+  const [selectedAddress, setSelectedAddress] = useState(null);
+  const [isPreOrder, setIsPreOrder] = useState(true);
 
   const isMobile = useMediaQuery('(max-width:639px)');
 
@@ -59,6 +66,10 @@ function OderProcessingDialog({ open, handleClose }) {
     }
   };
 
+  const goToSummerySection = async () => {
+    setOrderScreen(ORDER_SCREEN_CONFIGS.orderSummeryScreen.name);
+  };
+
   const onCLickBackHandler = () => {
     setCart({
       product,
@@ -68,6 +79,8 @@ function OderProcessingDialog({ open, handleClose }) {
       setOrderScreen(ORDER_SCREEN_CONFIGS.initialScreen.name);
     } else if (orderScreen === ORDER_SCREEN_CONFIGS.addressScreen.name) {
       setOrderScreen(ORDER_SCREEN_CONFIGS.initialScreen.name);
+    } else if (orderScreen === ORDER_SCREEN_CONFIGS.orderSummeryScreen.name) {
+      setOrderScreen(ORDER_SCREEN_CONFIGS.addressScreen.name);
     } else {
       handleClose();
     }
@@ -111,7 +124,20 @@ function OderProcessingDialog({ open, handleClose }) {
             quantity={quantity}
             userAddress={userAddress}
             setUserAddress={setUserAddress}
-            continueHandler={goToAddressSelectionScreen}
+            selectedAddress={selectedAddress}
+            setSelectedAddress={setSelectedAddress}
+            continueHandler={goToSummerySection}
+          />
+        )}
+
+        {product && orderScreen === ORDER_SCREEN_CONFIGS.orderSummeryScreen.name && (
+          <OrderSummaryScreen
+            product={product}
+            quantity={quantity}
+            selectedAddress={userAddress.find((address) => address.id === selectedAddress)}
+            continueHandler={goToSummerySection}
+            isPreOrder={isPreOrder}
+            setIsPreOrder={setIsPreOrder}
           />
         )}
 
