@@ -77,7 +77,7 @@ function AddressModificationDialog({
           fullWidth
           label="Address Line 2"
           type="text"
-          // required
+          required
           variant="standard"
           placeholder="Locality"
           value={addressDetails.address_line_2}
@@ -177,7 +177,21 @@ function AddressModificationDialog({
         {children}
 
         <div className="mt-6">
-          <FullWithPrimaryButton loading={loading} onClick={() => actionButtonHandler(addressDetails)}>
+          <FullWithPrimaryButton
+            className="flex items-center justify-center"
+            loading={loading}
+            disabled={
+              addressDetails.name?.trim()?.length === 0 ||
+              addressDetails.address_line_1?.trim()?.length === 0 ||
+              addressDetails.address_line_2?.trim()?.length === 0 ||
+              addressDetails.phone_number?.trim()?.length === 0 ||
+              addressDetails.pin?.trim()?.length === 0 ||
+              addressDetails.landmark?.trim()?.length === 0 ||
+              addressDetails.state?.trim()?.length === 0 ||
+              addressDetails.district?.trim()?.length === 0
+            }
+            onClick={() => actionButtonHandler(addressDetails)}
+          >
             {actionButtonLabel}
           </FullWithPrimaryButton>
         </div>

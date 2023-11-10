@@ -2,8 +2,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import CheckIcon from '@mui/icons-material/Check';
 import DeleteIcon from '@mui/icons-material/Delete';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AddIcon from '@mui/icons-material/Add';
 import ErrorAlert from './ErrorAlert';
-import { deleteMyAddress, getMyAddresses, updateMyAddress } from '@/services/account.services';
+import { addMyAddress, deleteMyAddress, getMyAddresses, updateMyAddress } from '@/services/account.services';
 import AddressModificationDialog from './AddressModificationDialog';
 import OrderProductDetails from './OrderProductDetails';
 import DeleteAddressDialog from './DeleteAddressDialog';
@@ -13,6 +15,7 @@ function AddressScreen({ product, quantity, userAddress, setUserAddress }) {
   const [deleteAddressId, setDeleteAddressId] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [addNewAddress, setAddNewAddress] = useState(false);
 
   const onAddressUpdateHandler = async (address) => {
     setLoading(true);
@@ -72,6 +75,38 @@ function AddressScreen({ product, quantity, userAddress, setUserAddress }) {
     } catch (err) {
       console.error('📢[AddressScreen.js]: err: ', err);
       setError(err?.response?.data?.error || err?.message || 'Error at deleting address');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const toggleAddNewAddress = () => {
+    setAddNewAddress((prev) => !prev);
+  };
+
+  const addNewAddressHandler = async (address) => {
+    setError('');
+    setLoading(true);
+    try {
+      const response = await addMyAddress({
+        name: address.name,
+        addressLine1: address.address_line_1,
+        addressLine2: address.address_line_2,
+        phoneNumber: address.phone_number,
+        country: address.country,
+        state: address.state,
+        district: address.district,
+        pin: address.pin,
+        landmark: address.landmark,
+      });
+
+      setUserAddress((prev) => {
+        return [...prev, response];
+      });
+      setAddNewAddress(() => false);
+    } catch (err) {
+      console.error('📢[AddressScreen.js]: err: ', err);
+      setError(err?.response?.data?.error || err?.message || 'Error at adding new address');
     } finally {
       setLoading(false);
     }
@@ -147,6 +182,32 @@ function AddressScreen({ product, quantity, userAddress, setUserAddress }) {
         </AddressModificationDialog>
       )}
 
+      <div className="flex items-center justify-center mt-6">
+        <button
+          type="button"
+          onClick={toggleAddNewAddress}
+          className="flex items-center px-6 py-1 text-sm font-medium text-white border-2 rounded-full bg-primary border-primary"
+        >
+          <AddCircleIcon sx={{ mr: 1, fontSize: '19px' }} />
+          Add Address
+        </button>
+      </div>
+
+      {addNewAddress && (
+        <AddressModificationDialog
+          open={addNewAddress}
+          title="Edit Address"
+          actionButtonLabel={
+            <>
+              <AddIcon sx={{ mr: 1.5, fontSize: '22px' }} />
+              Add New Address
+            </>
+          }
+          onClickCLoseHandler={() => setAddNewAddress(() => null)}
+          loading={loading}
+          actionButtonHandler={addNewAddressHandler}
+        />
+      )}
       <ErrorAlert error={error} />
     </>
   );
