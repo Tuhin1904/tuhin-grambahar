@@ -14,9 +14,8 @@ import ErrorAlert from './ErrorAlert';
 import AddressScreen from './AddressScreen';
 import { getMyAddresses } from '@/services/account.services';
 import OrderSummaryScreen from './OrderSummaryScreen';
-import { updateMyCart } from '@/services/cart.servies';
+import { updateMyCart } from '@/services/cart.services';
 import { createMyOrder } from '@/services/order.services';
-import { timeout } from '@/helpers/time.resolver';
 import OrderPlacedScreen from './OrderPlacedScreen';
 
 const Transition = forwardRef(function Transition(props, ref) {
@@ -123,19 +122,18 @@ function OderProcessingDialog({ open, handleClose }) {
     setLoading(true);
     disableBackButton();
     try {
-      // await timeout(4000);
-      // const userCart = await updateMyCart([{ product: Number(product.id), quantity }]);
-      // const orderRes = await createMyOrder({
-      //   cartId: userCart.id,
-      //   addressId: selectedAddress,
-      //   paymentMethod: isPrepaidOrder ? 'prepaid' : 'cod',
-      // });
+      const userCart = await updateMyCart([{ product: Number(product.id), quantity }]);
+      const orderRes = await createMyOrder({
+        cartId: userCart.id,
+        addressId: selectedAddress,
+        paymentMethod: isPrepaidOrder ? 'prepaid' : 'cod',
+      });
 
       if (isPrepaidOrder) {
-        // if (!orderRes?.payment_details?.data?.instrumentResponse?.redirectInfo?.url) {
-        //   throw new Error('Something went wrong at payment, please try again');
-        // }
-        // window.open(orderRes.payment_details.data.instrumentResponse.redirectInfo.url, '_self');
+        if (!orderRes?.payment_details?.data?.instrumentResponse?.redirectInfo?.url) {
+          throw new Error('Something went wrong at payment, please try again');
+        }
+        window.open(orderRes.payment_details.data.instrumentResponse.redirectInfo.url, '_self');
       } else {
         setOrderScreen(ORDER_SCREEN_CONFIGS.orderPlacedScreen.name);
       }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import HomeProductSwiper from '../home-product-swiper/HomeProductSwiper';
 import { getAbsImageUrl } from '../../../services';
-import { updateMyCart } from '../../../services/cart.servies';
+import { updateMyCart } from '../../../services/cart.services';
 
 function Rating({ rating, totalRating }) {
   return (
