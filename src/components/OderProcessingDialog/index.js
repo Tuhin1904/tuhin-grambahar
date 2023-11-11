@@ -6,7 +6,7 @@ import { forwardRef, useEffect, useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import InitialOrderScreen from './InitialOrderScreen';
-import { getCart, setCart } from '@/helpers/localStorage.helper';
+import { getCart, isUserLoggedIn, setCart } from '@/helpers/localStorage.helper';
 import AuthScreen from './AuthScreen';
 import ErrorAlert from './ErrorAlert';
 import AddressScreen from './AddressScreen';
@@ -73,7 +73,9 @@ function OderProcessingDialog({ open, handleClose }) {
   const goToAuthSection = async () => {
     setError(() => '');
     try {
-      await updateMyCart([{ product: Number(product.id), quantity }]);
+      if (isUserLoggedIn()) {
+        await updateMyCart([{ product: Number(product.id), quantity }]);
+      }
       setOrderScreen(ORDER_SCREEN_CONFIGS.authScreen.name);
     } catch (err) {
       console.error('📢[index.js]: err: ', err);

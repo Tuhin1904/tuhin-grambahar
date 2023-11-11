@@ -14,6 +14,11 @@ export const getLocalStorageUser = () => {
   return user ? JSON.parse(user) : {};
 };
 
+export const isUserLoggedIn = () => {
+  const user = getLocalStorageUser();
+  return user && user?.token;
+};
+
 export const setLocalStorageUser = (user) => {
   localStorage.setItem('user', JSON.stringify(user));
 };
