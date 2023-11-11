@@ -14,6 +14,18 @@ module.exports = {
         primary: '#7ab35b',
         'primary-black': '#121212',
       },
+      fontSize: {
+        17: '1.0625rem',
+        18: '1.125rem',
+        19: '1.1875rem',
+        20: '1.25rem',
+        22: '1.375rem',
+        24: '1.5rem',
+        26: '1.625rem',
+        28: '1.75rem',
+        30: '1.875rem',
+        32: '2rem',
+      },
       spacing: {
         18: '4.5rem',
         22: '5.5rem',

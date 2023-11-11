@@ -4,6 +4,7 @@ import { getPriceWithCurrencySymbol } from '@/helpers/product.helper';
 import OrderProductDetails from './OrderProductDetails';
 import PriceSummarySection from './PriceSummarySection';
 import FullWithPrimaryButton from './FullWithPrimaryButton';
+import OrderAddressViewSection from './OrderAddressViewSection';
 
 const DELIVERY_CHARGE = 40;
 
@@ -29,18 +30,7 @@ function OrderSummaryScreen({
       <div className="py-3 border-b shadow-sm mb-9 border-primary">
         <OrderProductDetails product={product} quantity={quantity} setQuantity={setQuantity} />
       </div>
-      <div className="text-sm">
-        <p className="mb-2 text-base font-semibold">Delivered To</p>
-        <p className="mb-1 text-sm">{selectedAddress.name}</p>
-        <p className="mb-1 text-sm">{selectedAddress.address_line_1}</p>
-        <p className="mb-1">
-          {selectedAddress.address_line_2}, {selectedAddress.landmark}
-        </p>
-        <p className="mb-1">
-          {selectedAddress.district}, {selectedAddress.state} - {selectedAddress.pin}, {selectedAddress.country}
-        </p>
-        <p className="">Phone Number: {selectedAddress.phone_number}</p>
-      </div>
+      <OrderAddressViewSection address={selectedAddress} />
 
       <div className="mt-8 text-sm">
         <p className="mb-2 text-base font-semibold">Choose Payment Type</p>

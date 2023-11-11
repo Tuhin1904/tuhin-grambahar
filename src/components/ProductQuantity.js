@@ -9,7 +9,11 @@ export default function ProductQuantity({
   readOnly = false,
 }) {
   return (
-    <div className={`flex w-full text-xl border-2 rounded-full sm:w-48 border-primary ${className}`}>
+    <div
+      className={`flex w-full text-xl border-2 rounded-full sm:w-48 border-primary ${
+        readOnly ? 'opacity-95' : ''
+      } ${className}`}
+    >
       <button
         className="w-16 text-white rounded-l-full sm:w-14 bg-primary disabled:opacity-80 disabled:cursor-default"
         type="button"
@@ -18,11 +22,9 @@ export default function ProductQuantity({
       >
         <RemoveIcon />
       </button>
-      <div className="flex-grow py-0.5 mx-5 font-bold text-center text-primary disabled:cursor-default disabled:opacity-80">
-        {quantity}
-      </div>
+      <div className="flex-grow py-0.5 mx-5 font-bold text-center text-primary">{quantity}</div>
       <button
-        className="w-16 text-white rounded-r-full sm:w-14 bg-primary"
+        className="w-16 text-white rounded-r-full sm:w-14 bg-primary disabled:cursor-default disabled:opacity-80"
         type="button"
         disabled={readOnly}
         onClick={inCreaseQuantityHandler}

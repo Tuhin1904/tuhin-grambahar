@@ -98,7 +98,17 @@ function ProductDetails({ product, products, onChangeProductHandler }) {
           </div>
         </div>
       </div>
-      <OderProcessingDialog open={processCheckout} handleClose={() => setProcessCheckout(false)} />
+      <OderProcessingDialog
+        open={processCheckout}
+        handleClose={() => {
+          setProcessCheckout(false);
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+          });
+        }}
+      />
     </>
   );
 }

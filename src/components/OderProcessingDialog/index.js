@@ -17,6 +17,7 @@ import OrderSummaryScreen from './OrderSummaryScreen';
 import { updateMyCart } from '@/services/cart.servies';
 import { createMyOrder } from '@/services/order.services';
 import { timeout } from '@/helpers/time.resolver';
+import OrderPlacedScreen from './OrderPlacedScreen';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -38,6 +39,10 @@ const ORDER_SCREEN_CONFIGS = {
   orderSummeryScreen: {
     name: 'orderSummeryScreen',
     title: 'Checkout | Order Summary',
+  },
+  orderPlacedScreen: {
+    name: 'orderPlacedScreen',
+    title: 'Order Placed | Thank You',
   },
 };
 
@@ -108,6 +113,7 @@ function OderProcessingDialog({ open, handleClose }) {
     } else if (orderScreen === ORDER_SCREEN_CONFIGS.orderSummeryScreen.name) {
       setOrderScreen(ORDER_SCREEN_CONFIGS.addressScreen.name);
     } else {
+      setOrderScreen(ORDER_SCREEN_CONFIGS.initialScreen.name);
       handleClose();
     }
   };
@@ -117,17 +123,22 @@ function OderProcessingDialog({ open, handleClose }) {
     setLoading(true);
     disableBackButton();
     try {
-      await timeout(4000);
-      const userCart = await updateMyCart([{ product: Number(product.id), quantity }]);
-      const orderRes = await createMyOrder({
-        cartId: userCart.id,
-        addressId: selectedAddress,
-        paymentMethod: isPrepaidOrder ? 'prepaid' : 'cod',
-      });
+      // await timeout(4000);
+      // const userCart = await updateMyCart([{ product: Number(product.id), quantity }]);
+      // const orderRes = await createMyOrder({
+      //   cartId: userCart.id,
+      //   addressId: selectedAddress,
+      //   paymentMethod: isPrepaidOrder ? 'prepaid' : 'cod',
+      // });
 
-      setOrderScreen(ORDER_SCREEN_CONFIGS.paymentScreen.name);
-
-      window.open(orderRes.payment_details.redirectInfo.url, '_self');
+      if (isPrepaidOrder) {
+        // if (!orderRes?.payment_details?.data?.instrumentResponse?.redirectInfo?.url) {
+        //   throw new Error('Something went wrong at payment, please try again');
+        // }
+        // window.open(orderRes.payment_details.data.instrumentResponse.redirectInfo.url, '_self');
+      } else {
+        setOrderScreen(ORDER_SCREEN_CONFIGS.orderPlacedScreen.name);
+      }
     } catch (err) {
       console.error('📢[index.js]: err: ', err);
       setError(err?.response?.data?.error || err?.message || 'Error at updating cart');
@@ -207,6 +218,18 @@ function OderProcessingDialog({ open, handleClose }) {
             setQuantity={setQuantity}
             disableBackButton={disableBackButton}
             enableBackButton={enableBackButton}
+          />
+        )}
+
+        {product && orderScreen === ORDER_SCREEN_CONFIGS.orderPlacedScreen.name && (
+          <OrderPlacedScreen
+            product={product}
+            quantity={quantity}
+            selectedAddress={userAddress.find((address) => address.id === selectedAddress)}
+            continueHandler={() => {
+              setOrderScreen(ORDER_SCREEN_CONFIGS.initialScreen.name);
+              handleClose();
+            }}
           />
         )}
 
