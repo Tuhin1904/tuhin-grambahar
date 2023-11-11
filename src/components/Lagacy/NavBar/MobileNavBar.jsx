@@ -35,8 +35,8 @@ function MobileNavBar() {
               <Menu />
             </button>
           </div>
-          <div className="flex items-center justify-end flex-grow sm:justify-center sm:jue">
-            <Link href="/">
+          <div className="flex items-center justify-center flex-grow">
+            <Link href="/" className="transform translate-x-1/3 sm:translate-x-0">
               <img src="grambahar_logo.ico" alt="Grambahar Logo" className="w-20" height="30px" width="100px" />
             </Link>
           </div>
