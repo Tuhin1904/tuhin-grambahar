@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { SERVER_BASE_URL } from './index.js';
-import { getAxiosHeaderWithAccessToken } from './auth.helper.js';
+import { SERVER_BASE_URL } from './index';
+import { getAxiosHeaderWithAccessToken } from './auth.helper';
 
 export const getMyOrders = async () => {
   const res = await axios.get(`${SERVER_BASE_URL}user/account/me/orders`, getAxiosHeaderWithAccessToken());
@@ -22,5 +22,10 @@ export const createMyOrder = async ({ cartId, addressId, paymentMethod }) => {
     },
     getAxiosHeaderWithAccessToken(),
   );
+  return res.data;
+};
+
+export const getOrderStatus = async ({ orderId, transactionId }) => {
+  const res = await axios.get(`${SERVER_BASE_URL}order/status/${orderId}/${transactionId}`);
   return res.data;
 };
