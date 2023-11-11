@@ -5,8 +5,6 @@ import Slide from '@mui/material/Slide';
 import { forwardRef, useEffect, useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
 import InitialOrderScreen from './InitialOrderScreen';
 import { getCart, setCart } from '@/helpers/localStorage.helper';
 import AuthScreen from './AuthScreen';
@@ -17,6 +15,7 @@ import OrderSummaryScreen from './OrderSummaryScreen';
 import { updateMyCart } from '@/services/cart.services';
 import { createMyOrder } from '@/services/order.services';
 import OrderPlacedScreen from './OrderPlacedScreen';
+import FullScreenLoader from '../FullScreenLoader';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -232,13 +231,7 @@ function OderProcessingDialog({ open, handleClose }) {
         )}
 
         <ErrorAlert error={error} />
-        <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
-          <div className="flex flex-col items-center justify-center text-center">
-            <CircularProgress sx={{ mb: 2 }} color="inherit" />
-            <p className="mb-3 font-bold">Processing Payment</p>
-            <p>Please do not refresh or close the page</p>
-          </div>
-        </Backdrop>
+        {loading && <FullScreenLoader title="Processing Payment" subTitle="Please do not refresh or close the page" />}
       </DialogContent>
     </Dialog>
   );
