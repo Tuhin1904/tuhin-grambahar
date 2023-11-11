@@ -45,6 +45,9 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
       setUserName(() => profile.name);
       setUserEmail(() => profile.email);
       setUser(() => res);
+      if (profile.name && profile.email) {
+        await continueHandler();
+      }
     } catch (err) {
       console.error('📢[AuthScreen.js]: err: ', err);
       setError(err?.response?.data?.error || err?.message || 'Error at sending otp');
@@ -113,7 +116,7 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
           disabled={loading}
           value={userName}
           sx={{ mb: 3 }}
-          onChange={(event) => setUser(() => event.target.value)}
+          onChange={(event) => setUserName(() => event.target.value)}
         />
         <TextField
           fullWidth
@@ -164,7 +167,7 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
           sx={{ mb: 3 }}
           disabled={loading}
           label="OTP for account verification"
-          type="tel"
+          type="number"
           required
           variant="standard"
           placeholder="123456"
@@ -175,7 +178,7 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
       <FullWithPrimaryButton
         onClick={showOtp ? verifyOtpHandler : sendOtpHandler}
         className="font-bold"
-        disabled={phoneNumber?.length < 10}
+        disabled={showOtp ? String(otp).length < 6 : phoneNumber?.length < 10}
         loading={loading}
       >
         {showOtp ? 'Verify OTP' : 'Send OTP'}
