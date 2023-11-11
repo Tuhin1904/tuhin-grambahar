@@ -1,4 +1,5 @@
 import ContactlessIcon from '@mui/icons-material/Contactless';
+import { useState } from 'react';
 import { getPriceWithCurrencySymbol } from '@/helpers/product.helper';
 import OrderProductDetails from './OrderProductDetails';
 import PriceSummarySection from './PriceSummarySection';
@@ -14,9 +15,15 @@ function OrderSummaryScreen({
   isPrepaidOrder,
   setIsPrepaidOrder,
   setQuantity,
-  disableBackButton,
-  enableBackButton,
 }) {
+  const [loading, setLoading] = useState(false);
+
+  const onClickContinueHandler = async () => {
+    setLoading(() => true);
+    await continueHandler();
+    setLoading(() => false);
+  };
+
   return (
     <>
       <div className="py-3 border-b shadow-sm mb-9 border-primary">
@@ -72,7 +79,7 @@ function OrderSummaryScreen({
       />
 
       <div className="mt-8">
-        <FullWithPrimaryButton onClick={continueHandler}>
+        <FullWithPrimaryButton loading={loading} onClick={onClickContinueHandler}>
           Process Payment
           <ContactlessIcon sx={{ fontSize: '24px', marginLeft: '8px' }} />
         </FullWithPrimaryButton>

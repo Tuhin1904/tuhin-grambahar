@@ -5,6 +5,8 @@ import Slide from '@mui/material/Slide';
 import { forwardRef, useEffect, useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import InitialOrderScreen from './InitialOrderScreen';
 import { getCart, setCart } from '@/helpers/localStorage.helper';
 import AuthScreen from './AuthScreen';
@@ -14,6 +16,7 @@ import { getMyAddresses } from '@/services/account.services';
 import OrderSummaryScreen from './OrderSummaryScreen';
 import { updateMyCart } from '@/services/cart.servies';
 import { createMyOrder } from '@/services/order.services';
+import { timeout } from '@/helpers/time.resolver';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -46,10 +49,23 @@ function OderProcessingDialog({ open, handleClose }) {
   const [userAddress, setUserAddress] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isPrepaidOrder, setIsPrepaidOrder] = useState(true);
-  const [cartId, setCartId] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const isMobile = useMediaQuery('(max-width:639px)');
+
+  const disableBackButton = () => {
+    const backButton = document.querySelector('[data-id="cart-process-back-button"]');
+    if (backButton) {
+      backButton.disabled = true;
+    }
+  };
+
+  const enableBackButton = () => {
+    const backButton = document.querySelector('[data-id="cart-process-back-button"]');
+    if (backButton) {
+      backButton.disabled = false;
+    }
+  };
 
   const goToAuthSection = async () => {
     setError(() => '');
@@ -99,34 +115,25 @@ function OderProcessingDialog({ open, handleClose }) {
   const processOrderAndPaymentHandler = async () => {
     setError(() => '');
     setLoading(true);
+    disableBackButton();
     try {
+      await timeout(4000);
       const userCart = await updateMyCart([{ product: Number(product.id), quantity }]);
       const orderRes = await createMyOrder({
         cartId: userCart.id,
         addressId: selectedAddress,
         paymentMethod: isPrepaidOrder ? 'prepaid' : 'cod',
       });
-      console.log('📢[index.js:105]: orderRes: ', orderRes);
-      console.log('📢[index.js:96]: userCart: ', userCart);
+
+      setOrderScreen(ORDER_SCREEN_CONFIGS.paymentScreen.name);
+
+      window.open(orderRes.payment_details.redirectInfo.url, '_self');
     } catch (err) {
       console.error('📢[index.js]: err: ', err);
       setError(err?.response?.data?.error || err?.message || 'Error at updating cart');
     } finally {
       setLoading(false);
-    }
-  };
-
-  const disableBackButton = () => {
-    const backButton = document.querySelector('[data-id="cart-process-back-button"]');
-    if (backButton) {
-      backButton.disabled = true;
-    }
-  };
-
-  const enableBackButton = () => {
-    const backButton = document.querySelector('[data-id="cart-process-back-button"]');
-    if (backButton) {
-      backButton.disabled = false;
+      enableBackButton();
     }
   };
 
@@ -204,6 +211,13 @@ function OderProcessingDialog({ open, handleClose }) {
         )}
 
         <ErrorAlert error={error} />
+        <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
+          <div className="flex flex-col items-center justify-center text-center">
+            <CircularProgress sx={{ mb: 2 }} color="inherit" />
+            <p className="mb-3 font-bold">Processing Payment</p>
+            <p>Please do not refresh or close the page</p>
+          </div>
+        </Backdrop>
       </DialogContent>
     </Dialog>
   );
