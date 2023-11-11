@@ -11,7 +11,7 @@ export default function ProductQuantity({
   return (
     <div
       className={`flex w-full text-xl border-2 rounded-full sm:w-48 border-primary ${
-        readOnly ? 'opacity-95' : ''
+        readOnly ? 'opacity-80' : ''
       } ${className}`}
     >
       <button

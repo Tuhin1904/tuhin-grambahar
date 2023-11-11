@@ -3,7 +3,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 function FullWithPrimaryButton({ children, className = '', loading = false, disabled = false, ...rest }) {
   return (
     <button
-      className={`w-full py-2 font-bold text-center text-white rounded-full bg-primary disabled:cursor-default disabled:opacity-80 ${className}`}
+      className={`w-full py-2 font-bold text-center text-white rounded-full bg-primary disabled:cursor-default disabled:opacity-60 ${className}`}
       type="button"
       disabled={loading || disabled}
       {...rest}
