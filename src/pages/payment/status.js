@@ -72,6 +72,11 @@ function PaymentCompleted() {
   return (
     <div className="container min-h-screen px-4 py-4 mx-auto">
       <OrderStatusScreen order={order} />
+      <div className="flex items-center justify-center mt-16 mb-10">
+        <FullWithPrimaryButton onClick={() => router.replace('/')} className="max-w-xs">
+          Back to Home
+        </FullWithPrimaryButton>
+      </div>
     </div>
   );
 }
