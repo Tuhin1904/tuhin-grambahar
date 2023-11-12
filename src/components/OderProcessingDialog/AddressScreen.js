@@ -13,6 +13,7 @@ import AddressModificationDialog from './AddressModificationDialog';
 import OrderProductDetails from './OrderProductDetails';
 import DeleteAddressDialog from './DeleteAddressDialog';
 import FullWithPrimaryButton from './FullWithPrimaryButton';
+import { extractServerValidationError } from '@/helpers/serverValidationError.helper';
 
 function AddressScreen({
   product,
@@ -126,7 +127,12 @@ function AddressScreen({
       setAddNewAddress(() => false);
     } catch (err) {
       console.error('📢[AddressScreen.js]: err: ', err);
-      setError(err?.response?.data?.error || err?.message || 'Error at adding new address');
+      setError(
+        extractServerValidationError(err) ||
+          err?.response?.data?.error ||
+          err?.message ||
+          'Error at adding new address',
+      );
     } finally {
       setLoading(false);
       enableBackButton();
@@ -231,14 +237,19 @@ function AddressScreen({
           title="Edit Address"
           actionButtonLabel={
             <>
-              <AddIcon sx={{ mr: 1.5, fontSize: '22px' }} />
               Add New Address
+              <AddIcon sx={{ ml: 1.5, fontSize: '22px' }} />
             </>
           }
-          onClickCLoseHandler={() => setAddNewAddress(() => null)}
+          onClickCLoseHandler={() => {
+            setAddNewAddress(() => null);
+            setError('');
+          }}
           loading={loading}
           actionButtonHandler={addNewAddressHandler}
-        />
+        >
+          <ErrorAlert error={error} />
+        </AddressModificationDialog>
       )}
 
       <div className="mt-8">
