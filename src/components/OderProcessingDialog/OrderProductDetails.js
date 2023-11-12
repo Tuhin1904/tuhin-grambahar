@@ -4,9 +4,9 @@ import { getPriceWithCurrencySymbol } from '@/helpers/product.helper';
 import PricingSection from '../PricingSection';
 import ProductQuantity from '../ProductQuantity';
 
-function OrderProductDetails({ product, quantity, setQuantity, readOnly = false }) {
+function OrderProductDetails({ product, quantity, setQuantity, readOnly = false, className = '' }) {
   return (
-    <div>
+    <div className={className}>
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-x-8 text-primary-black">
         <div>
           <Image

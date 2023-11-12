@@ -1,8 +1,14 @@
 import { getPriceWithCurrencySymbol } from '@/helpers/product.helper';
 
-function PriceSummarySection({ product, quantity, deliveryCharge = 0, showDeliveryCharge = false }) {
+function PriceSummarySection({
+  product,
+  quantity,
+  deliveryCharge = 0,
+  showDeliveryCharge = false,
+  className = 'mt-8',
+}) {
   return (
-    <div className="mt-8">
+    <div className={className}>
       <p className="mb-1 font-semibold">Pricing Summary</p>
       <p className="flex mb-1.5">
         <span className="flex-grow mr-3">Total MRP</span>
