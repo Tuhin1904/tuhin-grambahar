@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import FullScreenLoader from '@/components/FullScreenLoader';
 import { getOrderStatus } from '@/services/order.services';
 import FullWithPrimaryButton from '@/components/OderProcessingDialog/FullWithPrimaryButton';
+import OrderStatusScreen from '@/components/OrderStatusScreen';
 
 function PaymentCompleted() {
   const router = useRouter();
@@ -70,6 +71,7 @@ function PaymentCompleted() {
   }
   return (
     <div className="container min-h-screen px-4 py-4 mx-auto">
+      <OrderStatusScreen order={order} />
       <div className="">
         <pre>{JSON.stringify(order, null, 1)}</pre>
       </div>
