@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaInstagram, FaEnvelope, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaEnvelope } from 'react-icons/fa';
 import Link from 'next/link';
 
 function Footer({ pb = '' }) {
@@ -20,7 +20,7 @@ function Footer({ pb = '' }) {
         </div>
 
         <div className="footer-col">
-          <p className="mb-1 text-lg font-bold text-primary">SERVICES</p>
+          <p className="mb-3 text-lg font-bold text-primary">SERVICES</p>
           <ol className="footer-list">
             <Link href="#">
               <li className="mb-1 duration-300 ease-in-out hover:text-primary">Profile</li>
@@ -37,7 +37,7 @@ function Footer({ pb = '' }) {
           </ol>
         </div>
         <div className="footer-col">
-          <p className="mb-1 text-lg font-bold text-primary">OUR POLICIES</p>
+          <p className="mb-3 text-lg font-bold text-primary">OUR POLICIES</p>
           <ol className="footer-list">
             <Link href="/privacy-policy" className="duration-300 ease-in-out hover:text-primary">
               <li className="mb-1">Privacy Policy</li>
@@ -57,33 +57,28 @@ function Footer({ pb = '' }) {
           </ol>
         </div>
         <div className="footer-col">
-          <p className="mb-2 text-lg font-bold text-primary">CONTACT DETAILS</p>
+          <p className="mb-3 text-lg font-bold text-primary">CONTACT DETAILS</p>
           <Link href="/contact-us">
-            <span className="inline-block px-6 py-2 font-medium text-center text-white duration-300 ease-in-out border-2 rounded-full hover:bg-white hover:text-primary border-primary bg-primary">
+            <span className="block w-full px-6 py-2 font-medium text-center text-white duration-300 ease-in-out border-2 rounded-full sm:w-auto hover:bg-white hover:text-primary border-primary bg-primary">
               Contact Us
             </span>
           </Link>
-          <ol className="footer-list" style={{ display: 'flex', marginTop: '1rem', justifyContent: 'space-evenly' }}>
-            <Link href="facebook.com">
-              <li className="mb-1">
-                <FaFacebook size={20} />
-              </li>
-            </Link>
-            <Link href="twitter.com">
-              <li className="mb-1">
-                <FaTwitter size={20} />
-              </li>
-            </Link>
-            <Link href="gmail.com">
-              <li className="mb-1">
-                <FaEnvelope size={20} />
-              </li>
-            </Link>
-            <Link href="instagram.com">
-              <li className="mb-1">
-                <FaInstagram size={20} />
-              </li>
-            </Link>
+          <ol className="flex items-center justify-center mt-8 text-secondary-black">
+            <li className="mr-7">
+              <Link href="https://www.facebook.com/profile.php?id=100092955764879" target="_blank">
+                <FaFacebook size={25} />
+              </Link>
+            </li>
+            <li className="mr-7">
+              <Link href="mailto:grambahar.com@gmail.com">
+                <FaEnvelope size={25} />
+              </Link>
+            </li>
+            <li className="">
+              <Link href="https://www.instagram.com/gram_bahar/" target="_blank">
+                <FaInstagram size={25} />
+              </Link>
+            </li>
           </ol>
         </div>
       </div>
