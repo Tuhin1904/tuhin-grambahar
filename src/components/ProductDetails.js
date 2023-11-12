@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import { getPriceWithCurrencySymbol } from '@/helpers/product.helper';
 import Rating from './Rating';
 import { getAbsImageUrl } from '@/services';
 import OderProcessingDialog from './OderProcessingDialog';
@@ -30,9 +29,9 @@ function ProductDetails({ product, products, onChangeProductHandler }) {
               <Image
                 src={getAbsImageUrl(mainImage)}
                 alt={product.name}
-                className="date-palm-jaggery-img"
-                width={600}
-                height={800}
+                className="object-cover w-full h-auto"
+                width={900}
+                height={700}
               />
             </div>
             <div className="flex items-center justify-start mt-2">
