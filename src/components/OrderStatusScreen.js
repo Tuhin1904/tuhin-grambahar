@@ -36,7 +36,7 @@ function OrderStatusScreen({ order }) {
             </p>
           </div>
           <div className="flex items-end justify-end w-full mt-10">
-            <p className="px-6 py-1 font-semibold text-white rounded-l-full bg-primary">Thanks for choosing us</p>
+            <p className="py-1 pr-2 font-semibold text-white rounded-l-full pl-7 bg-primary">Thanks for choosing us</p>
           </div>
         </div>
       </div>
