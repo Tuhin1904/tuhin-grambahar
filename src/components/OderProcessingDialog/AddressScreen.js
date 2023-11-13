@@ -25,6 +25,7 @@ function AddressScreen({
   continueHandler,
   disableBackButton,
   enableBackButton,
+  user,
 }) {
   const [editAddressId, setEditAddressId] = useState(null);
   const [deleteAddressId, setDeleteAddressId] = useState(null);
@@ -238,7 +239,11 @@ function AddressScreen({
       {addNewAddress && (
         <AddressModificationDialog
           open={addNewAddress}
-          title="Edit Address"
+          title="Add New Address"
+          initialAddress={{
+            name: user?.name,
+            phone_number: user?.phone_number,
+          }}
           actionButtonLabel={
             <>
               Add New Address

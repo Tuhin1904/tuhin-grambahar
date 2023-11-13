@@ -10,7 +10,7 @@ import { getCart, isUserLoggedIn, setCart } from '@/helpers/localStorage.helper'
 import AuthScreen from './AuthScreen';
 import ErrorAlert from './ErrorAlert';
 import AddressScreen from './AddressScreen';
-import { getMyAddresses } from '@/services/account.services';
+import { getMyAddresses, getMyProfile } from '@/services/account.services';
 import OrderSummaryScreen from './OrderSummaryScreen';
 import { updateMyCart } from '@/services/cart.services';
 import { createMyOrder } from '@/services/order.services';
@@ -54,6 +54,7 @@ function OderProcessingDialog({ open, handleClose }) {
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isPrepaidOrder, setIsPrepaidOrder] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(null);
 
   const isMobile = useMediaQuery('(max-width:639px)');
 
@@ -90,9 +91,10 @@ function OderProcessingDialog({ open, handleClose }) {
     setError(() => '');
     try {
       await setCart({ product, quantity });
+      const userProfile = await getMyProfile();
       const addresses = await getMyAddresses();
       setUserAddress(() => addresses);
-
+      setUser(() => userProfile);
       setOrderScreen(ORDER_SCREEN_CONFIGS.addressScreen.name);
     } catch (err) {
       console.error('📢[index.js]: err: ', err);
@@ -203,6 +205,7 @@ function OderProcessingDialog({ open, handleClose }) {
           <AddressScreen
             product={product}
             quantity={quantity}
+            user={user}
             userAddress={userAddress}
             setUserAddress={setUserAddress}
             selectedAddress={selectedAddress}
