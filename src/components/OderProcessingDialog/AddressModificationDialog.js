@@ -63,7 +63,7 @@ function AddressModificationDialog({
 
         <TextField
           fullWidth
-          label="Address Line 1"
+          label="Address"
           type="text"
           required
           variant="standard"
@@ -71,18 +71,6 @@ function AddressModificationDialog({
           value={addressDetails.address_line_1}
           sx={{ mb: 3 }}
           onChange={(event) => setAddressDetails((current) => ({ ...current, address_line_1: event.target.value }))}
-        />
-
-        <TextField
-          fullWidth
-          label="Address Line 2"
-          type="text"
-          required
-          variant="standard"
-          placeholder="Locality"
-          value={addressDetails.address_line_2}
-          sx={{ mb: 3 }}
-          onChange={(event) => setAddressDetails((current) => ({ ...current, address_line_2: event.target.value }))}
         />
 
         <TextField
@@ -183,7 +171,6 @@ function AddressModificationDialog({
             disabled={
               addressDetails.name?.trim()?.length === 0 ||
               addressDetails.address_line_1?.trim()?.length === 0 ||
-              addressDetails.address_line_2?.trim()?.length === 0 ||
               addressDetails.phone_number?.trim()?.length === 0 ||
               addressDetails.pin?.trim()?.length === 0 ||
               addressDetails.landmark?.trim()?.length === 0 ||

@@ -181,7 +181,8 @@ function AddressScreen({
               </div>
               <p className="mb-0.5">{address.address_line_1}</p>
               <p className="mb-0.5">
-                {address.address_line_2}, {address.landmark}
+                {address.address_line_2 ? `${address.address_line_2}, ` : ''}
+                {address.landmark}
               </p>
               <p className="">
                 {address.district}, {address.state} - {address.pin}, {address.country}
