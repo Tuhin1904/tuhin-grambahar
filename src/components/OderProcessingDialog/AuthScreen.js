@@ -42,8 +42,8 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
       const res = await verifyLoginOtp(phoneNumber, otp);
       setLocalStorageUser(res);
       const profile = await getMyProfile();
-      setUserName(() => profile.name);
-      setUserEmail(() => profile.email);
+      setUserName(() => profile.name || '');
+      setUserEmail(() => profile.email || '');
       setUser(() => res);
       if (profile.name && profile.email) {
         await continueHandler();
@@ -80,8 +80,8 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
       disableBackButton();
       getMyProfile()
         .then((res) => {
-          setUserName(() => res.name);
-          setUserEmail(() => res.email);
+          setUserName(() => res.name || '');
+          setUserEmail(() => res.email || '');
           if (res.name && res.email) {
             continueHandler();
           }
@@ -116,7 +116,7 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
           disabled={loading}
           value={userName}
           sx={{ mb: 3 }}
-          onChange={(event) => setUserName(() => event.target.value)}
+          onChange={(event) => setUserName(() => event.target.value || '')}
         />
         <TextField
           fullWidth
@@ -128,7 +128,7 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
           disabled={loading}
           value={userEmail}
           sx={{ mb: 3 }}
-          onChange={(event) => setUserEmail(() => event.target.value)}
+          onChange={(event) => setUserEmail(() => event.target.value || '')}
         />
         <FullWithPrimaryButton
           onClick={saveUserDateHandler}
