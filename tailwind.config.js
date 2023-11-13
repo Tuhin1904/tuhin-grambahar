@@ -26,9 +26,19 @@ module.exports = {
         30: '1.875rem',
         32: '2rem',
       },
+      maxHeight: {
+        96: '24rem',
+        128: '32rem',
+        160: '40rem',
+        192: '48rem',
+      },
       spacing: {
         18: '4.5rem',
         22: '5.5rem',
+        100: '25rem',
+        128: '32rem',
+        160: '40rem',
+        192: '48rem',
       },
       width: {
         '1/2': '50%',

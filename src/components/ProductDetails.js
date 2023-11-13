@@ -93,6 +93,11 @@ function ProductDetails({ product, products, onChangeProductHandler }) {
                   __html: product.short_description,
                 }}
               />
+              <div className="flex justify-end mt-2">
+                <a href="#product-details" className="text-sm font-medium text-primary">
+                  See product details
+                </a>
+              </div>
             </div>
           </div>
         </div>

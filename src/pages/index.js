@@ -13,16 +13,25 @@ export default function Home({ products }) {
 
   return (
     <>
-      <OurStoryVideo
-        className="mb-6 border-b-2 border-primary"
-        videoClassName="object-cover object-center w-full sm:h-96"
-      />
+      <div className="mt-12" />
       <ProductDetails
         product={products[selectedProduct]}
         products={products}
         onChangeProductHandler={onChangeProductHandler}
       />
-      <HomePageBanner className="my-10" />
+      <HomePageBanner className="my-14" />
+      <div className="container px-4 pt-6 pb-20 mx-auto">
+        <article
+          className="max-w-full prose "
+          dangerouslySetInnerHTML={{
+            __html: products[selectedProduct]?.description.replace('<h3>', '<h3 id="product-details">'),
+          }}
+        />
+      </div>
+      <OurStoryVideo
+        className="mb-6 border-b-2 border-primary"
+        videoClassName="object-cover object-center w-full sm:h-96 lg:h-160 xl:h-192"
+      />
     </>
   );
 }
