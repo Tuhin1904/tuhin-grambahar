@@ -34,7 +34,7 @@ function OrderSummaryScreen({
 
       <div className="mt-8 text-sm">
         <p className="mb-2 text-base font-semibold">Choose Payment Type</p>
-        <div className="grid grid-cols-2 border-2 rounded-full border-primary">
+        <div className="grid grid-cols-2 text-sm border-2 rounded-full border-primary">
           <button
             type="button"
             onClick={() => setIsPrepaidOrder(() => true)}

@@ -15,6 +15,8 @@ module.exports = {
         'primary-black': '#121212',
       },
       fontSize: {
+        11: '0.6875rem',
+        13: '0.8125rem',
         17: '1.0625rem',
         18: '1.125rem',
         19: '1.1875rem',
