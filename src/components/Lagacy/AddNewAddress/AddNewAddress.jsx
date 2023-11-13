@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
-import classes from './AddNewAddress.module.css';
+// import classes from './AddNewAddress.module.css';
 import { addMyAddress } from '../../../services/account.services';
 
 function AddNewAddress() {
@@ -38,45 +38,36 @@ function AddNewAddress() {
 
   return (
     <>
-      <div className={classes.container}>
-        <div className={classes.button2} onClick={toggleForm}>
-          {isFormVisibile ? 'Hide' : 'Add New Address +'}
-        </div>
-        <br />
-        {isFormVisibile && (
-          <>
-            <form onSubmit={handleSubmit}>
-              <TextField className={classes.textField} label="Enter your Name" name="name" variant="outlined" />
-
-              <TextField className={classes.textField} label="Address Line 1" name="addressLine1" variant="outlined" />
-
-              <TextField className={classes.textField} label="Address Line 2" name="addressLine2" variant="outlined" />
-              <br />
-
-              <br />
-
-              <TextField className={classes.textField} label="Phone Number" name="phoneNumber" variant="outlined" />
-
-              <TextField className={classes.textField} label="Country" name="country" variant="outlined" />
-
-              <TextField className={classes.textField} label="State" name="state" variant="outlined" />
-
-              <TextField className={classes.textField} label="District" name="district" variant="outlined" />
-
-              <TextField className={classes.textField} label="Pin-code" name="pin" variant="outlined" />
-
-              <TextField className={classes.textField} label="Landmark" name="landmark" variant="outlined" />
-
-              <button
-                className={classes.button}
-                style={{ minHeight: '40px', backgroundColor: 'rgb(45, 110, 255)', color: 'white' }}
-              >
-                Submit
-              </button>
-            </form>
-          </>
-        )}
+      <div
+        onClick={toggleForm}
+        className="px-4 py-2 text-sm font-medium text-center text-red-500 duration-300 ease-in-out border-2 border-red-300 rounded-full cursor-pointer "
+      >
+        {isFormVisibile ? 'Hide' : 'Add New Address +'}
       </div>
+      <br />
+      {isFormVisibile && (
+        <>
+          <form onSubmit={handleSubmit} className="flex flex-col">
+            <TextField label="Enter your Name" name="name" variant="outlined" />
+
+            <TextField label="Address Line 1" name="addressLine1" variant="outlined" />
+
+            <TextField label="Phone Number" name="phoneNumber" variant="outlined" />
+
+            <TextField name="country" variant="outlined" value="India" />
+
+            <TextField label="State" name="state" variant="outlined" />
+
+            <TextField label="District" name="district" variant="outlined" />
+
+            <TextField label="Pin-code" name="pin" variant="outlined" />
+
+            <TextField label="Landmark" name="landmark" variant="outlined" />
+
+            <button style={{ minHeight: '40px', backgroundColor: 'rgb(45, 110, 255)', color: 'white' }}>Submit</button>
+          </form>
+        </>
+      )}
     </>
   );
 }

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
-import classes from './Profile.module.css';
+// import classes from './Profile.module.css';
 import {
   getMyAddresses,
   addMyAddress,
@@ -12,8 +12,8 @@ import {
   getMyProfile,
 } from '../../services/account.services';
 import AddNewAddress from '../../components/Lagacy/AddNewAddress/AddNewAddress';
-import UserDetailsSection from '../../components/Lagacy/ProfilePage/UserDetailsSection';
-import UserOrderSection from '../../components/Lagacy/ProfilePage/UserOrderSection';
+import UserDetailsSection from '../../components//ProfilePage/UserDetailsSection';
+import UserOrderSection from '../../components//ProfilePage/UserOrderSection';
 
 function Profile() {
   const currencies = [
@@ -106,97 +106,64 @@ function Profile() {
   };
 
   return (
-    <div className="container px-4 pt-10 mx-auto">
-      <h1 className="mb-5 text-xl font-bold">My Account</h1>
+    <div className="container flex flex-col px-4 pt-10" style={{ alignItems: 'center' }}>
+      <h1 className="flex justify-center my-4 text-4xl font-bold text-primary">My Profile</h1>
 
-      <UserDetailsSection classes={classes} userDetails={userDetails} />
+      <UserDetailsSection userDetails={userDetails} />
 
       <UserOrderSection />
 
       <div>
-        <label htmlFor="" id={classes.info}>
-          To Add New Address click the button 'Add New Address+'
-        </label>{' '}
+        <label htmlFor="">
+          To Add New Address click the button <span style={{ color: 'red' }}>'Add New Address+'</span>
+        </label>
         <br />
         {addressResponse.length > 0 ? (
           <>
-            <label style={{ fontWeight: 'bold', fontSize: 'larger', marginBottom: '10px' }}>
-              Your Current Addresses are:
-            </label>
+            <label style={{ fontWeight: 'bold', fontSize: 'larger' }}>Your Current Addresses are:</label>
 
             {addressResponse.map((each, i) => (
-              <form action="" key={i} style={{ marginTop: '1rem' }} onSubmit={() => handleUpdateAddress(e)}>
+              <form action="" key={i} className="flex flex-col mt-4" onSubmit={() => handleUpdateAddress(e)}>
                 <TextField
-                  className={classes.textField2}
                   label="Enter your Name"
                   variant="outlined"
                   value={each.name}
                   disabled={!disabledbutton2[i]}
-                  InputProps={{
-                    style: {
-                      color: '#000000',
-                    },
-                  }}
+                  className="mb-4"
                 />
                 <TextField
-                  className={classes.textField2}
                   label="Address Line 1"
                   variant="outlined"
                   value={each.address_line_1}
                   disabled={!disabledbutton2[i]}
+                  className="mb-4"
                 />
-                <TextField
-                  className={classes.textField2}
-                  label="Address Line 2"
-                  variant="outlined"
-                  value={each.address_line_2}
-                  disabled={!disabledbutton2[i]}
-                />
-                <br />
 
                 <TextField
-                  className={classes.textField}
                   label="District"
                   variant="outlined"
                   value={each.district}
                   disabled={!disabledbutton2[i]}
+                  className="mb-4"
                 />
 
                 <TextField
-                  className={classes.textField}
                   label="State"
                   variant="outlined"
                   value={each.state}
                   disabled={!disabledbutton2[i]}
+                  className="mb-4"
                 />
 
-                <TextField
-                  className={classes.textField}
-                  label="Country"
-                  variant="outlined"
-                  value={each.country}
-                  disabled
-                />
+                <TextField label="Country" variant="outlined" value={each.country} disabled={true} className="mb-4" />
 
-                <TextField
-                  className={classes.textField}
-                  label="Pin-code"
-                  variant="outlined"
-                  value={each.pin}
-                  disabled={!disabledbutton2[i]}
-                />
+                <TextField label="Pin-code" variant="outlined" value={each.pin} className="mb-4" />
 
-                <TextField
-                  className={classes.textField}
-                  label="Landmark"
-                  variant="outlined"
-                  value={each.landmark}
-                  disabled={!disabledbutton2[i]}
-                />
+                <TextField label="Landmark" variant="outlined" value={each.landmark} className="mb-4" />
                 <div style={{ display: 'flex', marginTop: '1rem' }}>
                   {disabledbutton2[i] ? (
                     <div
-                      className={classes.button}
+                      className="inline-block px-6 py-2 font-medium text-center text-white duration-300 ease-in-out border-2 rounded-full cursor-pointer border-primary bg-primary"
                       onClick={() => {
                         toggleButtons2(i);
                       }}
@@ -204,11 +171,18 @@ function Profile() {
                       Save Details
                     </div>
                   ) : (
-                    <div className={classes.button2} onClick={() => toggleButtons2(i)}>
+                    <div
+                      className="inline-block px-6 py-2 font-medium text-center text-white duration-300 ease-in-out border-2 rounded-full cursor-pointer border-primary bg-primary"
+                      onClick={() => toggleButtons2(i)}
+                    >
                       Edit Details
                     </div>
                   )}
-                  <div className={classes.button3} onClick={() => handleDelete(each.id)}>
+                  <div
+                    className="inline-block px-6 py-2 ml-4 font-medium text-center text-red-500 duration-300 ease-in-out border-2 rounded-full cursor-pointer"
+                    onClick={() => handleDelete(each.id)}
+                    style={{ border: '2px solid' }}
+                  >
                     Delete Address
                   </div>
                 </div>
@@ -226,7 +200,18 @@ function Profile() {
         )}
       </div>
       <AddNewAddress />
-      <button className={classes.button} id={classes.logOut} onClick={deleteKey}>
+      <button
+        style={{
+          border: '2px solid lightgrey',
+          borderRadius: '2rem',
+          padding: '0.4rem 0.7rem',
+          fontWeight: 'bold',
+          color: 'GrayText',
+          marginBottom: '1rem',
+          width: '350px',
+        }}
+        onClick={deleteKey}
+      >
         Log out
       </button>
     </div>
