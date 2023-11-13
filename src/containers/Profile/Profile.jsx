@@ -39,6 +39,15 @@ function Profile() {
   const [userDetails, setUserDetails] = useState({});
   const [addressResponse, setAddressResponse] = useState([]);
 
+  const [editableFields, setEditableFields] = useState({
+    name: '',
+    addressLine1: '',
+    district: '',
+    state: '',
+    pin: '',
+    landmark: '',
+  });
+
   const toggleButtons = () => {
     setDisabledButton(!disabledbutton);
   };
@@ -91,7 +100,7 @@ function Profile() {
         id,
         name: formData.get('name'),
         addressLine1: formData.get('addressLine1'),
-        addressLine2: formData.get('addressLine2'),
+        // addressLine2: formData.get('addressLine2'),
         phoneNumber: formData.get('phoneNumber'),
         country: formData.get('country'),
         state: formData.get('state'),
@@ -127,14 +136,16 @@ function Profile() {
                 <TextField
                   label="Enter your Name"
                   variant="outlined"
-                  value={each.name}
+                  value={editableFields.name || each.name}
+                  onChange={(e) => setEditableFields({ ...editableFields, name: e.target.value })}
                   disabled={!disabledbutton2[i]}
                   className="mb-4"
                 />
                 <TextField
                   label="Address Line 1"
                   variant="outlined"
-                  value={each.address_line_1}
+                  value={editableFields.addressLine1 || each.addressLine1}
+                  onChange={(e) => setEditableFields({ ...editableFields, addressLine1: e.target.value })}
                   disabled={!disabledbutton2[i]}
                   className="mb-4"
                 />
@@ -142,7 +153,7 @@ function Profile() {
                 <TextField
                   label="District"
                   variant="outlined"
-                  value={each.district}
+                  value={editableFields.district || each.district}
                   disabled={!disabledbutton2[i]}
                   className="mb-4"
                 />
@@ -150,16 +161,27 @@ function Profile() {
                 <TextField
                   label="State"
                   variant="outlined"
-                  value={each.state}
+                  value={editableFields.state || each.state}
                   disabled={!disabledbutton2[i]}
                   className="mb-4"
                 />
 
-                <TextField label="Country" variant="outlined" value={each.country} disabled={true} className="mb-4" />
+                <TextField label="Country" variant="outlined" value="India" disabled={true} className="mb-4" />
 
-                <TextField label="Pin-code" variant="outlined" value={each.pin} className="mb-4" />
+                <TextField
+                  label="Pin-code"
+                  variant="outlined"
+                  value={editableFields.pin || each.pin}
+                  className="mb-4"
+                />
 
-                <TextField label="Landmark" variant="outlined" value={each.landmark} className="mb-4" />
+                <TextField
+                  label="Landmark"
+                  variant="outlined"
+                  value={editableFields.landmark || each.landmark}
+                  className="mb-4"
+                />
+
                 <div style={{ display: 'flex', marginTop: '1rem' }}>
                   {disabledbutton2[i] ? (
                     <div
