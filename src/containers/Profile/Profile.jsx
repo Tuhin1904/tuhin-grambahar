@@ -70,7 +70,7 @@ function Profile() {
         setUserDetails(response);
         setAddressResponse(response2);
       } catch (error) {
-        console.log('catch prt:', error.response.data);
+        console.log('catch prt:', error.response);
       }
     };
     fetchUserData();
@@ -106,7 +106,7 @@ function Profile() {
   };
 
   return (
-    <div className="container flex flex-col px-4 pt-10" style={{ alignItems: 'center' }}>
+    <div className="container flex flex-col px-4 pt-10 mx-auto" style={{ alignItems: 'center' }}>
       <h1 className="flex justify-center my-4 text-4xl font-bold text-primary">My Profile</h1>
 
       <UserDetailsSection userDetails={userDetails} />
