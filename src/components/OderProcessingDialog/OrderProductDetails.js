@@ -8,18 +8,23 @@ function OrderProductDetails({ product, quantity, setQuantity, readOnly = false,
   return (
     <div className={className}>
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-x-8 text-primary-black">
-        <div>
+        <div className="mb-5 sm:mb-0">
           <Image
             src={getAbsImageUrl(product?.images?.[0])}
             alt={product.name}
             width={200}
             height={200}
-            className="object-contain object-center mx-auto w-28 h-28 sm:h-auto sm:mx-0 sm:w-full"
+            className="object-contain object-center w-auto mx-auto h-36 sm:h-auto sm:mx-0 sm:w-full"
           />
         </div>
         <div className="sm:col-span-3">
           <p className="font-bold">{product?.name}</p>
-          <p className="mt-1 text-secondary-black">{product?.short_description}</p>
+          <div className="flex mt-2">
+            <div className="flex text-sm font-medium border-2 rounded-r-full border-primary">
+              <p className="px-2 py-1 mr-2 text-white bg-primary">Product Variant</p>
+              <p className="px-4 py-1 font-semibold text-primary">{product?.variant}</p>
+            </div>
+          </div>
           <PricingSection product={product} pricingTextSizeClass="text-base" className="mt-2 text-sm" />
           <div className="grid items-center grid-cols-2 mt-3">
             <ProductQuantity
