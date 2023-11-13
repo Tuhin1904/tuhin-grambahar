@@ -16,20 +16,20 @@ import UserDetailsSection from '../../components//ProfilePage/UserDetailsSection
 import UserOrderSection from '../../components//ProfilePage/UserOrderSection';
 
 function Profile() {
-  const currencies = [
-    {
-      value: 'Male',
-      label: 'Male',
-    },
-    {
-      value: 'Female',
-      label: 'Female',
-    },
-    {
-      value: 'Rather not say',
-      label: 'Rather not say',
-    },
-  ];
+  // const currencies = [
+  //   {
+  //     value: 'Male',
+  //     label: 'Male',
+  //   },
+  //   {
+  //     value: 'Female',
+  //     label: 'Female',
+  //   },
+  //   {
+  //     value: 'Rather not say',
+  //     label: 'Rather not say',
+  //   },
+  // ];
 
   const [disabledbutton, setDisabledButton] = useState(true);
 

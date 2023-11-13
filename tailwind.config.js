@@ -30,6 +30,18 @@ module.exports = {
         18: '4.5rem',
         22: '5.5rem',
       },
+      width: {
+        '1/2': '50%',
+        '1/3': '33.3333%',
+        '2/3': '66.6667%',
+        '1/4': '25%',
+        '2/4': '50%',
+        '3/4': '75%',
+        '1/5': '20%',
+        '2/5': '40%',
+        '3/5': '60%',
+        '4/5': '80%',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
