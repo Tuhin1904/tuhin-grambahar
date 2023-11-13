@@ -145,7 +145,9 @@ function AddressScreen({
   };
 
   useEffect(() => {
-    if (userAddress?.length === 1) {
+    if (userAddress?.length === 0) {
+      setAddNewAddress(() => true);
+    } else if (userAddress?.length === 1) {
       setSelectedAddress(() => userAddress[0].id);
     }
   }, [setSelectedAddress, userAddress]);
