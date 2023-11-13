@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import EditIcon from '@mui/icons-material/Edit';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CheckIcon from '@mui/icons-material/Check';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -143,6 +143,12 @@ function AddressScreen({
       enableBackButton();
     }
   };
+
+  useEffect(() => {
+    if (userAddress?.length === 1) {
+      setSelectedAddress(() => userAddress[0].id);
+    }
+  }, [setSelectedAddress, userAddress]);
 
   return (
     <>
