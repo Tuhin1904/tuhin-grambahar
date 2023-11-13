@@ -22,7 +22,7 @@ function PriceSummarySection({
       </p>
       {showDeliveryCharge && (
         <p className="flex mb-1.5">
-          <span className="flex-grow mr-3">Delivery Charge</span>
+          <span className="flex-grow mr-3">Handling Charge</span>
           <span className="">{getPriceWithCurrencySymbol(deliveryCharge)}</span>
         </p>
       )}
