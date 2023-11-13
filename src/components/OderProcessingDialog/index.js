@@ -16,6 +16,7 @@ import { updateMyCart } from '@/services/cart.services';
 import { createMyOrder } from '@/services/order.services';
 import OrderPlacedScreen from './OrderPlacedScreen';
 import FullScreenLoader from '../FullScreenLoader';
+import { extractServerValidationError } from '@/helpers/serverValidationError.helper';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -79,7 +80,9 @@ function OderProcessingDialog({ open, handleClose }) {
       setOrderScreen(ORDER_SCREEN_CONFIGS.authScreen.name);
     } catch (err) {
       console.error('📢[index.js]: err: ', err);
-      setError(err?.response?.data?.error || err?.message || 'Error at updating cart');
+      setError(
+        extractServerValidationError(err) || err?.response?.data?.error || err?.message || 'Error at updating cart',
+      );
     }
   };
 
@@ -93,7 +96,9 @@ function OderProcessingDialog({ open, handleClose }) {
       setOrderScreen(ORDER_SCREEN_CONFIGS.addressScreen.name);
     } catch (err) {
       console.error('📢[index.js]: err: ', err);
-      setError(err?.response?.data?.error || err?.message || 'Error at updating cart');
+      setError(
+        extractServerValidationError(err) || err?.response?.data?.error || err?.message || 'Error at updating cart',
+      );
     }
   };
 
@@ -140,7 +145,9 @@ function OderProcessingDialog({ open, handleClose }) {
       }
     } catch (err) {
       console.error('📢[index.js]: err: ', err);
-      setError(err?.response?.data?.error || err?.message || 'Error at updating cart');
+      setError(
+        extractServerValidationError(err) || err?.response?.data?.error || err?.message || 'Error at updating cart',
+      );
     } finally {
       setLoading(false);
       enableBackButton();

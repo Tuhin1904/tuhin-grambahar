@@ -4,6 +4,7 @@ import FullScreenLoader from '@/components/FullScreenLoader';
 import { getOrderStatus } from '@/services/order.services';
 import FullWithPrimaryButton from '@/components/OderProcessingDialog/FullWithPrimaryButton';
 import OrderStatusScreen from '@/components/OrderStatusScreen';
+import { extractServerValidationError } from '@/helpers/serverValidationError.helper';
 
 function PaymentCompleted() {
   const router = useRouter();
@@ -25,7 +26,8 @@ function PaymentCompleted() {
         .catch((err) => {
           console.error('📢[status.js]: err: ', err);
           setError(
-            err?.response?.data?.error ||
+            extractServerValidationError(err) ||
+              err?.response?.data?.error ||
               err?.response?.data?.message ||
               err.message ||
               'Error while checking order status',

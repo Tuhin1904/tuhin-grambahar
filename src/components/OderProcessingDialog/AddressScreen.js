@@ -74,7 +74,9 @@ function AddressScreen({
       setDeleteAddressId(() => null);
     } catch (err) {
       console.error('📢[AddressScreen.js]: err: ', err);
-      setError(err?.response?.data?.error || err?.message || 'Error at updating address');
+      setError(
+        extractServerValidationError(err) || err?.response?.data?.error || err?.message || 'Error at updating address',
+      );
     } finally {
       setLoading(false);
       enableBackButton();
@@ -93,7 +95,9 @@ function AddressScreen({
       setDeleteAddressId(() => null);
     } catch (err) {
       console.error('📢[AddressScreen.js]: err: ', err);
-      setError(err?.response?.data?.error || err?.message || 'Error at deleting address');
+      setError(
+        extractServerValidationError(err) || err?.response?.data?.error || err?.message || 'Error at deleting address',
+      );
     } finally {
       setLoading(false);
       enableBackButton();

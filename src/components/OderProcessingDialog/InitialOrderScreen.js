@@ -4,6 +4,7 @@ import OrderProductDetails from './OrderProductDetails';
 import FullWithPrimaryButton from './FullWithPrimaryButton';
 import PriceSummarySection from './PriceSummarySection';
 import ErrorAlert from './ErrorAlert';
+import { extractServerValidationError } from '@/helpers/serverValidationError.helper';
 
 function InitialOrderScreen({ product, quantity, setQuantity, continueHandler, disableBackButton, enableBackButton }) {
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,9 @@ function InitialOrderScreen({ product, quantity, setQuantity, continueHandler, d
       await continueHandler();
     } catch (err) {
       console.error('📢[AuthScreen.js]: err: ', err);
-      setError(err?.response?.data?.error || err?.message || 'Error at sending otp');
+      setError(
+        extractServerValidationError(err) || err?.response?.data?.error || err?.message || 'Error at sending otp',
+      );
     } finally {
       setLoading(false);
       enableBackButton();

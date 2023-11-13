@@ -7,6 +7,7 @@ import ErrorAlert from './ErrorAlert';
 import { getMyProfile, updateMyPersonalInfo } from '@/services/account.services';
 import { getLocalStorageUser, setLocalStorageUser } from '@/helpers/localStorage.helper';
 import OrderProductDetails from './OrderProductDetails';
+import { extractServerValidationError } from '@/helpers/serverValidationError.helper';
 
 function AuthScreen({ product, quantity, continueHandler, disableBackButton, enableBackButton }) {
   const [user, setUser] = useState(null);
@@ -27,7 +28,9 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
       setShowOtp(true);
     } catch (err) {
       console.error('📢[AuthScreen.js]: err: ', err);
-      setError(err?.response?.data?.error || err?.message || 'Error at sending otp');
+      setError(
+        extractServerValidationError(err) || err?.response?.data?.error || err?.message || 'Error at sending otp',
+      );
     } finally {
       setLoading(false);
       enableBackButton();
@@ -50,7 +53,9 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
       }
     } catch (err) {
       console.error('📢[AuthScreen.js]: err: ', err);
-      setError(err?.response?.data?.error || err?.message || 'Error at sending otp');
+      setError(
+        extractServerValidationError(err) || err?.response?.data?.error || err?.message || 'Error at sending otp',
+      );
     } finally {
       setLoading(false);
       enableBackButton();
@@ -66,7 +71,9 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
       await continueHandler();
     } catch (err) {
       console.error('📢[AuthScreen.js]: err: ', err);
-      setError(err?.response?.data?.error || err?.message || 'Error at sending otp');
+      setError(
+        extractServerValidationError(err) || err?.response?.data?.error || err?.message || 'Error at sending otp',
+      );
     } finally {
       setLoading(false);
       enableBackButton();
@@ -90,7 +97,12 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
         })
         .catch((err) => {
           console.error('📢[AuthScreen.js]: err: ', err);
-          setError(err?.response?.data?.error || err?.message || 'Error at getting user profile');
+          setError(
+            extractServerValidationError(err) ||
+              err?.response?.data?.error ||
+              err?.message ||
+              'Error at getting user profile',
+          );
           setLoading(() => false);
           enableBackButton();
         });
