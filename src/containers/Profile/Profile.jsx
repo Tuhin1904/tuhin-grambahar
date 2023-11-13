@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
-// import classes from './Profile.module.css';
+import { FaCaretSquareDown, FaCaretSquareUp } from 'react-icons/fa';
+
 import {
   getMyAddresses,
   addMyAddress,
@@ -38,7 +39,7 @@ function Profile() {
 
   const [userDetails, setUserDetails] = useState({});
   const [addressResponse, setAddressResponse] = useState([]);
-
+  const [isFormVisible, setIsFormVisible] = useState(true);
   const [editableFields, setEditableFields] = useState({
     name: '',
     addressLine1: '',
@@ -129,90 +130,107 @@ function Profile() {
         <br />
         {addressResponse.length > 0 ? (
           <>
-            <label style={{ fontWeight: 'bold', fontSize: 'larger' }}>Your Current Addresses are:</label>
+            <label
+              style={{
+                fontWeight: 'bold',
+                fontSize: 'larger',
+                display: 'flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+              }}
+              onClick={() => setIsFormVisible((prev) => !prev)}
+            >
+              Your Current Addresses are:
+              {isFormVisible ? <FaCaretSquareUp /> : <FaCaretSquareDown />}
+            </label>
 
-            {addressResponse.map((each, i) => (
-              <form action="" key={i} className="flex flex-col mt-4" onSubmit={() => handleUpdateAddress(e)}>
-                <TextField
-                  label="Enter your Name"
-                  variant="outlined"
-                  value={editableFields.name || each.name}
-                  onChange={(e) => setEditableFields({ ...editableFields, name: e.target.value })}
-                  disabled={!disabledbutton2[i]}
-                  className="mb-4"
-                />
-                <TextField
-                  label="Address Line 1"
-                  variant="outlined"
-                  value={editableFields.addressLine1 || each.addressLine1}
-                  onChange={(e) => setEditableFields({ ...editableFields, addressLine1: e.target.value })}
-                  disabled={!disabledbutton2[i]}
-                  className="mb-4"
-                />
+            {isFormVisible &&
+              addressResponse.map((each, i) => (
+                <form action="" key={i} className="flex flex-col mt-4" onSubmit={() => handleUpdateAddress(e)}>
+                  <TextField
+                    label="Enter your Name"
+                    variant="outlined"
+                    value={editableFields.name || each.name}
+                    onChange={(e) => setEditableFields({ ...editableFields, name: e.target.value })}
+                    disabled={!disabledbutton2[i]}
+                    className="mb-4"
+                  />
+                  <TextField
+                    label="Address Line 1"
+                    variant="outlined"
+                    value={editableFields.addressLine1 || each.addressLine1}
+                    onChange={(e) => setEditableFields({ ...editableFields, addressLine1: e.target.value })}
+                    disabled={!disabledbutton2[i]}
+                    className="mb-4"
+                  />
 
-                <TextField
-                  label="District"
-                  variant="outlined"
-                  value={editableFields.district || each.district}
-                  disabled={!disabledbutton2[i]}
-                  className="mb-4"
-                />
+                  <TextField
+                    label="District"
+                    variant="outlined"
+                    value={editableFields.district || each.district}
+                    onChange={(e) => setEditableFields({ ...editableFields, district: e.target.value })}
+                    disabled={!disabledbutton2[i]}
+                    className="mb-4"
+                  />
 
-                <TextField
-                  label="State"
-                  variant="outlined"
-                  value={editableFields.state || each.state}
-                  disabled={!disabledbutton2[i]}
-                  className="mb-4"
-                />
+                  <TextField
+                    label="State"
+                    variant="outlined"
+                    value={editableFields.state || each.state}
+                    onChange={(e) => setEditableFields({ ...editableFields, state: e.target.value })}
+                    disabled={!disabledbutton2[i]}
+                    className="mb-4"
+                  />
 
-                <TextField label="Country" variant="outlined" value="India" disabled={true} className="mb-4" />
+                  <TextField label="Country" variant="outlined" value="India" disabled={true} className="mb-4" />
 
-                <TextField
-                  label="Pin-code"
-                  variant="outlined"
-                  value={editableFields.pin || each.pin}
-                  className="mb-4"
-                />
+                  <TextField
+                    label="Pin-code"
+                    variant="outlined"
+                    value={editableFields.pin || each.pin}
+                    onChange={(e) => setEditableFields({ ...editableFields, pin: e.target.value })}
+                    className="mb-4"
+                  />
 
-                <TextField
-                  label="Landmark"
-                  variant="outlined"
-                  value={editableFields.landmark || each.landmark}
-                  className="mb-4"
-                />
+                  <TextField
+                    label="Landmark"
+                    variant="outlined"
+                    value={editableFields.landmark || each.landmark}
+                    onChange={(e) => setEditableFields({ ...editableFields, landmark: e.target.value })}
+                    className="mb-4"
+                  />
 
-                <div style={{ display: 'flex', marginTop: '1rem' }}>
-                  {disabledbutton2[i] ? (
+                  <div style={{ display: 'flex', marginTop: '1rem' }}>
+                    {disabledbutton2[i] ? (
+                      <div
+                        className="inline-block px-6 py-2 font-medium text-center text-white duration-300 ease-in-out border-2 rounded-full cursor-pointer border-primary bg-primary"
+                        onClick={() => {
+                          toggleButtons2(i);
+                        }}
+                      >
+                        Save Details
+                      </div>
+                    ) : (
+                      <div
+                        className="inline-block px-6 py-2 font-medium text-center text-white duration-300 ease-in-out border-2 rounded-full cursor-pointer border-primary bg-primary"
+                        onClick={() => toggleButtons2(i)}
+                      >
+                        Edit Details
+                      </div>
+                    )}
                     <div
-                      className="inline-block px-6 py-2 font-medium text-center text-white duration-300 ease-in-out border-2 rounded-full cursor-pointer border-primary bg-primary"
-                      onClick={() => {
-                        toggleButtons2(i);
-                      }}
+                      className="inline-block px-6 py-2 ml-4 font-medium text-center text-red-500 duration-300 ease-in-out border-2 rounded-full cursor-pointer"
+                      onClick={() => handleDelete(each.id)}
+                      style={{ border: '2px solid' }}
                     >
-                      Save Details
+                      Delete Address
                     </div>
-                  ) : (
-                    <div
-                      className="inline-block px-6 py-2 font-medium text-center text-white duration-300 ease-in-out border-2 rounded-full cursor-pointer border-primary bg-primary"
-                      onClick={() => toggleButtons2(i)}
-                    >
-                      Edit Details
-                    </div>
-                  )}
-                  <div
-                    className="inline-block px-6 py-2 ml-4 font-medium text-center text-red-500 duration-300 ease-in-out border-2 rounded-full cursor-pointer"
-                    onClick={() => handleDelete(each.id)}
-                    style={{ border: '2px solid' }}
-                  >
-                    Delete Address
                   </div>
-                </div>
-                <br />
-                <br />
-                <br />
-              </form>
-            ))}
+                  <br />
+                  <br />
+                  <br />
+                </form>
+              ))}
           </>
         ) : (
           <>
