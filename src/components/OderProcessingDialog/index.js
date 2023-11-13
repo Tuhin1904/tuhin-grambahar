@@ -125,6 +125,10 @@ function OderProcessingDialog({ open, handleClose }) {
     }
   };
 
+  const goToInitialScreen = () => {
+    setOrderScreen(ORDER_SCREEN_CONFIGS.initialScreen.name);
+  };
+
   const processOrderAndPaymentHandler = async () => {
     setError(() => '');
     setLoading(true);
@@ -194,6 +198,7 @@ function OderProcessingDialog({ open, handleClose }) {
         {product && orderScreen === ORDER_SCREEN_CONFIGS.authScreen.name && (
           <AuthScreen
             product={product}
+            backToPreviousHandler={goToInitialScreen}
             quantity={quantity}
             continueHandler={goToAddressSelectionScreen}
             disableBackButton={disableBackButton}

@@ -9,7 +9,14 @@ import { getLocalStorageUser, setLocalStorageUser } from '@/helpers/localStorage
 import OrderProductDetails from './OrderProductDetails';
 import { extractServerValidationError } from '@/helpers/serverValidationError.helper';
 
-function AuthScreen({ product, quantity, continueHandler, disableBackButton, enableBackButton }) {
+function AuthScreen({
+  product,
+  quantity,
+  continueHandler,
+  disableBackButton,
+  enableBackButton,
+  backToPreviousHandler,
+}) {
   const [user, setUser] = useState(null);
   const [error, setError] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -18,6 +25,14 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
   const [showOtp, setShowOtp] = useState(false);
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
+
+  const onAuthorizationErrorGoBack = (err) => {
+    if (err?.response?.status === 401) {
+      setTimeout(() => {
+        backToPreviousHandler();
+      }, 300);
+    }
+  };
 
   const sendOtpHandler = async () => {
     setLoading(true);
@@ -31,6 +46,7 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
       setError(
         extractServerValidationError(err) || err?.response?.data?.error || err?.message || 'Error at sending otp',
       );
+      onAuthorizationErrorGoBack(err);
     } finally {
       setLoading(false);
       enableBackButton();
@@ -56,6 +72,7 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
       setError(
         extractServerValidationError(err) || err?.response?.data?.error || err?.message || 'Error at sending otp',
       );
+      onAuthorizationErrorGoBack(err);
     } finally {
       setLoading(false);
       enableBackButton();
@@ -74,6 +91,7 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
       setError(
         extractServerValidationError(err) || err?.response?.data?.error || err?.message || 'Error at sending otp',
       );
+      onAuthorizationErrorGoBack(err);
     } finally {
       setLoading(false);
       enableBackButton();
@@ -105,6 +123,7 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
           );
           setLoading(() => false);
           enableBackButton();
+          onAuthorizationErrorGoBack(err);
         });
     }
 
@@ -168,6 +187,7 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
         required
         variant="standard"
         placeholder="9876543210"
+        autoFocus
         disabled={showOtp || loading}
         value={phoneNumber}
         sx={{ mb: 3 }}
@@ -180,6 +200,7 @@ function AuthScreen({ product, quantity, continueHandler, disableBackButton, ena
           disabled={loading}
           label="OTP for account verification"
           type="number"
+          autoFocus
           required
           variant="standard"
           placeholder="123456"
