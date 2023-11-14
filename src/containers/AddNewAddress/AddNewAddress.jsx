@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { addMyAddress } from '../../services/account.services';
+import { FaCheckCircle } from 'react-icons/fa';
 
 function AddNewAddress() {
   const [isFormVisibile, setFormVisible] = useState(false);
   const [addresses, setAddresses] = useState([]);
+  const [showRightIcon, setShowRightIcon] = useState(false);
 
   const toggleForm = () => {
     setFormVisible(!isFormVisibile);
@@ -33,6 +35,10 @@ function AddNewAddress() {
     } catch (error) {
       console.log('Unable to Add new Address', error);
     }
+    setShowRightIcon(true);
+    setTimeout((handler) => {
+      setShowRightIcon(false);
+    }, 3000);
   };
 
   return (
@@ -69,6 +75,12 @@ function AddNewAddress() {
               Add
             </button>
           </form>
+          {showRightIcon && (
+            <div className="flex items-center mt-2">
+              <FaCheckCircle className="mr-2 text-green-500" />
+              <span className="text-green-500">Form submitted successfully!</span>
+            </div>
+          )}
         </>
       )}
     </>
