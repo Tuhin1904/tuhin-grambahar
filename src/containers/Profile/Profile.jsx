@@ -15,6 +15,7 @@ import {
 import AddNewAddress from '../AddNewAddress/AddNewAddress';
 import UserDetailsSection from '../../components//ProfilePage/UserDetailsSection';
 import UserOrderSection from '../../components//ProfilePage/UserOrderSection';
+import { green } from '@mui/material/colors';
 
 function Profile() {
   // const currencies = [
@@ -141,7 +142,7 @@ function Profile() {
               onClick={() => setIsFormVisible((prev) => !prev)}
             >
               Your Current Addresses are:
-              {isFormVisible ? <FaCaretSquareUp /> : <FaCaretSquareDown />}
+              {isFormVisible ? <FaCaretSquareUp color="green" /> : <FaCaretSquareDown color="green" />}
             </label>
 
             {isFormVisible &&
