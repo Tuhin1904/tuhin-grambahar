@@ -12,7 +12,7 @@ import {
   updateMyPersonalInfo,
   getMyProfile,
 } from '../../services/account.services';
-import AddNewAddress from '../../components/Lagacy/AddNewAddress/AddNewAddress';
+import AddNewAddress from '../AddNewAddress/AddNewAddress';
 import UserDetailsSection from '../../components//ProfilePage/UserDetailsSection';
 import UserOrderSection from '../../components//ProfilePage/UserOrderSection';
 
