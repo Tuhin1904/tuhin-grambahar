@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { getBestSellerProduct } from '@/services/product.service';
+import { getBestSellerProductWithReviews } from '@/services/product.service';
 import ProductDetails from '@/components/ProductDetails';
 import HomePageBanner from '@/components/Lagacy/HomePageBanner';
 import OurStoryVideo from '@/components/OurStoryVideo';
+import ShowProductReviews from '@/components/ShowProductReviews';
 
 export default function Home({ products }) {
   const [selectedProduct, setSelectedProduct] = useState(0);
@@ -32,12 +33,16 @@ export default function Home({ products }) {
           }}
         />
       </div>
+
+      <div className="container px-4 mx-auto">
+        <ShowProductReviews reviews={products[selectedProduct]?.reviews || []} className="mb-28" />
+      </div>
     </>
   );
 }
 
 export async function getStaticProps() {
-  const products = await getBestSellerProduct();
+  const products = await getBestSellerProductWithReviews();
 
   return {
     props: {
