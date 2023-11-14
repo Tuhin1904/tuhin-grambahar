@@ -19,8 +19,12 @@ export default function Home({ products }) {
         products={products}
         onChangeProductHandler={onChangeProductHandler}
       />
-      <HomePageBanner className="my-14" />
-      <div className="container px-4 pt-6 pb-20 mx-auto">
+      <HomePageBanner className="mt-4" />
+      <OurStoryVideo
+        className="mb-6 border-b-2 border-primary"
+        videoClassName="object-cover object-center w-full sm:h-96 lg:h-160 xl:h-192"
+      />
+      <div className="container px-4 pb-32 mx-auto pt-14">
         <article
           className="max-w-full prose "
           dangerouslySetInnerHTML={{
@@ -28,10 +32,6 @@ export default function Home({ products }) {
           }}
         />
       </div>
-      <OurStoryVideo
-        className="mb-6 border-b-2 border-primary"
-        videoClassName="object-cover object-center w-full sm:h-96 lg:h-160 xl:h-192"
-      />
     </>
   );
 }
