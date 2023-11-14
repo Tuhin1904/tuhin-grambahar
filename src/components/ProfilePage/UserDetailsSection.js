@@ -1,6 +1,7 @@
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import { updateMyPersonalInfo } from '@/services/account.services';
 
 function UserDetailsSection({ classes, userDetails }) {
   const [viewMode, setViewMode] = useState(true);
@@ -22,7 +23,7 @@ function UserDetailsSection({ classes, userDetails }) {
       <form
         action=""
         onSubmit={onUpdateMyDetailsHandler}
-        className="flex flex-col items-center"
+        className="flex flex-col items-center w-auto"
         style={{ display: 'flex', flexDirection: 'column' }}
       >
         <TextField
