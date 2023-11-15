@@ -13,6 +13,10 @@ module.exports = {
         white2: '#f2f2f2',
         primary: '#7ab35b',
         'primary-black': '#121212',
+        site: {
+          orange: '#ffba53',
+          gold: '#ffbb1d',
+        },
       },
       fontSize: {
         11: '0.6875rem',

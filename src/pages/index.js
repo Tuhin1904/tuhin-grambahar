@@ -46,7 +46,10 @@ export async function getStaticProps() {
 
   return {
     props: {
-      products,
+      products: products.map((product) => ({
+        ...product,
+        reviews: product.reviews.sort((a, b) => b.date - a.date),
+      })),
     },
   };
 }
