@@ -52,7 +52,10 @@ function ProductDetails({ product, products, onChangeProductHandler }) {
             <h1 className="text-2xl font-bold">{product.name}</h1>
             <h2 className="mt-1">{product.subtitle}</h2>
             <div className="mt-2">
-              <Rating rating={product.rating} totalRating={product.totalRating} />
+              <a href="#user-reviews" className="flex items-end">
+                <Rating rating={product.rating} totalRating={product.totalRating} />
+                <span className="ml-3 font-medium text-13 text-secondary-black">See all reviews</span>
+              </a>
             </div>
             <PricingSection product={product} />
             <div className="mt-4 mb-2 font-medium">Choose Product Variant:</div>
