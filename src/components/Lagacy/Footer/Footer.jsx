@@ -63,6 +63,24 @@ function Footer({ pb = '' }) {
               Contact Us
             </span>
           </Link>
+          <ul className="pl-2 mt-5">
+            <li className="font-medium">
+              <span>Email:</span>
+              <a className="ml-1.5 text-primary" href="mailto:grambahar.com@gmail.com">
+                grambahar.com@gmail.com
+              </a>
+            </li>
+            <li className="mt-2 font-medium">
+              <span>Phone:</span>
+              <a className="ml-1.5 text-primary" href="tel:+919382147143">
+                +919382147143
+              </a>
+              <span className="mx-2">/</span>
+              <a className="text-primary" href="tel:+919883214823">
+                +919883214823
+              </a>
+            </li>
+          </ul>
           <ol className="flex items-center justify-center mt-8 text-secondary-black">
             <li className="mr-7">
               <Link href="https://www.facebook.com/profile.php?id=100092955764879" target="_blank">
