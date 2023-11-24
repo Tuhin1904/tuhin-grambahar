@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem'
 import { FaCheckCircle } from 'react-icons/fa';
 
 function ContactUs() {
   const [showRightIcon, setShowRightIcon] = useState(false);
+  const [selectedTime,setSelectedTime]=useState('');
+
   const inputStyle = {
     borderRadius: '25px',
     marginBottom: '10px',
     marginRight: '20px',
   };
+  const timeRanges=[
+    '10am-11am',
+    '11am-12pm',
+    '12pm-1pm',
+    '1pm-2pm',
+  ]
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setShowRightIcon(true);
@@ -29,11 +38,21 @@ function ContactUs() {
             <TextField InputProps={{ style: inputStyle }} label="Phone" type="phone" variant="outlined" />
 
             <TextField
-              InputProps={{ style: inputStyle }}
-              label="Schedule Your Call"
-              type="schedule"
-              variant="outlined"
-            />
+  InputProps={{ style: inputStyle }}
+  label="Schedule Your Call"
+  type="schedule"
+  variant="outlined"
+  select
+  value={selectedTime}
+  onChange={(e) => setSelectedTime(e.target.value)}
+>
+  {timeRanges.map((time) => (
+    <MenuItem key={time} value={time}>
+      {time}
+    </MenuItem>
+  ))}
+</TextField>
+
 
             <TextField
               InputProps={{ style: { ...inputStyle, height: '6rem' } }}
