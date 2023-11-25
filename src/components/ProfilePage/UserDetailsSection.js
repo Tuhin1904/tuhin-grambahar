@@ -2,10 +2,12 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { updateMyPersonalInfo } from '@/services/account.services';
+import { FaPencilAlt } from "react-icons/fa";
 
 function UserDetailsSection({ classes, userDetails }) {
   const [viewMode, setViewMode] = useState(true);
   const [userDetailsState, setUserDetails] = useState(userDetails);
+  const [editMode, setEditMode] = useState(false);
 
   const toggleEditOptions = () => {
     setViewMode((value) => !value);
@@ -24,9 +26,31 @@ function UserDetailsSection({ classes, userDetails }) {
         action=""
         onSubmit={onUpdateMyDetailsHandler}
         className="flex flex-col items-center w-auto"
-        style={{ display: 'flex', flexDirection: 'column' }}
+        style={{ display: 'flex', flexDirection: 'column',textAlign:'left' }}
       >
-        <TextField
+         <div className="mb-4">
+          <strong>Name:</strong> {editMode ? (
+            <TextField
+              variant="outlined"
+              value={userDetailsState.name}
+              onChange={(e) => setUserDetails({ ...userDetailsState, name: e.target.value })}
+            />
+          ) : (
+            userDetailsState.name
+          )}
+        </div>
+        <div className="flex items-center">
+          {editMode ? (
+            <button onClick={toggleEditOptions} type="submit" color="primary">
+              Save
+            </button>
+          ) : (
+            <button onClick={toggleEditOptions} color="primary">
+              <FaPencilAlt  />
+            </button>
+          )}
+        </div>
+        {/* <TextField
           label="Name"
           id="user-name"
           placeholder="Enter your name"
@@ -63,9 +87,9 @@ function UserDetailsSection({ classes, userDetails }) {
             shrink: !!userDetails.name, // Shrink label if there's a value
           }}
           onChange={(e) => setUserDetails({ ...userDetailsState, email: e.target.value })}
-        />
+        /> */}
 
-        <div className="flex justify-end">
+        {/* <div className="flex justify-end">
           {!viewMode ? (
             <button
               className="px-6 py-2 text-sm font-medium duration-300 ease-in-out border-2 rounded-full border-primary text-primary hover:bg-primary hover:text-white"
@@ -83,7 +107,7 @@ function UserDetailsSection({ classes, userDetails }) {
               Edit My Details
             </button>
           )}
-        </div>
+        </div> */}
       </form>
     </>
   );

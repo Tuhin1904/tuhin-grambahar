@@ -4,9 +4,10 @@ import { FaCaretSquareDown, FaCaretSquareUp } from 'react-icons/fa';
 import { getAbsImageUrl } from '@/services';
 import Image from 'next/image';
 
-function UserOrderSection() {
+function UserOrderSection({product}) {
   const [orders, setOrders] = useState([]);
   const [view, setView] = useState(false);
+  const [productImage, setProductImage]= useState()
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -46,13 +47,14 @@ function UserOrderSection() {
                 </div>
                 <p className="mr-3 text-white">
                   Order Status : <b>{eachOrder.order_status}</b> <br /> Payment Mode: <b>{eachOrder.payment_method}</b>
-                </p><Image
+                </p>
+                {/* <Image
                 // src={getAbsImageUrl(mainImage)}
                 // alt={product.name}
                 className="object-cover w-full h-auto"
                 width={900}
                 height={700}
-              />
+              /> */}
               </div>
               <hr />
               <p className="ml-4">

@@ -12,11 +12,6 @@ function ProductDetails({ product, products, onChangeProductHandler }) {
   const [quantity, setQuantity] = useState(1);
   const [processCheckout, setProcessCheckout] = useState(false);
   const [selectedVariantIndex,setSelectedVariantIndex]=useState(0);
-  console.log("The product is",product.images[0])
-  console.log("The product is",mainImage)
-  // console.log(products[0].variant)
-  // console.log(products[1].variant)
-console.log("selected product is",selectedVariantIndex);
 
   const onClickBuyNowHandler = () => {
     setCart({ product, quantity });
