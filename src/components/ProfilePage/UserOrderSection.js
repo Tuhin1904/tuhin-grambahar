@@ -1,6 +1,8 @@
 import { getMyOrders } from '@/services/order.services';
 import { useEffect, useState } from 'react';
 import { FaCaretSquareDown, FaCaretSquareUp } from 'react-icons/fa';
+import { getAbsImageUrl } from '@/services';
+import Image from 'next/image';
 
 function UserOrderSection() {
   const [orders, setOrders] = useState([]);
@@ -44,7 +46,13 @@ function UserOrderSection() {
                 </div>
                 <p className="mr-3 text-white">
                   Order Status : <b>{eachOrder.order_status}</b> <br /> Payment Mode: <b>{eachOrder.payment_method}</b>
-                </p>
+                </p><Image
+                // src={getAbsImageUrl(mainImage)}
+                // alt={product.name}
+                className="object-cover w-full h-auto"
+                width={900}
+                height={700}
+              />
               </div>
               <hr />
               <p className="ml-4">

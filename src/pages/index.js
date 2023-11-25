@@ -7,6 +7,7 @@ import ShowProductReviews from '@/components/ShowProductReviews';
 
 export default function Home({ products }) {
   const [selectedProduct, setSelectedProduct] = useState(0);
+  // console.log("Home",selectedProduct)
 
   const onChangeProductHandler = (index) => {
     setSelectedProduct(() => index);
