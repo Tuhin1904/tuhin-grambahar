@@ -5,12 +5,11 @@ import { updateMyPersonalInfo } from '@/services/account.services';
 import { FaPencilAlt } from "react-icons/fa";
 
 function UserDetailsSection({ classes, userDetails }) {
-  const [viewMode, setViewMode] = useState(true);
   const [userDetailsState, setUserDetails] = useState(userDetails);
   const [editMode, setEditMode] = useState(false);
 
   const toggleEditOptions = () => {
-    setViewMode((value) => !value);
+    setEditMode((value) => !value);
   };
 
   const onUpdateMyDetailsHandler = async (event) => {
@@ -22,33 +21,48 @@ function UserDetailsSection({ classes, userDetails }) {
   return (
     <>
       <p className="my-4 text-lg font-bold">My Details</p>
+      
       <form
         action=""
         onSubmit={onUpdateMyDetailsHandler}
-        className="flex flex-col items-center w-auto"
-        style={{ display: 'flex', flexDirection: 'column',textAlign:'left' }}
+        className="flex bg-slate-100 p-4 w-100 items-center rounded-lg justify-between"
+        style={{alignItems: 'flex-start',textAlign:'left' }}
       >
-         <div className="mb-4">
-          <strong>Name:</strong> {editMode ? (
+        <div>
+         <div className="mb-4" style={{ display: 'flex', alignItems: 'center' }}>
+          <strong className='w-18 text-primary'>Name:</strong> {editMode ? (
             <TextField
               variant="outlined"
-              value={userDetailsState.name}
+              placeholder={userDetails.name}
               onChange={(e) => setUserDetails({ ...userDetailsState, name: e.target.value })}
             />
           ) : (
-            userDetailsState.name
+            userDetails.name
           )}
         </div>
-        <div className="flex items-center">
-          {editMode ? (
-            <button onClick={toggleEditOptions} type="submit" color="primary">
-              Save
-            </button>
+         <div className="mb-4" style={{ display: 'flex', alignItems: 'center' }}>
+          <strong className='w-18'>Phone:</strong> {editMode ? (
+            <TextField
+              variant="outlined"
+              value={userDetails.phone_number}
+              onChange={(e) => setUserDetails({ ...userDetailsState, phone: e.target.value })}
+              disabled={true}
+            />
           ) : (
-            <button onClick={toggleEditOptions} color="primary">
-              <FaPencilAlt  />
-            </button>
+            userDetails.phone_number
           )}
+        </div>
+         <div className="mb-4 " style={{ display: 'flex', alignItems: 'center' }}>
+          <strong className='w-18 text-primary'>Email:</strong> {editMode ? (
+            <TextField
+              variant="outlined"
+              placeholder={userDetails.email}
+              onChange={(e) => setUserDetails({ ...userDetailsState, email: e.target.value })}
+            />
+          ) : (
+            userDetails.email
+          )}
+        </div>
         </div>
         {/* <TextField
           label="Name"
@@ -73,41 +87,19 @@ function UserDetailsSection({ classes, userDetails }) {
           disabled
           className="mb-4"
         />
-
-        <TextField
-          label="Email"
-          id="user-email"
-          placeholder="Enter your email address"
-          type="email"
-          variant="outlined"
-          disabled={viewMode}
-          className="mb-4"
-          value={userDetails.email}
-          InputLabelProps={{
-            shrink: !!userDetails.name, // Shrink label if there's a value
-          }}
-          onChange={(e) => setUserDetails({ ...userDetailsState, email: e.target.value })}
-        /> */}
-
-        {/* <div className="flex justify-end">
-          {!viewMode ? (
-            <button
-              className="px-6 py-2 text-sm font-medium duration-300 ease-in-out border-2 rounded-full border-primary text-primary hover:bg-primary hover:text-white"
-              type="submit"
-              onClick={updateMyNameMail}
-            >
-              Save Details
+*/}
+    
+        <div className="flex items-center">
+          {editMode ? (
+            <button onClick={toggleEditOptions} className='bg-primary text-white py-1 px-2 rounded-xl' type="submit" color="primary">
+              Save
             </button>
           ) : (
-            <button
-              type="button"
-              className="px-6 py-2 text-sm font-medium duration-300 ease-in-out border-2 rounded-full border-primary text-primary hover:bg-primary hover:text-white"
-              onClick={toggleEditOptions}
-            >
-              Edit My Details
+            <button onClick={toggleEditOptions} color="primary">
+              <FaPencilAlt  />
             </button>
           )}
-        </div> */}
+        </div>
       </form>
     </>
   );
